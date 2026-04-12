@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шакал — Canis aureus | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Шакал (Canis aureus) — новодосељена врста у ширењу ка северу, прилагодљив свеједер и ловна дивљач. Опис, трагови, биологија, заштита на Рајцу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#2d5a27; --forest-dark:#1a3a15; --forest-light:#4a7c43;
+    --cream:#f7f4ef; --warm-white:#fdfcfa; --text:#2a2a2a; --text-muted:#5a5a5a;
+    --border:#d8d0c4; --accent:#8b6914; --accent-warm:#c4500a;
+    --iucn-lc:#4caf50; --section-bg:#f2f0eb; --tag-bg:#e8f0e6; --tag-border:#a8c4a4;
+    --shadow:0 2px 12px rgba(0,0,0,0.08); --shadow-hover:0 6px 24px rgba(0,0,0,0.14);
+    --radius:10px; --font-serif:'Merriweather',Georgia,serif; --font-sans:'Source Sans 3',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-sans);font-size:16px;line-height:1.75;color:var(--text);background:var(--warm-white)}
+  .site-header{background:var(--forest-dark);color:#fff;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:3px solid var(--forest-light)}
+  .site-header .logo{font-weight:700;font-size:15px;color:#fff;text-decoration:none;letter-spacing:.05em;text-transform:uppercase}
+  .site-header nav a{color:rgba(255,255,255,.85);text-decoration:none;margin-left:20px;font-size:12.5px}
+  .site-header nav a:hover{color:#fff}
+  .breadcrumb-bar{background:var(--cream);border-bottom:1px solid var(--border);padding:10px 0}
+  .breadcrumb-bar .inner{max-width:900px;margin:0 auto;padding:0 24px;font-size:13px;color:var(--text-muted)}
+  .breadcrumb-bar a{color:var(--forest);text-decoration:none;font-weight:600}
+  .breadcrumb-bar .sep{margin:0 6px;opacity:.5}
+  .page-wrap{max-width:900px;margin:0 auto;padding:36px 24px 60px}
+  .species-hero{text-align:center;padding:8px 0 28px;border-bottom:2px solid var(--border);margin-bottom:30px}
+  .species-hero .common-name{font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--forest-dark);line-height:1.2;margin-bottom:6px}
+  .species-hero .latin-name{font-family:var(--font-serif);font-size:1.3rem;font-style:italic;color:var(--forest-light);margin-bottom:14px}
+  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:.03em}
+  .badge-iucn{background:var(--iucn-lc);color:#fff}
+  .badge-game{background:#fff3e0;color:#c05000;border:1px solid #f0c080}
+  .badge-info{background:var(--tag-bg);color:var(--forest);border:1px solid var(--tag-border)}
+  .hero-image-wrap{width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow);aspect-ratio:16/8;background:#b8a882}
+  .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .4s}
+  .hero-image-wrap:hover img{transform:scale(1.02)}
+  .img-caption{font-size:12px;color:var(--text-muted);text-align:center;margin-bottom:30px;font-style:italic;padding:0 16px}
+  .gallery-section{margin-bottom:36px}
+  .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .gallery-grid figure{margin:0;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#c0ad8a;box-shadow:var(--shadow);position:relative;cursor:pointer}
+  .gallery-grid figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery-grid figure:hover img{transform:scale(1.06)}
+  .gallery-grid figcaption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-size:11px;padding:22px 8px 7px;line-height:1.35;opacity:0;transition:opacity .25s}
+  .gallery-grid figure:hover figcaption{opacity:1}
+  .gallery-grid figure.upload-slot{background:var(--section-bg);border:2px dashed var(--border);display:flex;flex-direction:column;cursor:default}
+  .upload-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 10px;gap:5px;text-align:center}
+  .upload-placeholder .up-icon{font-size:28px}
+  .upload-placeholder .up-title{font-size:12px;font-weight:700;color:var(--forest-dark);line-height:1.3}
+  .upload-placeholder .up-hint{font-size:10.5px;color:var(--text-muted);font-style:italic;line-height:1.4}
+  .gallery-grid figure.upload-slot figcaption{position:static;opacity:1;background:var(--cream);border-top:1px solid var(--border);color:var(--text-muted);padding:6px 8px;font-size:10.5px;font-style:italic;line-height:1.35}
+  .img-credit{font-size:11px;color:var(--text-muted);font-style:italic;text-align:right;margin-top:6px}
+  .img-credit a{color:var(--forest)}
+  .taxonomy-box{background:var(--section-bg);border:1px solid var(--border);border-left:4px solid var(--forest);border-radius:var(--radius);padding:20px 22px;margin-bottom:36px}
+  .taxonomy-box h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:14px}
+  .taxonomy-box table{width:100%;border-collapse:collapse;font-size:14px}
+  .taxonomy-box td{padding:4px 8px 4px 0}
+  .taxonomy-box td:first-child{font-weight:700;color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;width:110px;vertical-align:top;padding-top:5px}
+  .taxonomy-box td em{color:var(--forest-light);font-style:italic}
+  .content-section{margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+  .content-section:last-of-type{border-bottom:none}
+  .section-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--forest-dark);margin-bottom:13px;display:flex;align-items:center;gap:9px}
+  .content-section p{font-size:15.5px;line-height:1.8;color:var(--text);margin-bottom:12px}
+  .content-section p:last-child{margin-bottom:0}
+  .inline-img{float:right;margin:0 0 16px 22px;width:260px;border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+  .inline-img img{width:100%;display:block}
+  .inline-img figcaption{font-size:11px;color:var(--text-muted);font-style:italic;padding:6px 10px;background:var(--cream);border:1px solid var(--border);border-top:none;line-height:1.4}
+  .clearfix::after{content:'';display:table;clear:both}
+  .highlight-box{background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14.5px;line-height:1.7;color:var(--forest-dark)}
+  .highlight-box strong{color:var(--forest)}
+  .warning-box{background:#fff8e6;border:1px solid #e8cc88;border-left:4px solid var(--accent);border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14px;line-height:1.7}
+  .warning-box strong{color:var(--accent)}
+  .invasion-box{background:linear-gradient(135deg,#fdf6e3,#fff9ec);border:1px solid #e8cc88;border-left:4px solid #c4500a;border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14.5px;line-height:1.7;color:#4a3000}
+  .invasion-box strong{color:#c4500a}
+  .protection-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .protection-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:14px}
+  .protection-card .pcard-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:700;margin-bottom:4px}
+  .protection-card .pcard-value{font-weight:600;color:var(--forest-dark)}
+  .pheno-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .pheno-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:12px}
+  .pheno-month{text-align:center;border-radius:6px;padding:8px 2px 6px;font-size:11px;font-weight:700;color:#fff}
+  .pheno-month .m-name{display:block;font-size:10px;opacity:.88;margin-bottom:4px;letter-spacing:.03em}
+  .pheno-month .m-icon{font-size:16px;display:block;margin-bottom:2px}
+  .ph-active{background:var(--forest)} .ph-mating{background:#c4500a}
+  .ph-young{background:#e8a020;color:#3a2000} .ph-low{background:#b0bfaa;color:#2a3a28}
+  .pheno-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;margin-top:10px}
+  .pheno-legend span{display:flex;align-items:center;gap:6px}
+  .pheno-legend .dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+  .tracks-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .tracks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .track-card{background:var(--section-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+  .track-card h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px}
+  .track-card p{font-size:14px;line-height:1.65;color:var(--text)}
+  .paw-diagram{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;gap:24px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
+  .paw-svg-wrap{text-align:center}
+  .paw-svg-wrap svg{display:block;margin:0 auto 6px}
+  .paw-svg-wrap .paw-label{font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .paw-specs{flex:1;min-width:180px}
+  .paw-specs table{width:100%;font-size:13.5px;border-collapse:collapse}
+  .paw-specs td{padding:5px 6px 5px 0;border-bottom:1px solid var(--border);vertical-align:top}
+  .paw-specs td:first-child{color:var(--text-muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;width:130px}
+  .paw-specs tr:last-child td{border-bottom:none}
+  .track-photo-wrap{border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
+  .track-photo-wrap img{width:100%;display:block;max-height:260px;object-fit:cover}
+  .track-photo-wrap figcaption{font-size:11.5px;color:var(--text-muted);font-style:italic;padding:7px 12px;background:var(--cream);border:1px solid var(--border);border-top:none}
+  .camtrap-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .camtrap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .camtrap-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--forest);border-radius:var(--radius);padding:14px 15px;font-size:14px}
+  .camtrap-card .ct-icon{font-size:26px;margin-bottom:8px;display:block}
+  .camtrap-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:6px}
+  .camtrap-card p{font-size:13.5px;line-height:1.6;color:var(--text)}
+  .ct-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .ct-link-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;padding:8px 14px;border:1.5px solid var(--forest);border-radius:6px;transition:all .2s}
+  .ct-link-btn:hover{background:var(--forest);color:#fff}
+  .species-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:2px solid var(--border);gap:12px;flex-wrap:wrap}
+  .species-nav a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;padding:9px 16px;border:1.5px solid var(--forest);border-radius:6px;transition:all .2s}
+  .species-nav a:hover{background:var(--forest);color:#fff}
+  .species-nav .center-link{border:none!important;padding:0!important;font-size:13px;color:var(--text-muted)}
+  .species-nav .center-link:hover{background:none!important;color:var(--forest)!important}
+  .site-footer{background:var(--forest-dark);color:rgba(255,255,255,.7);text-align:center;padding:22px;font-size:13px}
+  @media(max-width:660px){
+    .gallery-grid,.camtrap-grid{grid-template-columns:repeat(2,1fr)}
+    .tracks-grid,.protection-grid{grid-template-columns:1fr}
+    .pheno-grid{grid-template-columns:repeat(6,1fr)}
+    .species-hero .common-name{font-size:1.9rem}
+    .site-header nav{display:none}
+    .inline-img{float:none;width:100%;margin:0 0 16px 0}
+    .paw-diagram{flex-direction:column}
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs">ПИО „Рајац"</a>
+    <span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a>
+    <span class="sep">›</span>
+    Шакал — <em>Canis aureus</em>
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <div class="species-hero">
+    <h1 class="common-name">Шакал</h1>
+    <div class="latin-name"><em>Canis aureus</em> Linnaeus, 1758</div>
+    <div class="badges">
+      <span class="badge badge-iucn">IUCN LC — Најмање забрињавајућа</span>
+      <span class="badge badge-game">🐺 Ловна дивљач</span>
+      <span class="badge badge-info">Новодосељена врста</span>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Canis%20aureus%20-%20golden%20jackal.jpg?width=1200"
+         alt="Шакал (Canis aureus) — одрасла јединка у природном станишту"
+         onerror="this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Golden%20jackal%20-%20portrait.jpg?width=1200';this.onerror=null;">
+  </div>
+  <p class="img-caption">Шакал (<em>Canis aureus</em>) — одрасла јединка. Сличи на мањег, танкијег вука са златастим тоном длаке. © Wikimedia Commons CC BY-SA 4.0</p>
+
+  <div class="gallery-section">
+    <div class="section-label">□ Галерија</div>
+    <div class="gallery-grid">
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Golden_jackal_at_Keoladeo_Ghana_National_Park.jpg/800px-Golden_jackal_at_Keoladeo_Ghana_National_Park.jpg"
+             alt="Шакал — профил главе" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Профил главе — шиљасте уши и танка, лисичаста грађа</figcaption>
+      </figure>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Golden_Jackal_sa.jpg/800px-Golden_Jackal_sa.jpg"
+             alt="Шакал — пар у природи" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Пар шакала — моногамна врста, парови трајно заједно</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golden%20jackal%20cub.jpg?width=800"
+             alt="Шакал — младунче" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Младунче шакала — риђа длака и тамна леђна сенка у раном узрасту</figcaption>
+      </figure>
+    </div>
+    <p class="img-credit" style="font-style:normal;color:var(--forest);font-size:12px;text-align:left;margin-top:10px">
+      ℹ️ Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/Category:Canis_aureus" target="_blank">Canis aureus</a>
+    </p>
+  </div>
+
+  <div class="taxonomy-box">
+    <h3>□ Таксономија</h3>
+    <table>
+      <tr><td>Царство:</td><td>Animalia</td></tr>
+      <tr><td>Тип:</td><td>Chordata</td></tr>
+      <tr><td>Класа:</td><td><em>Mammalia</em> — Сисари</td></tr>
+      <tr><td>Ред:</td><td><em>Carnivora</em> — Звери</td></tr>
+      <tr><td>Породица:</td><td><em>Canidae</em> — Псећи</td></tr>
+      <tr><td>Род:</td><td><em>Canis</em> Linnaeus, 1758</td></tr>
+      <tr><td>Врста:</td><td><em>Canis aureus</em> Linnaeus, 1758</td></tr>
+      <tr><td>Статус:</td><td>IUCN LC · Ловна дивљач у Србији</td></tr>
+      <tr><td>Станиште:</td><td>Шумске ивице, грмља, ливаде, воде — периферне зоне Рајца</td></tr>
+      <tr><td>Маса / дужина:</td><td>6–14 kg · 70–85 cm тело + 20–30 cm реп</td></tr>
+    </table>
+  </div>
+
+  <div class="content-section clearfix">
+    <h2 class="section-title"><span>🔍</span> Морфологија и карактеристике</h2>
+    <figure class="inline-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Golden_Jackal_Closeup.jpg/400px-Golden_Jackal_Closeup.jpg"
+           alt="Шакал — детаљ главе" loading="lazy"
+           onerror="this.style.display='none';this.parentElement.style.display='none'">
+      <figcaption>Детаљ главе — шиљасте уши и карактеристичан поглед · CC BY-SA</figcaption>
+    </figure>
+    <p>Шакал (<em>Canis aureus</em>) је средње крупни представник псећих (<em>Canidae</em>), по телесном облику близак вуку, али знатно мањи и виткији. Тело је дуго 70–85 cm, реп 20–30 cm, а тежина 6–14 kg. Ноге су дугачке и танке у поређењу са грађом тела — адаптација за брзо кретање на отвореном. Карактеристично: задњи крај тела нешто нижи него предњи, слично хијенама, због развијенијег предњег дела мускулатуре.</p>
+    <p>Длака је жутосмеђа до златастосива — отуда назив „aureus" (златни). Леђа су обично тамнија са сивим нијансама, трбух светлији. Реп је релативно кратак у поређењу са лисицом и носи се хоризонтално или надоле — никада уздигнуто. Уши су велике, шиљасте и усправне, слично шакалима Африке. Гало (гласање) је карактеристично: завијање је дуже, тужније и наглашеније него код лисице, а може се чути до 3–4 km.</p>
+    <div class="highlight-box">
+      <strong>Разлика од лисице:</strong> Шакал је крупнији (просечно 2× тежи), краћи реп без белог врха, непостоји бели образ. Шакал носи реп хоризонтално; лисица га носи хоризонтално или усправно са белим врхом. Трагови шакала веће, округлије шапе, без карактеристичне елиптичне форме лисице.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌍</span> Ширење ка северу — инвазија у Европи</h2>
+    <p>Шакал је пореклом врста Блиског истока, Балкана и Азије. Историјски, европска популација ограничена је на Балканско полуострво — Грчку, Бугарску, Румунију и Турску. Од 1990-их, услед загревања климе, нестанка природних предатора (вука) и повећане доступности хране, шакал врши снажну северну и западну експанзију широм Европе.</p>
+    <p>У Србији је шакал позnat од давнина у јужним деловима — Македонија, Поморавље — а у последњих 20–30 година значajno expanzuje ka severu i zapadu. Danas je potvrđen u Vojvodini, dolini Morave i u šumama centralне Srbije, включujući podручje Lio. Первые налаги на Рајцу датирају из 2010-их година. Популација је стабилна и у порасту.</p>
+    <div class="invasion-box">
+      <strong>🧭 Новодосељена врста на Рајцу:</strong> Шакал је на Рајцу релативно нов становник — вероватно присутан стално тек последња два деценије. Његово устаљивање је директна последица климатских промена и ширења ареала из јужних делова Балкана. Врста је стабилна, прилагодљива и нема природних предатора на овом подручју.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌿</span> Станиште на Рајцу</h2>
+    <p>Шакал претпоставља мозаична станишта — мешавину отворених поlja, шумских ивица, ниских шикара и близину воде. На подручjу ПИО „Рајац" присутан је првенствено у периферним зонама, уз пољопривредне посeде, потоке, мочварна подручja и ивице листопадних шума. У поређењу са лисицом, избегава затворене, густе шумске предене унутрашњости Рајца.</p>
+    <p>Јазбину (гнездо) прави у природним рупама или у шикарjу, уз потоке или обрасла земљишта. Домашај реона пара износи 10–30 km² и знатно је шири ноћу. Шакал је ноћна и сумрачна животиnja; активан је нарочито у зору и после заласка сунца.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🔬</span> Биологија и понашање</h2>
+    <p>Шакал је стриктно моногамна врста — парови остају заједно доживотно и заједно бране територију и подижу младе. Оба родитеља, па чак и старija прасад из претходне сезоне (помоћна размножавала), учествују у исхрани и заштити легла. Ово је jedna od ретких врста код којих је кооперативно размножавање добро документовано.</p>
+    <p>Комуникација је примарно акустична: хорско завијање пара служи за маркирање territoire и привлачење партнера. Шакали се ноћу редовно „јављају" — чујe се дуги вој у рану ноћ и пред зору. Мирисно маркирање урином и катом обавља на видљивим местима дуж стаза.</p>
+    <div class="highlight-box">
+      <strong>Ноћно завијање:</strong> Пар шакала у риjу (јануар–фебруар) завија синхронизовано у дуетима — карактеристичан звук ноћи на Рајцу. Људи га сличе са „ланачким ограма" или вилинским плачем. Завијање се може чути и ван сезоне парења — при узбуни или ради информисања о локацији.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🍃</span> Исхрана</h2>
+    <p>Шакал је изразити свеједер и опортунист — слично лисици, али са нагласком на крупнији плен и стрвину. Основу исхране чине: ситни глодари (мишеви, волухарице), зечеви, птице и птичjа jaja, воће (јабуке, трњина, купина, жир у јесен), инсекти, жабе и гуштери, стрвина и отпаци у близини насеља.</p>
+    <p>Шакал je efikasan lovac u grupama: par или породична група може савладати зеца, младуна срне или болесну животиnjу. Насупрот лисици, шакал редовно посећује стрвине и може їх конзумирати у великим количинама. У близини насеља ради и контејнера за смеће и складишта хране.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+    <p>Риj (парење) одвиjа се у јануару–фебруару. Гравидитет траje 63 дана — скоро идентично псу. Мећање (рађање) у марту–априлу; леглo 3–8 младих (просечно 4–5). Младунци се рађају слепи и нејаки. Оба родитеља и помоћна јединка (старија прасад) активно учествују у исхрани и обезбеđivan jama. Дојење 8–9 недеља; самостални до јесени исте године.</p>
+    <p>Шакал достиже полну зрелост са 11 месеци. Животни вeк у природи 8–10 година, у заробљеништву до 16.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>У Србији je шакал класификован као <strong>ситна ловна дивљач</strong> под Законом о дивљачи и ловству. Лов је дозвољен у прописаном периоду и уз важећу ловачку дозволу. На подручjу ПИО „Рајац" лов је регулисан управљачким планом — забрањен у строжим зонама заштите.</p>
+    <p>Иако је IUCN статус LC (стабилна популација), ширење шакала у Европи праћено је одређеним еколошким питањима — утицaj на популације дивљих зечева, птица гнездарица на тлу, па и потенцијалне хибридизације са псима луталицама. Мониторинг популације шакала на Рајцу важан је елемент управљања заштитним подручjем.</p>
+
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — Least Concern (Стабилна)</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Ловна дивљач — квотирани лов</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Лов, тровање, удари возила, хибридизација</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Тренд на Рајцу</div>
+        <div class="pcard-value">📈 У порасту — ширење ареала ка северу</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pheno-section">
+    <h2 class="section-title"><span>🗓</span> Календар активности на Рајцу</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Када је шакала <strong>најлакше чути или опазити</strong> у сваком месецу:</p>
+    <div class="pheno-grid">
+      <div class="pheno-month ph-mating"><span class="m-name">ЈАН</span><span class="m-icon">🎵</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">ФЕБ</span><span class="m-icon">🎵</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">МАР</span><span class="m-icon">🐺</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">АПР</span><span class="m-icon">🐺</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">МАЈ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУН</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУЛ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">АВГ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">НОВ</span><span class="m-icon">🌫</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div>
+    </div>
+    <div class="pheno-legend">
+      <span><span class="dot" style="background:#c4500a"></span> Риј — завијање пара, нарочито ноћу</span>
+      <span><span class="dot" style="background:#e8a020"></span> Мећање и одгој младих</span>
+      <span><span class="dot" style="background:#2d5a27"></span> Пуна активност</span>
+      <span><span class="dot" style="background:#b0bfaa"></span> Смањена активност</span>
+    </div>
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Најбоље доба за опажање:</strong> Ноћ — 21–23 ч и прво свитање. Јануар–фебруар: хорско завијање пара чујe се из велике даљине у тихим зимским ноћима. Фото-замка на шумску стазу уз воду бележи шакала скоро сваке ноћи у активним периодима.
+    </div>
+  </div>
+
+  <div class="tracks-section">
+    <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Трагови шакала веома подсећају на псеће — кључна је разлика у величини, облику и контексту налаза:</p>
+
+    <div class="paw-diagram">
+      <div class="paw-svg-wrap">
+        <svg width="90" height="112" viewBox="0 0 90 112" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="45" cy="74" rx="15" ry="11" fill="#7a6245" opacity="0.85"/>
+          <ellipse cx="45" cy="47" rx="8.5" ry="11" fill="#7a6245" opacity="0.85"/>
+          <ellipse cx="29" cy="54" rx="7.5" ry="9.5" fill="#7a6245" opacity="0.85"/>
+          <ellipse cx="61" cy="54" rx="7.5" ry="9.5" fill="#7a6245" opacity="0.85"/>
+          <ellipse cx="16" cy="65" rx="6.5" ry="8.5" fill="#7a6245" opacity="0.85"/>
+          <ellipse cx="74" cy="65" rx="6.5" ry="8.5" fill="#7a6245" opacity="0.85"/>
+          <line x1="45" y1="34" x2="45" y2="28" stroke="#3a2a18" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="26" y1="43" x2="23" y2="37" stroke="#3a2a18" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="64" y1="43" x2="67" y2="37" stroke="#3a2a18" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="54" x2="9" y2="49" stroke="#3a2a18" stroke-width="2" stroke-linecap="round"/>
+          <line x1="77" y1="54" x2="81" y2="49" stroke="#3a2a18" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="100" x2="86" y2="100" stroke="#aaa" stroke-width="1"/>
+          <text x="45" y="111" text-anchor="middle" font-size="9" fill="#888">5–6 cm</text>
+        </svg>
+        <div class="paw-label">Отисак предње шапе</div>
+      </div>
+      <div class="paw-specs">
+        <table>
+          <tr><td>Дужина отиска</td><td>5–6 cm (предња), нешто мањи задњи</td></tr>
+          <tr><td>Ширина отиска</td><td>4–5 cm</td></tr>
+          <tr><td>Облик</td><td>Овалан, скоро идентичан псећем — ноктиви увек видљиви</td></tr>
+          <tr><td>Разлика vs. лисица</td><td>Шакал крупнији, округлији; лисица ужа, елиптичнија</td></tr>
+          <tr><td>Разлика vs. пас</td><td>Мањи; стаза праволинијска, не „реска"</td></tr>
+          <tr><td>Дужина корака</td><td>35–45 cm у касу</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tracks-grid">
+      <div class="track-card">
+        <h4>💩 Измет</h4>
+        <p>Цилиндричан, шиљастих крajева, дужине 5–9 cm. Садржи длаку, кости, семена, перје. Одлаже на видним тачкама — грабама, каменовима, стазама. Мирис интензиван и специфичан — јачи него лисичjи, с примесом мошуса.</p>
+      </div>
+      <div class="track-card">
+        <h4>🎵 Звуки — гласање</h4>
+        <p>Карактеристичан дуги вој — дует пара, нарочито у сумрак и ноћ. Почиње са три кратка „аоу-аоу-аоу" па прелази у дуги завлачни вик. Чује се до 3–4 km. Неупућени га поредe са „вилинским вриском" или далеким плачем.</p>
+      </div>
+      <div class="track-card">
+        <h4>🏠 Јазбина</h4>
+        <p>Корен великог дрвета, стари зечји или лисичjи туnel проширен, камена гомила, шикара. Улаз обично 20–25 cm ширине. Испред улаза земља са осетљивим мирисом. Мање уредна и очигледна него лисичjа јазбина.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌿 Стаза кретања</h4>
+        <p>Директна, праволинijска стаза дуж ивица поља и шуме — шакал иде практично у праву линiju тј. задња шапа пада у отисак предење (директна регистрација). Снег добро открива начин кретање и учесталост пролазака.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="camtrap-section">
+    <h2 class="section-title"><span>📷</span> Фото-замке — водич за посматрање</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Шакал је <strong>ноћна и опрезна</strong> животиња — директно посматрање скоро немогуће без посебне опреме. Фото-замке дају одличне резултате.</p>
+    <div class="camtrap-grid">
+      <div class="camtrap-card">
+        <span class="ct-icon">📍</span>
+        <h4>Где поставити</h4>
+        <p>Ивица шуме уз отворено поље. Дуж потока и мочварних подручja. Стаза са видљивим трагovima. Уз јазбину — 15–20 m удаљено.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">📐</span>
+        <h4>Висина и угао</h4>
+        <p>30–45 cm — висина главе шакала. Угао 20–30° надоле, дуж стазе. ИР сензор паралелан правцу кретања.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">🌙</span>
+        <h4>Кад очекивати снимак</h4>
+        <p>21–02 ч и пред зору. Јан–феб: гласно завијање у риjу. Мај–јул: пар са младима дуж стазе.</p>
+      </div>
+    </div>
+    <div class="ct-links">
+      <a href="https://www.inaturalist.org/taxa/42398-Canis-aureus" class="ct-link-btn" target="_blank">📍 Canis aureus — iNaturalist</a>
+      <a href="https://gbif.org/species/5219173" class="ct-link-btn" target="_blank">🗺️ Дистрибуција — GBIF</a>
+    </div>
+  </div>
+
+  <nav class="species-nav">
+    <a href="https://piorajac.rs/sisari/vulpes-vulpes/">← Лисица — <em>Vulpes vulpes</em></a>
+    <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+    <a href="https://piorajac.rs/sisari/meles-meles/">Јазавац — <em>Meles meles</em> →</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг
+</footer>
+
+</body>
+</html>

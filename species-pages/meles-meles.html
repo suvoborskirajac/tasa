@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Јазавац — Meles meles | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Јазавац (Meles meles) — заштићена врста, ноћни градитељ разгранатих система тунела. Опис, трагови, биологија, зимски сан, заштита на Рајцу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#2d5a27; --forest-dark:#1a3a15; --forest-light:#4a7c43;
+    --cream:#f7f4ef; --warm-white:#fdfcfa; --text:#2a2a2a; --text-muted:#5a5a5a;
+    --border:#d8d0c4; --accent:#8b6914; --accent-warm:#c4500a;
+    --iucn-lc:#4caf50; --section-bg:#f2f0eb; --tag-bg:#e8f0e6; --tag-border:#a8c4a4;
+    --shadow:0 2px 12px rgba(0,0,0,0.08); --shadow-hover:0 6px 24px rgba(0,0,0,0.14);
+    --radius:10px; --font-serif:'Merriweather',Georgia,serif; --font-sans:'Source Sans 3',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-sans);font-size:16px;line-height:1.75;color:var(--text);background:var(--warm-white)}
+  .site-header{background:var(--forest-dark);color:#fff;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:3px solid var(--forest-light)}
+  .site-header .logo{font-weight:700;font-size:15px;color:#fff;text-decoration:none;letter-spacing:.05em;text-transform:uppercase}
+  .site-header nav a{color:rgba(255,255,255,.85);text-decoration:none;margin-left:20px;font-size:12.5px}
+  .site-header nav a:hover{color:#fff}
+  .breadcrumb-bar{background:var(--cream);border-bottom:1px solid var(--border);padding:10px 0}
+  .breadcrumb-bar .inner{max-width:900px;margin:0 auto;padding:0 24px;font-size:13px;color:var(--text-muted)}
+  .breadcrumb-bar a{color:var(--forest);text-decoration:none;font-weight:600}
+  .breadcrumb-bar .sep{margin:0 6px;opacity:.5}
+  .page-wrap{max-width:900px;margin:0 auto;padding:36px 24px 60px}
+  .species-hero{text-align:center;padding:8px 0 28px;border-bottom:2px solid var(--border);margin-bottom:30px}
+  .species-hero .common-name{font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--forest-dark);line-height:1.2;margin-bottom:6px}
+  .species-hero .latin-name{font-family:var(--font-serif);font-size:1.3rem;font-style:italic;color:var(--forest-light);margin-bottom:14px}
+  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:.03em}
+  .badge-iucn{background:var(--iucn-lc);color:#fff}
+  .badge-protected{background:#e8f0e6;color:var(--forest);border:1px solid var(--tag-border)}
+  .badge-info{background:#f0f4ff;color:#3a4a90;border:1px solid #c0c8e8}
+  .hero-image-wrap{width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow);aspect-ratio:16/8;background:#8a7a60}
+  .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;transition:transform .4s}
+  .hero-image-wrap:hover img{transform:scale(1.02)}
+  .img-caption{font-size:12px;color:var(--text-muted);text-align:center;margin-bottom:30px;font-style:italic;padding:0 16px}
+  .gallery-section{margin-bottom:36px}
+  .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .gallery-grid figure{margin:0;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#b0a080;box-shadow:var(--shadow);position:relative;cursor:pointer}
+  .gallery-grid figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery-grid figure:hover img{transform:scale(1.06)}
+  .gallery-grid figcaption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-size:11px;padding:22px 8px 7px;line-height:1.35;opacity:0;transition:opacity .25s}
+  .gallery-grid figure:hover figcaption{opacity:1}
+  .gallery-grid figure.upload-slot{background:var(--section-bg);border:2px dashed var(--border);display:flex;flex-direction:column;cursor:default}
+  .upload-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 10px;gap:5px;text-align:center}
+  .upload-placeholder .up-icon{font-size:28px}
+  .upload-placeholder .up-title{font-size:12px;font-weight:700;color:var(--forest-dark);line-height:1.3}
+  .upload-placeholder .up-hint{font-size:10.5px;color:var(--text-muted);font-style:italic;line-height:1.4}
+  .gallery-grid figure.upload-slot figcaption{position:static;opacity:1;background:var(--cream);border-top:1px solid var(--border);color:var(--text-muted);padding:6px 8px;font-size:10.5px;font-style:italic;line-height:1.35}
+  .img-credit{font-size:11px;color:var(--text-muted);font-style:italic;text-align:right;margin-top:6px}
+  .img-credit a{color:var(--forest)}
+  .taxonomy-box{background:var(--section-bg);border:1px solid var(--border);border-left:4px solid var(--forest);border-radius:var(--radius);padding:20px 22px;margin-bottom:36px}
+  .taxonomy-box h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:14px}
+  .taxonomy-box table{width:100%;border-collapse:collapse;font-size:14px}
+  .taxonomy-box td{padding:4px 8px 4px 0}
+  .taxonomy-box td:first-child{font-weight:700;color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;width:110px;vertical-align:top;padding-top:5px}
+  .taxonomy-box td em{color:var(--forest-light);font-style:italic}
+  .content-section{margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+  .content-section:last-of-type{border-bottom:none}
+  .section-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--forest-dark);margin-bottom:13px;display:flex;align-items:center;gap:9px}
+  .content-section p{font-size:15.5px;line-height:1.8;color:var(--text);margin-bottom:12px}
+  .content-section p:last-child{margin-bottom:0}
+  .inline-img{float:right;margin:0 0 16px 22px;width:260px;border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+  .inline-img img{width:100%;display:block}
+  .inline-img figcaption{font-size:11px;color:var(--text-muted);font-style:italic;padding:6px 10px;background:var(--cream);border:1px solid var(--border);border-top:none;line-height:1.4}
+  .clearfix::after{content:'';display:table;clear:both}
+  .highlight-box{background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14.5px;line-height:1.7;color:var(--forest-dark)}
+  .highlight-box strong{color:var(--forest)}
+  .warning-box{background:#fff8e6;border:1px solid #e8cc88;border-left:4px solid var(--accent);border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14px;line-height:1.7}
+  .warning-box strong{color:var(--accent)}
+  .protection-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .protection-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:14px}
+  .protection-card .pcard-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:700;margin-bottom:4px}
+  .protection-card .pcard-value{font-weight:600;color:var(--forest-dark)}
+  .pheno-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .pheno-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:12px}
+  .pheno-month{text-align:center;border-radius:6px;padding:8px 2px 6px;font-size:11px;font-weight:700;color:#fff}
+  .pheno-month .m-name{display:block;font-size:10px;opacity:.88;margin-bottom:4px;letter-spacing:.03em}
+  .pheno-month .m-icon{font-size:16px;display:block;margin-bottom:2px}
+  .ph-active{background:var(--forest)} .ph-mating{background:#c4500a}
+  .ph-young{background:#e8a020;color:#3a2000} .ph-low{background:#b0bfaa;color:#2a3a28}
+  .ph-winter{background:#7a9ab0}
+  .pheno-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;margin-top:10px}
+  .pheno-legend span{display:flex;align-items:center;gap:6px}
+  .pheno-legend .dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+  .tracks-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .tracks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .track-card{background:var(--section-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+  .track-card h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px}
+  .track-card p{font-size:14px;line-height:1.65;color:var(--text)}
+  .paw-diagram{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;gap:24px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
+  .paw-svg-wrap{text-align:center}
+  .paw-svg-wrap svg{display:block;margin:0 auto 6px}
+  .paw-svg-wrap .paw-label{font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .paw-specs{flex:1;min-width:180px}
+  .paw-specs table{width:100%;font-size:13.5px;border-collapse:collapse}
+  .paw-specs td{padding:5px 6px 5px 0;border-bottom:1px solid var(--border);vertical-align:top}
+  .paw-specs td:first-child{color:var(--text-muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;width:130px}
+  .paw-specs tr:last-child td{border-bottom:none}
+  .camtrap-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .camtrap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .camtrap-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--forest);border-radius:var(--radius);padding:14px 15px;font-size:14px}
+  .camtrap-card .ct-icon{font-size:26px;margin-bottom:8px;display:block}
+  .camtrap-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:6px}
+  .camtrap-card p{font-size:13.5px;line-height:1.6;color:var(--text)}
+  .ct-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .ct-link-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;padding:8px 14px;border:1.5px solid var(--forest);border-radius:6px;transition:all .2s}
+  .ct-link-btn:hover{background:var(--forest);color:#fff}
+  .species-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:2px solid var(--border);gap:12px;flex-wrap:wrap}
+  .species-nav a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;padding:9px 16px;border:1.5px solid var(--forest);border-radius:6px;transition:all .2s}
+  .species-nav a:hover{background:var(--forest);color:#fff}
+  .species-nav .center-link{border:none!important;padding:0!important;font-size:13px;color:var(--text-muted)}
+  .species-nav .center-link:hover{background:none!important;color:var(--forest)!important}
+  .site-footer{background:var(--forest-dark);color:rgba(255,255,255,.7);text-align:center;padding:22px;font-size:13px}
+  @media(max-width:660px){
+    .gallery-grid,.camtrap-grid{grid-template-columns:repeat(2,1fr)}
+    .tracks-grid,.protection-grid{grid-template-columns:1fr}
+    .pheno-grid{grid-template-columns:repeat(6,1fr)}
+    .species-hero .common-name{font-size:1.9rem}
+    .site-header nav{display:none}
+    .inline-img{float:none;width:100%;margin:0 0 16px 0}
+    .paw-diagram{flex-direction:column}
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs">ПИО „Рајац"</a>
+    <span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a>
+    <span class="sep">›</span>
+    Јазавац — <em>Meles meles</em>
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <div class="species-hero">
+    <h1 class="common-name">Јазавац</h1>
+    <div class="latin-name"><em>Meles meles</em> (Linnaeus, 1758)</div>
+    <div class="badges">
+      <span class="badge badge-iucn">IUCN LC — Најмање забрињавајућа</span>
+      <span class="badge badge-protected">🛡 Заштићена врста</span>
+      <span class="badge badge-info">❄️ Зимски сан</span>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Meles_meles_Усть-Каменогорск.jpg/1200px-Meles_meles_Усть-Каменогорск.jpg"
+         alt="Јазавац (Meles meles) — одрасла јединка у природном станишту"
+         onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Meles_meles_-_Sett.jpg/1200px-Meles_meles_-_Sett.jpg';this.onerror=null;">
+  </div>
+  <p class="img-caption">Јазавац (<em>Meles meles</em>) — одрасла јединка са карактеристичним белим лицем и тамним пругама. © Wikimedia Commons CC BY-SA 4.0</p>
+
+  <div class="gallery-section">
+    <div class="section-label">□ Галерија</div>
+    <div class="gallery-grid">
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Meles_meles_-_British_Wildlife_Centre_%281%29.jpg/800px-Meles_meles_-_British_Wildlife_Centre_%281%29.jpg"
+             alt="Јазавац — детаљ главе" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Детаљ главе — карактеристичне тамне пруге преко очију</figcaption>
+      </figure>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Badger-badger.jpg/800px-Badger-badger.jpg"
+             alt="Јазавац — улаз у јазбину" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Јазавац при уласку у јазбину — улаз са хрпом ископане земље</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Foraging%20Badger.jpg?width=800"
+             alt="Јазавац у потрази за храном" loading="lazy"
+             onerror="this.parentElement.style.display='none'">
+        <figcaption>Јазавац у потрази за храном — најактивнији је у сумрак и ноћу</figcaption>
+      </figure>
+    </div>
+    <p class="img-credit" style="font-style:normal;color:var(--forest);font-size:12px;text-align:left;margin-top:10px">
+      ℹ️ Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/Category:Meles_meles" target="_blank">Meles meles</a>
+    </p>
+  </div>
+
+  <div class="taxonomy-box">
+    <h3>□ Таксономија</h3>
+    <table>
+      <tr><td>Царство:</td><td>Animalia</td></tr>
+      <tr><td>Тип:</td><td>Chordata</td></tr>
+      <tr><td>Класа:</td><td><em>Mammalia</em> — Сисари</td></tr>
+      <tr><td>Ред:</td><td><em>Carnivora</em> — Звери</td></tr>
+      <tr><td>Породица:</td><td><em>Mustelidae</em> — Куне</td></tr>
+      <tr><td>Род:</td><td><em>Meles</em> Brisson, 1762</td></tr>
+      <tr><td>Врста:</td><td><em>Meles meles</em> (Linnaeus, 1758)</td></tr>
+      <tr><td>Статус:</td><td>IUCN LC · Заштићена врста у Србији</td></tr>
+      <tr><td>Станиште:</td><td>Листопадне шуме, шумске ивице, ливаде са меким тлом — све зоне Рајца</td></tr>
+      <tr><td>Маса / дужина:</td><td>7–17 kg · 60–90 cm тело + 12–20 cm реп</td></tr>
+    </table>
+  </div>
+
+  <div class="content-section clearfix">
+    <h2 class="section-title"><span>🔍</span> Морфологија и карактеристике</h2>
+    <figure class="inline-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Meles_meles_face.jpg/400px-Meles_meles_face.jpg"
+           alt="Јазавац — детаљ главе са тамним пругама"
+           loading="lazy"
+           onerror="this.style.display='none';this.parentElement.style.display='none'">
+      <figcaption>Карактеристичне тамне пруге преко очију — јединствени знак препознавања · CC BY-SA</figcaption>
+    </figure>
+    <p>Јазавац (<em>Meles meles</em>) је највећи европски представник породице куна (<em>Mustelidae</em>) и уједно један од најдубљих градитеља подземних склоништа међу европским сисарима. Тело је масивно, бочно сплоштено, са кратким јаким ногама и широком, ниском главом. Дужина тела 60–90 cm, тежина 7–17 kg — знатно варира сезонски: пред зиму до 30% веће тежине захваљујући масним резервама.</p>
+    <p>Длака је бифарна — леђа сиво до сребрнаста, трбух и ноге тамносмеђе до скоро црне. Глава је бела са две изразите тамне пруге које иду од носа преко очију до ушију — јединствени и непогрешиви знак препознавања. Ноктиви предњих шапа дугачки су и снажни, специјализовани за копање — до 5 cm дужине. Реп је кратак и чупав.</p>
+    <p>Чула мириса изузетно развијена — основни сензорни канал. Вид слабији, нарочито за статичне детаље. Слух добар. Жлезде испод репа луче снажан, мошусни секрет — важан у маркирању ревира и комуникацији унутар групе.</p>
+    <div class="highlight-box">
+      <strong>Тело за копање:</strong> Јазавац је еволуцијски оптимизован за копање — широке, лопатасте предње шапе са дугим ноктивима, снажна грудна мускулатура, ниска профилисана глава. Мрежа тунела (<em>sett</em>) коjу гради и одржава генерацијама може имати и до 100 метара ходника и десетина улаза.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌿</span> Станиште на Рајцу</h2>
+    <p>Јазавац предпочитава листопадне и мешовите шуме са меким, дренираним тлом погодним за копање — конкретно: ивице шума на обронцима, банке уз шумске просеке, лескова и грабова шикара са растреситим хумусним слојем. На Рајцу је присутан у свим шумским зонама, a јазбине су посебно честе на падинама са добром дренажом.</p>
+    <p>Јазавац је социјална врста — групе (клан) 2–15 одраслих јединки живе заједно у систему јазбина <em>sett</em>. Главна јазбина (main sett) обично је у употреби генерацијама — неки сетови стари су и неколико векова. Домашај реона клана 20–50 ha, маркиран мирисним жлездама и нечистоћама на одређеним тачкама.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🔬</span> Биологија и понашање</h2>
+    <p>Јазавац је строго ноћна животиња — излази из јазбине тек у потпуном мраку и враћа се пре зоре. Активност почиње 1–2 сата после заласка сунца, а максимална је у прво доба ноћи. Лети може бити активан до зоре. Социјалне интеракције унутар клана укључују алогруминг (чешкање), заједничку игру и колективну одбрану територије.</p>
+    <p>Карактеристично: јазавац је веома уредна животиња — редовно мења постељину у јазбини (суво лишће, трава), избацује измет на посебна „нужничка места" ван јазбине, а чисти и тело свакодневно. Ово инстинктивно понашање хигијене значaјно умањује паразитски притисак у гнезду.</p>
+    <div class="highlight-box">
+      <strong>Зимски сан — непотпуна хибернација:</strong> Јазавац не хибернира у правом смислу — телесна температура пада само делимично, а јединке се буде током топлих зимских периода. У строжим зимама спава непрекидно 2–4 месеца живећи искључиво на масним резервама. Дебљина масних резерви пред зиму кључна је за преживљавање.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🍃</span> Исхрана</h2>
+    <p>Јазавац је прилагодљиви свеједер — дијета варира сезонски и по расположивости хране. Кичма исхране: земљани черви (<em>Lumbricus</em> spp.) — при влажном времену може их прикупити неколико стотина за ноћ. Земљани черви чине 50–80% дијете у влажним периодима. Остала исхрана: жир, кукуруз, купина, малина, шумски плодови, пашчад инсеката, мишеви и волухарице, жабе, гуштери, гнезда мравља и ос (специjalitet — уздрмава и конзумира и ларве и мед), птичja jaja, угинуле животиnje.</p>
+    <p>Јесен је кључна сезона исхране: јазавац акумулира масне резерве интензивним храњењем жиром, кукурузом и шумским плодовима. Тежина може порасти 30% у септембру–новембру у односу на летњу тежину.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+    <p>Парење је у фебруару–марту, а постjи и летnje парење у јулу–августу. Као и код срне, оплоđена јajna ćelica улази у дијапаузу (delayed implantation) неколико месеци. Ембриони се имплантирају у децембру–јануару, а младунци се рађају у фебруару (у јазбини, за активне зимске паузе). Леглo 1–5 младих, просечно 2–3.</p>
+    <p>Младунци излазе из јазбине са 8–10 недеља, а самостални су до јесени. Женке полно зреле са 12–15 месеци. Животни вeк до 14 година у природи.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>У Србији јазавац је <strong>заштићена дивља врста</strong> под Законом о заштити природе — лов и уклањање забрањени без посебне дозволе. Историjски је био интензивно лован и затиран — сматран штеточином пољопривреде — а данас му популација зависи од ефикасности заштите. На ПИО „Рајац" присутан је у свим зонама заштите.</p>
+    <p>Главне претње: деструкциjа јазбина грађевинском механизацијом и шумском техником, тровање родентицидима (секундарно, преко плена), стресање псима, удари возила ноћу. Болест: туберкулоза говеда (<em>Mycobacterium bovis</em>) — jazavac је резервоар у неким деловима Европе (нарочито Велика Британиjа); у Србији је овaj ризик мали.</p>
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — Least Concern (Стабилна)</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Заштићена дивља врста — лов забрањен</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Деструкциjа јазбина, тровање, удари возила</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Управљање на Рајцу</div>
+        <div class="pcard-value">Потпуна заштита · Мониторинг сетова</div>
+      </div>
+    </div>
+    <div class="warning-box">
+      <strong>⚠️ Правна напомена:</strong> Намерно ометање јазавца, уништавање јазбина или хватање строго је забрањено законом. Пронађена угинула јединка пријавити управи ПИО — важно за мониторинг популације.
+    </div>
+  </div>
+
+  <div class="pheno-section">
+    <h2 class="section-title"><span>🗓</span> Календар активности на Рајцу</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Када јазавца <strong>потражити и шта очекивати</strong> у сваком месецу:</p>
+    <div class="pheno-grid">
+      <div class="pheno-month ph-winter"><span class="m-name">ЈАН</span><span class="m-icon">❄️</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">ФЕБ</span><span class="m-icon">🐾</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">МАР</span><span class="m-icon">🌱</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">АПР</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">МАЈ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУН</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">ЈУЛ</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">АВГ</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🌰</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🌰</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">НОВ</span><span class="m-icon">🌫</span></div>
+      <div class="pheno-month ph-winter"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div>
+    </div>
+    <div class="pheno-legend">
+      <span><span class="dot" style="background:#7a9ab0"></span> Зимски сан (непотпуна хибернација)</span>
+      <span><span class="dot" style="background:#e8a020"></span> Рађање и подизање младих</span>
+      <span><span class="dot" style="background:#c4500a"></span> Летње парење</span>
+      <span><span class="dot" style="background:#2d5a27"></span> Пуна активност — жирење</span>
+      <span><span class="dot" style="background:#b0bfaa"></span> Смањена активност</span>
+    </div>
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Нajбоље доба за посматрање:</strong> Потпуни мрак — 1–2 сата после заласка сунца. Мај–јун: млади излазе из јазбине и играjу се испред улаза при самом сумраку. Април–мај: свежа земља ископана предњим шапама видљива испред свих активних улаза.
+    </div>
+  </div>
+
+  <div class="tracks-section">
+    <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Јазавац оставља <strong>изразите и лако препознатљиве</strong> трагове — посебно улаз у јазбину не може се замешати ни са чим другим:</p>
+
+    <div class="paw-diagram">
+      <div class="paw-svg-wrap">
+        <!-- SVG отисак јазавца — 5 прстију широко распоређени, дугачки ноктиви -->
+        <svg width="95" height="115" viewBox="0 0 95 115" xmlns="http://www.w3.org/2000/svg">
+          <!-- Јастучић длана — широк -->
+          <ellipse cx="47" cy="76" rx="18" ry="13" fill="#6a5238" opacity="0.85"/>
+          <!-- 5 прстију — широко распоређени -->
+          <ellipse cx="47" cy="50" rx="8" ry="10" fill="#6a5238" opacity="0.85"/>
+          <ellipse cx="30" cy="55" rx="7.5" ry="9.5" fill="#6a5238" opacity="0.85"/>
+          <ellipse cx="64" cy="55" rx="7.5" ry="9.5" fill="#6a5238" opacity="0.85"/>
+          <ellipse cx="14" cy="63" rx="7" ry="9" fill="#6a5238" opacity="0.85"/>
+          <ellipse cx="80" cy="63" rx="7" ry="9" fill="#6a5238" opacity="0.85"/>
+          <!-- Дуги ноктиви — карактеристика јазавца -->
+          <line x1="47" y1="37" x2="47" y2="27" stroke="#2a1a0a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="27" y1="44" x2="24" y2="34" stroke="#2a1a0a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="67" y1="44" x2="70" y2="34" stroke="#2a1a0a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="10" y1="52" x2="5" y2="42" stroke="#2a1a0a" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="84" y1="52" x2="89" y2="42" stroke="#2a1a0a" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="5" y1="100" x2="90" y2="100" stroke="#aaa" stroke-width="1"/>
+          <text x="47" y="112" text-anchor="middle" font-size="9" fill="#888">6–8 cm</text>
+        </svg>
+        <div class="paw-label">Отисак предње шапе</div>
+      </div>
+      <div class="paw-specs">
+        <table>
+          <tr><td>Дужина отиска</td><td>5–8 cm са ноктивима (без: 4–5.5 cm)</td></tr>
+          <tr><td>Ширина отиска</td><td>4.5–6 cm — широк, „медвеђасти"</td></tr>
+          <tr><td>Број прстију</td><td>5 — сви видљиви и широко распоређени</td></tr>
+          <tr><td>Ноктиви</td><td>Изузетно дуги — до 5 cm; јединствена особина</td></tr>
+          <tr><td>Ходни образац</td><td>Рорала хода — не директна регистрација; широк ход</td></tr>
+          <tr><td>Дужина корака</td><td>20–30 cm — спор, грамзљив ход</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tracks-grid">
+      <div class="track-card">
+        <h4>🏠 Јазбина (sett)</h4>
+        <p>Главна јазбина: 1–4+ крупних улаза промера 25–35 cm, испред свих хрпа ископане земље. Уз улаз остаци постељине (лишће, трава) избачени при чишћењу. Снажан мирис мошуса. Дугачки ходници видљиви у рушевинама земље при спуштању терена.</p>
+      </div>
+      <div class="track-card">
+        <h4>💩 Нужничка места</h4>
+        <p>Јазавац дефецира на посебним „нужничким местима" — плитким ямицама ван јазбине, у кружном распореду на ивици ревира. Измет је цевасти, 5–9 cm, у ямици дубине 5–10 cm — јединствена особина, не види се код других врста.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌱 Трагови копања</h4>
+        <p>Плитко копање ради земљаних червa — рупице 5–10 cm у меком тлу, типично у ноћном периоду после кише. Слично крту али шире, плиће и без хумке. Копање мравља гнезда — широке кратне рупе у труловини.</p>
+      </div>
+      <div class="track-card">
+        <h4>🦨 Маркирање</h4>
+        <p>Мирисно маркирање жлездама испод репа на истакнутим тачкама (стабла, гранe, камење). Отисак белог масног секрета са карактеристичним мошусним мирисом — може се осетити из 5–10 m у тихој ноћи у близини јазбине.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="camtrap-section">
+    <h2 class="section-title"><span>📷</span> Фото-замке — водич за посматрање</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Јазавац је <strong>најлакши за бележење</strong> међу ноћним врстама — јазбина је стална локација, а животиnja је редовно активна. Ипак, строго је ноћан.</p>
+    <div class="camtrap-grid">
+      <div class="camtrap-card">
+        <span class="ct-icon">📍</span>
+        <h4>Где поставити</h4>
+        <p>Испред активних улаза јазбине — 5–8 m удаљено под углом. Дуж познатих стаза са видљивим ноктивима у блату. Уз нужничка места — мала ямица са свежим изметом.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">📐</span>
+        <h4>Висина и угао</h4>
+        <p>30–45 cm — висина грбе јазавца. Угао 25–35° надоле ка улазу. Битно: не постављати директно уз улаз — јазавац одмах осетиjа промену и избегава га дуже.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">🌙</span>
+        <h4>Кад очекивати снимак</h4>
+        <p>22–02 ч. Мај–јун: млади играjу испред улаза у само сумрак (20–21 ч) — ретко видљив призор! Септембар–oкт: интензивно жирење до поноћи.</p>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <strong>Савет:</strong> Не прилазити јазбини чешће од 10–14 дана. Замку поставити и прве 2–3 ноћи без ИР светла (само видео) да се не уплаши. Рукавице при монтажи — нема мириса детерђента.
+    </div>
+    <div class="ct-links">
+      <a href="https://www.inaturalist.org/taxa/41611-Meles-meles" class="ct-link-btn" target="_blank">📍 Meles meles — iNaturalist</a>
+      <a href="https://gbif.org/species/2433457" class="ct-link-btn" target="_blank">🗺️ Дистрибуција — GBIF</a>
+    </div>
+  </div>
+
+  <nav class="species-nav">
+    <a href="https://piorajac.rs/sisari/canis-aureus/">← Шакал — <em>Canis aureus</em></a>
+    <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+    <a href="https://piorajac.rs/sisari/felis-silvestris/">Дивља мачка — <em>Felis silvestris</em> →</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг
+</footer>
+
+</body>
+</html>

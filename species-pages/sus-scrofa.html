@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дивља свиња — Sus scrofa | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Дивља свиња (Sus scrofa) — велики свеједер и интензивни обликовач шумских станишта ПИО Рајац. Опис, трагови, биологија, фото-замке, заштита.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #2d5a27;
+    --forest-dark: #1a3a15;
+    --forest-light: #4a7c43;
+    --cream: #f7f4ef;
+    --warm-white: #fdfcfa;
+    --text: #2a2a2a;
+    --text-muted: #5a5a5a;
+    --border: #d8d0c4;
+    --accent: #8b6914;
+    --accent-warm: #c4500a;
+    --iucn-lc: #4caf50;
+    --section-bg: #f2f0eb;
+    --tag-bg: #e8f0e6;
+    --tag-border: #a8c4a4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.75; color: var(--text); background: var(--warm-white); }
+
+  .site-header { background: var(--forest-dark); color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--forest-light); }
+  .site-header .logo { font-weight: 700; font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .site-header nav a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 20px; font-size: 12.5px; }
+  .site-header nav a:hover { color: #fff; }
+
+  .breadcrumb-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 0; }
+  .breadcrumb-bar .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: var(--text-muted); }
+  .breadcrumb-bar a { color: var(--forest); text-decoration: none; font-weight: 600; }
+  .breadcrumb-bar .sep { margin: 0 6px; opacity: 0.5; }
+
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  .species-hero { text-align: center; padding: 8px 0 28px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .species-hero .common-name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 6px; }
+  .species-hero .latin-name { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--forest-light); margin-bottom: 14px; }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.03em; }
+  .badge-iucn { background: var(--iucn-lc); color: #fff; }
+  .badge-game { background: #fff3e0; color: #c05000; border: 1px solid #f0c080; }
+  .badge-pred { background: #e8f0e6; color: var(--forest); border: 1px solid var(--tag-border); }
+
+  .hero-image-wrap { width: 100%; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow); aspect-ratio: 16/8; background: #6b5a3e; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; transition: transform 0.4s; }
+  .hero-image-wrap:hover img { transform: scale(1.02); }
+  .img-caption { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 30px; font-style: italic; padding: 0 16px; }
+
+  .gallery-section { margin-bottom: 36px; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid figure { margin: 0; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #9a8060; box-shadow: var(--shadow); position: relative; cursor: pointer; }
+  .gallery-grid figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+  .gallery-grid figure:hover img { transform: scale(1.06); }
+  .gallery-grid figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 11px; padding: 22px 8px 7px; line-height: 1.35; opacity: 0; transition: opacity 0.25s; }
+  .gallery-grid figure:hover figcaption { opacity: 1; }
+
+  .gallery-grid figure.upload-slot { background: var(--section-bg); border: 2px dashed var(--border); display: flex; flex-direction: column; cursor: default; }
+  .gallery-grid figure.upload-slot:hover { box-shadow: var(--shadow); }
+  .upload-placeholder { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 10px; gap: 5px; text-align: center; }
+  .upload-placeholder .up-icon { font-size: 28px; }
+  .upload-placeholder .up-title { font-size: 12px; font-weight: 700; color: var(--forest-dark); line-height: 1.3; }
+  .upload-placeholder .up-hint { font-size: 10.5px; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+  .gallery-grid figure.upload-slot figcaption { position: static; opacity: 1; background: var(--cream); border-top: 1px solid var(--border); color: var(--text-muted); padding: 6px 8px; font-size: 10.5px; font-style: italic; line-height: 1.35; }
+  .img-credit { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: right; margin-top: 6px; }
+  .img-credit a { color: var(--forest); }
+
+  .taxonomy-box { background: var(--section-bg); border: 1px solid var(--border); border-left: 4px solid var(--forest); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 36px; }
+  .taxonomy-box h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 14px; }
+  .taxonomy-box table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .taxonomy-box td { padding: 4px 8px 4px 0; }
+  .taxonomy-box td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; width: 110px; vertical-align: top; padding-top: 5px; }
+  .taxonomy-box td em { color: var(--forest-light); font-style: italic; }
+
+  .content-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .content-section:last-of-type { border-bottom: none; }
+  .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 13px; display: flex; align-items: center; gap: 9px; }
+  .content-section p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  .inline-img { float: right; margin: 0 0 16px 22px; width: 260px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .inline-img img { width: 100%; display: block; }
+  .inline-img figcaption { font-size: 11px; color: var(--text-muted); font-style: italic; padding: 6px 10px; background: var(--cream); border: 1px solid var(--border); border-top: none; line-height: 1.4; }
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  .highlight-box { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14.5px; line-height: 1.7; color: var(--forest-dark); }
+  .highlight-box strong { color: var(--forest); }
+  .warning-box { background: #fff8e6; border: 1px solid #e8cc88; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+  .warning-box strong { color: var(--accent); }
+
+  .protection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .protection-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; }
+  .protection-card .pcard-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .protection-card .pcard-value { font-weight: 600; color: var(--forest-dark); }
+
+  .pheno-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .pheno-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .pheno-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-bottom: 12px; }
+  .pheno-month { text-align: center; border-radius: 6px; padding: 8px 2px 6px; font-size: 11px; font-weight: 700; color: #fff; position: relative; }
+  .pheno-month .m-name { display: block; font-size: 10px; opacity: 0.88; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .pheno-month .m-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  .ph-active  { background: var(--forest); }
+  .ph-mating  { background: #c4500a; }
+  .ph-young   { background: #e8a020; color: #3a2000; }
+  .ph-low     { background: #b0bfaa; color: #2a3a28; }
+  .pheno-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; margin-top: 10px; }
+  .pheno-legend span { display: flex; align-items: center; gap: 6px; }
+  .pheno-legend .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  .tracks-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .tracks-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .track-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .track-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
+  .track-card p { font-size: 14px; line-height: 1.65; color: var(--text); }
+
+  .paw-diagram { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; gap: 24px; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; }
+  .paw-svg-wrap { text-align: center; }
+  .paw-svg-wrap svg { display: block; margin: 0 auto 6px; }
+  .paw-svg-wrap .paw-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .paw-specs { flex: 1; min-width: 180px; }
+  .paw-specs table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+  .paw-specs td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .paw-specs td:first-child { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; width: 130px; }
+  .paw-specs tr:last-child td { border-bottom: none; }
+
+  .camtrap-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .camtrap-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .camtrap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .camtrap-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--forest); border-radius: var(--radius); padding: 14px 15px; font-size: 14px; }
+  .camtrap-card .ct-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .camtrap-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 6px; }
+  .camtrap-card p { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .ct-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .ct-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .ct-link-btn:hover { background: var(--forest); color: #fff; }
+
+  .species-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--border); gap: 12px; flex-wrap: wrap; }
+  .species-nav a { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 9px 16px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .species-nav a:hover { background: var(--forest); color: #fff; }
+  .species-nav .center-link { border: none !important; padding: 0 !important; font-size: 13px; color: var(--text-muted); }
+  .species-nav .center-link:hover { background: none !important; color: var(--forest) !important; }
+
+  .site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 22px; font-size: 13px; }
+
+  @media (max-width: 660px) {
+    .gallery-grid, .camtrap-grid { grid-template-columns: repeat(2, 1fr); }
+    .tracks-grid, .protection-grid { grid-template-columns: 1fr; }
+    .pheno-grid { grid-template-columns: repeat(6, 1fr); }
+    .species-hero .common-name { font-size: 1.9rem; }
+    .site-header nav { display: none; }
+    .inline-img { float: none; width: 100%; margin: 0 0 16px 0; }
+    .paw-diagram { flex-direction: column; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs">ПИО „Рајац"</a>
+    <span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a>
+    <span class="sep">›</span>
+    Дивља свиња — <em>Sus scrofa</em>
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <!-- ① HERO HEADER -->
+  <div class="species-hero">
+    <h1 class="common-name">Дивља свиња</h1>
+    <div class="latin-name"><em>Sus scrofa</em> Linnaeus, 1758</div>
+    <div class="badges">
+      <span class="badge badge-iucn">IUCN LC — Најмање забрињавајућа</span>
+      <span class="badge badge-game">🐗 Ловна дивљач</span>
+      <span class="badge badge-pred">Папкари — Artiodactyla</span>
+    </div>
+  </div>
+
+  <!-- ② HERO IMAGE -->
+  <div class="hero-image-wrap">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sus_scrofa_scrofa.jpg/1200px-Sus_scrofa_scrofa.jpg"
+      alt="Дивља свиња (Sus scrofa) — одрасла јединка у природном станишту"
+      onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Sus_scrofa_in_a_field.jpg/1200px-Sus_scrofa_in_a_field.jpg'; this.onerror=null;">
+  </div>
+  <p class="img-caption">Дивља свиња (<em>Sus scrofa</em>) — одрасла јединка у шумском станишту. © Wikimedia Commons CC BY-SA 4.0</p>
+
+  <!-- ③ GALLERY -->
+  <div class="gallery-section">
+    <div class="section-label">□ Галерија</div>
+    <div class="gallery-grid">
+
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Sus_scrofa_young.jpg/800px-Sus_scrofa_young.jpg"
+             alt="Прасад дивље свиње — шарена длака" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot'); this.remove();">
+        <figcaption>Прасад — карактеристична шарена „бастуна" длака у прве 3–4 месеца живота</figcaption>
+      </figure>
+
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Wild_Boar_Sow_and_Piglets.jpg/800px-Wild_Boar_Sow_and_Piglets.jpg"
+             alt="Крмача са прасадима" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot'); this.remove();">
+        <figcaption>Крмача са прасадима — мај–јун, период прасења</figcaption>
+      </figure>
+
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Sus_scrofa_young.jpg/800px-Sus_scrofa_young.jpg"
+             alt="Дивља свиња — одрасла јединка" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Одрасли вепар — снажно тело, издужена њушка и тамна чекињаста длака</figcaption>
+      </figure>
+
+    </div>
+    <p class="img-credit" style="font-style:normal; color:var(--forest); font-size:12px; text-align:left; margin-top:10px;">
+      ℹ️ Замени placeholder-е сликама из <a href="https://commons.wikimedia.org/wiki/Category:Sus_scrofa" target="_blank">Wikimedia Commons</a> или сопствених теренских снимака.
+    </p>
+  </div>
+
+  <!-- ④ TAXONOMY -->
+  <div class="taxonomy-box">
+    <h3>□ Таксономија</h3>
+    <table>
+      <tr><td>Царство:</td><td>Animalia</td></tr>
+      <tr><td>Тип:</td><td>Chordata</td></tr>
+      <tr><td>Класа:</td><td><em>Mammalia</em> — Сисари</td></tr>
+      <tr><td>Ред:</td><td><em>Artiodactyla</em> — Папкари</td></tr>
+      <tr><td>Породица:</td><td><em>Suidae</em> — Свиње</td></tr>
+      <tr><td>Род:</td><td><em>Sus</em> Linnaeus, 1758</td></tr>
+      <tr><td>Врста:</td><td><em>Sus scrofa</em> Linnaeus, 1758</td></tr>
+      <tr><td>Подврста:</td><td><em>S. s. scrofa</em> — западноевропска дивља свиња</td></tr>
+      <tr><td>Статус:</td><td>IUCN LC · Ловна дивљач у Србији</td></tr>
+      <tr><td>Станиште:</td><td>Листопадне шуме богате жиром, блатишта, ливаде — све зоне Рајца</td></tr>
+      <tr><td>Маса / дужина:</td><td>50–200 kg · 100–180 cm тело</td></tr>
+    </table>
+  </div>
+
+  <!-- ⑤ ОПИС -->
+  <div class="content-section clearfix">
+    <h2 class="section-title"><span>🔍</span> Морфологија и карактеристике</h2>
+
+    <figure class="inline-img">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Sus_scrofa_head.jpg/400px-Sus_scrofa_head.jpg"
+        alt="Дивља свиња — детаљ главе са ружицом и клицама"
+        loading="lazy"
+        onerror="this.style.display='none'; this.parentElement.style.display='none';">
+      <figcaption>Детаљ главе — ружица са ноздрвама и клице (кутњаци) · CC BY-SA</figcaption>
+    </figure>
+
+    <p>Дивља свиња (<em>Sus scrofa</em>) је један од најширим ареалом распрострањених крупних сисара на свету, и претком домаћих свиња. Тело је снажно, бачвасто, са кратким ногама и карактеристичном великом, клинастом главом. Вратни и леђни мишићи чине мало грбу. Нос завршава „ружицом" — хрскавичном подлогом са ноздрвама — која је снажан орган за копање и нjушкање.</p>
+    <p>Длака је чврста, четинаста, обично тамносива до смеђецрна. Дуж кичме је гребен дуже длаке. Прасад имају карактеристичне уздужне беле пруге по тамносмеђој длаци — „бастуна" образац — которји нестаје са 3–4 месеца. Мужjаци (веприsи) знатно су крупнији од женки (крмача). Одрасли вепар може тежити 150–200 kg, изузетно и до 300 kg. Клице (кутњаци) мужjака дужине 10–15 cm изражено вире из уста — примарни инструмент одбране и борбе.</p>
+    <p>Чуло мириса изузетно је развијено — дивља свиња може осетити мирис хране закопане 10–15 cm испод земље. Слух је такође одличан; вид нешто слабији, али добро разликује покрет.</p>
+
+    <div class="highlight-box">
+      <strong>Биотип обликовач станишта:</strong> Дивља свиња је <em>ecosystem engineer</em> — интензивним ровањем тла копитастим носом разрахљује земљу, ствара мала блатишта (валишта) и директно утиче на структуру приземне вегетације. Сваке ноћи може преврнути 100–500 m² шумског тла у потрази за храном.
+    </div>
+  </div>
+
+  <!-- ⑥ СТАНИШТЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🌿</span> Станиште на Рајцу</h2>
+    <p>Дивља свиња је еколошки универзалиста — насељава листопадне шуме, мешовите шуме, ретке грмове, мочвартна подручја и пољопривредне теренe. На Рајцу је доминантна врста у свим шумским зонама, са нajвећом густином у буковим и храстовим шумама богатим жиром. Посебно воли шумске депресије са влажним, меким тлом погодним за ровање и валање.</p>
+    <p>Валишта (блатишта) — плитка кaлишта у ниским деловима терена — кључна су за терморегулацију и уклањање паразита. Свиња прво облокаше блато а затим се трља о корење или дрво — типичан знак присуства у пределу. Радиус кретања чопора обично је 5–15 km², а при оскудици хране јединке могу путовати 30–40 km у потрази за жиром.</p>
+  </div>
+
+  <!-- ⑦ БИОЛОГИЈА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🔬</span> Биологија и понашање</h2>
+    <p>Дивља свиња је претежно ноћна и сумрачна животиња — дање мирује у густом подраслику или грабском шикарjу. Друштвена је врста: крмаче живе у чопорима 4–20 јединки (матрилинearни клан), а мужjаци су солитарни ван сезоне парења. Млади вепрови (годишњаци) могу формирати сопствене „момачке" чопоре.</p>
+    <p>Гласање је разновrsно: грокотање при мирном ровању, оштро „уф" при узбуни, вриштање при страху или болу, лупкање зубима вепра при претњи. Свиња је изузетно интелигентна животиња са добром просторном меморијом — памти изворе хране, локацијe валишта и безбедних путева.</p>
+    <div class="highlight-box">
+      <strong>Ровање тла:</strong> Свиња рова „ружицом" по целом станишту трагајући за луковицама, корењем, гљивама, земљаним червима и ларвама инсеката. Преврнуто тло лако препознатљиво — плиће него кртичњак, знатно шире захваћено. После ровања поjединачне свиње видљиви „путеви" у листопаду.
+    </div>
+  </div>
+
+  <!-- ⑧ ИСХРАНА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🍃</span> Исхрана</h2>
+    <p>Дивља свиња је типичан свеједер — опортунистичка и сезонска. Основу дијете на Рајцу чине: жир (херастов, буков, кестенов) — до 70% јесење дијете; корење и луковице шумских биљaka; гљиве подземне и надземне; земљани черви, ларве хруштева и других инсеката; мишеви и волухарице (ловљени копањем); птичja jаjа и птице гнездарице на тлу (повремено); стрвина и угинуле животиње.</p>
+    <p>Потражња хране по јединки износи 3–5 kg дневно. Јесен је кључна сезона гојења — свиња акумулира масне резерве за зиму и период прасења. Свиња може процесуирати и биљни материјал са отровима које друге врсте не могу — нпр. неке врсте гљива и луковица.</p>
+  </div>
+
+  <!-- ⑨ РАЗМНОЖАВАЊЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+    <p>Риj (парење) одвијa се у новембру–јануару, са врхунцем у децембру. Вепар у риjу испушта жлезде мириса (слиновне и вратне) и активно тражи рецептивне крмаче у широком кругу. Доминантни мужjаци боре се гласним грокотањем, трчањем и бодежима клица.</p>
+    <p>Гравидитет трaje 115–120 дана (ок. 4 месеца). Крмача прасе у марту–мају, изолована од чопора, у гнезду направљеном од грана и листопада. Леглo броji 4–12 прасади, просечно 5–7. Прасад су неколико сати после рoђeња способна да прате мajку. Дojење трaje 3–4 месеца, а млади остају уз мajку до следеће сезоне прасења.</p>
+    <div class="highlight-box">
+      <strong>Висока репродуктивна способност:</strong> Крмача полно дозрева са 8–10 месеци. Под повољним условима (обиlje жира, блага зима) прасе се два пута годишње, са леглима до 12 прасади. То чини дивљу свињу врстом са највишим репродуктивним потенцијалом међу крупним сисарима Европе.
+    </div>
+  </div>
+
+  <!-- ⑩ ЕКОЛОГИЈА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🔄</span> Екологија и улога у екосистему</h2>
+    <p>Дивља свиња је кључна врста (<em>keystone species</em>) шумских екосистема умереног климата. Ровањем тла ствара мозаик микростаништа — преврнута земља представља идеалан клијалиште за шумске биљке, гљиве и нове стале биљних заједница. Свиња је уједно главни распрострањивач спора хиогених гљива.</p>
+    <p>Са друге стране, прекомерна бројност (пренаселjeност) доводи до деградације приземне вегетације, ускоро уклањања гнезда птица тла и значajних штета на пољопривредним усевима у периферним зонама. На Рајцу је ровање видљиво у готово свим деловима шуме и прeдставља стални изазов за мониторинг популације.</p>
+  </div>
+
+  <!-- ⑪ ЗАШТИТА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>Дивља свиња је у Србији класификована као <strong>крупна ловна дивљач</strong> под Законом о дивљачи и ловству. Популација је бројна и у порасту широм Европе — захваљујући редукцији природних предатора (вук, рис) и интензивног дохрањивања у ловиштима. На Рајцу лов је регулисан управљачким планом ловишта.</p>
+    <p>Главна здравствена претња: Африканска куга свиња (<em>ASF — African Swine Fever</em>) — вирусна болест без лека, не преноси се на људе, али је фатална за свиње. У Србији је присутна у суседним регионима. Болест се шири директним контактом и преко стрвина. Мониторинг популације на Рајцу укључује редовна узорковања ради надзора ASF.</p>
+
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — Least Concern (Стабилна)</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Ловна дивљач — квотирани лов</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Африканска куга свиња (ASF), лов ван сезоне</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Управљање на Рајцу</div>
+        <div class="pcard-value">Управљачки план ловишта · ASF мониторинг</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Упозорење за посетиоце:</strong> Не прилазите крмачи са прасадима — може бити агресивна у одбрани младих. Пронађену угинулу дивљу свињу не додирujte голим рукама и пријавите ветеринарским службама или управи ПИО — потенцијални ризик од ASF.
+    </div>
+  </div>
+
+  <!-- ⑫ ФЕНОСЕЗОНСКИ КАЛЕНДАР -->
+  <div class="pheno-section">
+    <h2 class="section-title"><span>🗓</span> Календар активности на Рајцу</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Када је дивљу свињу <strong>најлакше опазити</strong> и шта очекивати у сваком месецу на подручју ПИО „Рајац":</p>
+
+    <div class="pheno-grid">
+      <div class="pheno-month ph-low"><span class="m-name">ЈАН</span><span class="m-icon">❄️</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">ФЕБ</span><span class="m-icon">❄️</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">МАР</span><span class="m-icon">🐷</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">АПР</span><span class="m-icon">🐷</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">МАЈ</span><span class="m-icon">🐷</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУН</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУЛ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">АВГ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🌰</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">НОВ</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">ДЕЦ</span><span class="m-icon">💕</span></div>
+    </div>
+
+    <div class="pheno-legend">
+      <span><span class="dot" style="background:#c4500a"></span> Риј / парење — нов–дец</span>
+      <span><span class="dot" style="background:#e8a020"></span> Прасење и одгој прасади — мар–мај</span>
+      <span><span class="dot" style="background:#2d5a27"></span> Пуна активност — жирење и ровање</span>
+      <span><span class="dot" style="background:#b0bfaa"></span> Смањена активност при хладноћи</span>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Нajбоље доба за посматрање:</strong> Сумрак и ноћ — фото-замке дају далеко бољe резултате од директног посматрања. Октобар је кључни период: свиња интензивно жири у храстовим шумама у поподневним часовима. Зима (снег) — трагови чопора добро видљиви.
+    </div>
+  </div>
+
+  <!-- ⑬ ТРАГОВИ -->
+  <div class="tracks-section">
+    <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Дивља свиња оставља <strong>изразито видљиве и карактеристичне трагове</strong> — присуство на Рајцу готово увек је лако потврдити:</p>
+
+    <div class="paw-diagram">
+      <div class="paw-svg-wrap">
+        <!-- SVG отисак папка дивље свиње — четири прста, шири него срна -->
+        <svg width="90" height="115" viewBox="0 0 90 115" xmlns="http://www.w3.org/2000/svg">
+          <!-- Два главна папка — шира, округлија -->
+          <ellipse cx="30" cy="48" rx="16" ry="24" fill="#5a4a35" opacity="0.85"/>
+          <ellipse cx="60" cy="48" rx="16" ry="24" fill="#5a4a35" opacity="0.85"/>
+          <!-- Два мала задња прстa -->
+          <ellipse cx="20" cy="77" rx="9" ry="11" fill="#5a4a35" opacity="0.65"/>
+          <ellipse cx="70" cy="77" rx="9" ry="11" fill="#5a4a35" opacity="0.65"/>
+          <!-- Средишња линија -->
+          <line x1="45" y1="22" x2="45" y2="72" stroke="#c8b080" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <!-- Мерна линија -->
+          <line x1="4" y1="102" x2="86" y2="102" stroke="#aaa" stroke-width="1"/>
+          <text x="45" y="114" text-anchor="middle" font-size="9" fill="#888">6–9 cm</text>
+        </svg>
+        <div class="paw-label">Отисак папка</div>
+      </div>
+
+      <div class="paw-specs">
+        <table>
+          <tr><td>Дужина папка</td><td>6–9 cm (много шири и округлiji него код срне)</td></tr>
+          <tr><td>Ширина папка</td><td>5–7 cm</td></tr>
+          <tr><td>Облик</td><td>Широк, округао; задњи прсти скоро увек видљиви</td></tr>
+          <tr><td>Задњи прсти</td><td>Видљиви уназад — главна разлика од срне</td></tr>
+          <tr><td>Ходни образац</td><td>Широке, изразите стазе у шуми; лист. и блато избраздано</td></tr>
+          <tr><td>Дужина корака</td><td>50–70 cm у умереном ходу одраслог вепра</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tracks-grid">
+      <div class="track-card">
+        <h4>🌱 Ровање тла</h4>
+        <p>Главни знак присуства: преврнути слоjeви тла и листопада, уздужне бразде широке 10–20 cm. Дубина 5–15 cm. Свежи трагови имају влажну, тамну унутрашњост. Ровање видљиво у целој шуми, посебно у влажним деловима терена.</p>
+      </div>
+      <div class="track-card">
+        <h4>🛁 Валиштa (блатишта)</h4>
+        <p>Плитка удубљења у влажном тлу, промера 1–3 m, пуна блата и длаке. Свиња прво калиша тело а затим трља о оближња дрва — кора обojена блатом до висине 70–100 cm. Дрво остаје мокро дуго после посете.</p>
+      </div>
+      <div class="track-card">
+        <h4>💩 Измет</h4>
+        <p>Компактне, цилиндричне пилуле дужине 3–5 cm, у гомили. Садржи биљне остатке, семена, кости. Може бити веома мekан и неформиран у периоду жирења. Обично одложен на видљивом месту уз стазу.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌲 Трагови на дрвећу</h4>
+        <p>Клице вепра остављају карактеристичне паралелне бразде у кори млаðих дрвета. Трљиштe — гладак ожиљак кore до висине 50–80 cm са остатком длаке и трагом блата. Типично на стаблима са пречником 15–30 cm.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑭ ФОТО-ЗАМКЕ -->
+  <div class="camtrap-section">
+    <h2 class="section-title"><span>📷</span> Фото-замке — водич за посматрање</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Дивља свиња је <strong>ноћна и опрезна</strong> — лако је идентификовати трагове, али директно посматрање захтева стрпљење. Фото-замка поред активног валишта или стазе бележи скоро сваку ноћ.</p>
+
+    <div class="camtrap-grid">
+      <div class="camtrap-card">
+        <span class="ct-icon">📍</span>
+        <h4>Где поставити</h4>
+        <p>Поред активних валишта — нajбоља позиција. Дуж шумских стаза са видљивим ровинама. Уз блатна подручја и извора. На пролазу кроз ограду или рупу у шикарjу.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">📐</span>
+        <h4>Висина и угао</h4>
+        <p>50–70 cm висине — висина трупа дивље свиnje. Угао 20–30° надоле. Осетљивост на широко. Заштитити замку од ровања — учврстити конопцем јер свиња може порушити стубац!</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">🌙</span>
+        <h4>Кад очекивати снимак</h4>
+        <p>Нajвише снимака: 21 ч до поноћи и прво јутарnje свитање. Oктобар: свиња дневно код храстова. Март–мај: крмача са прасадима — врло ретко, не узнемиравати.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Савет за безбедност:</strong> Не прилазити активном валишту без провере ситуације — крмача са прасадима може бити веома агресивна. Замку постављати без мириса (рукавице при монтажи). Не остављати хранилице — дохрањивање дивљи диљих свиња повећава ризик ширења болести.
+    </div>
+
+    <div class="ct-links">
+      <a href="https://www.inaturalist.org/taxa/44068-Sus-scrofa" class="ct-link-btn" target="_blank">📍 Sus scrofa — iNaturalist</a>
+      <a href="https://gbif.org/species/2441165" class="ct-link-btn" target="_blank">🗺️ Дистрибуција — GBIF</a>
+      <a href="https://mammalnet.com" class="ct-link-btn" target="_blank">🐗 MammalNet — мониторинг</a>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="species-nav">
+    <a href="https://piorajac.rs/sisari/capreolus-capreolus/">← Срна — <em>Capreolus capreolus</em></a>
+    <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+    <a href="https://piorajac.rs/sisari/lepus-europaeus/">Зец — <em>Lepus europaeus</em> →</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг
+</footer>
+
+</body>
+</html>

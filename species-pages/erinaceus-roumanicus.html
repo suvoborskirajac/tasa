@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)file:///C:/Users/Tasa/Downloads/erinaceus-roumanicus_1.html -->
+<html lang="sr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Јеж — Erinaceus roumanicus | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Јеж (Erinaceus roumanicus) — бодљикави инсективор са Рајца. Опис, биологија, зимски сан, кућица за јежа — упутство, гласање, трагови, квиз.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #2d5a27;
+    --forest-dark: #1a3a15;
+    --forest-light: #4a7c43;
+    --cream: #f7f4ef;
+    --warm-white: #fdfcfa;
+    --text: #2a2a2a;
+    --text-muted: #5a5a5a;
+    --border: #d8d0c4;
+    --accent: #8b6914;
+    --iucn-lc: #4caf50;
+    --section-bg: #f2f0eb;
+    --tag-bg: #e8f0e6;
+    --tag-border: #a8c4a4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.75; color: var(--text); background: var(--warm-white); }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--forest-dark); color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--forest-light); }
+  .site-header .logo { font-weight: 700; font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .site-header nav a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 20px; font-size: 12.5px; }
+  .site-header nav a:hover { color: #fff; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 0; }
+  .breadcrumb-bar .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: var(--text-muted); }
+  .breadcrumb-bar a { color: var(--forest); text-decoration: none; font-weight: 600; }
+  .breadcrumb-bar .sep { margin: 0 6px; opacity: 0.5; }
+
+  /* ── WRAP ── */
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  /* ── HERO ── */
+  .species-hero { text-align: center; padding: 8px 0 28px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .species-hero .common-name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 6px; }
+  .species-hero .latin-name { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--forest-light); margin-bottom: 14px; }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; }
+  .badge-iucn { background: var(--iucn-lc); color: #fff; }
+  .badge-tag { background: var(--tag-bg); color: var(--forest); border: 1px solid var(--tag-border); }
+
+  /* ── HERO IMAGE ── */
+  .hero-image-wrap { width: 100%; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow); aspect-ratio: 16/8; background: #c8b898; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .hero-image-wrap:hover img { transform: scale(1.02); }
+  .img-caption { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 30px; font-style: italic; padding: 0 16px; }
+
+  /* ── GALLERY ── */
+  .gallery-section { margin-bottom: 36px; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid figure { margin: 0; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #c8b898; box-shadow: var(--shadow); position: relative; cursor: pointer; }
+  .gallery-grid figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+  .gallery-grid figure:hover img { transform: scale(1.06); }
+  .gallery-grid figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 11px; padding: 22px 8px 7px; line-height: 1.35; opacity: 0; transition: opacity 0.25s; }
+  .gallery-grid figure:hover figcaption { opacity: 1; }
+  .img-credit { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: right; margin-top: 6px; }
+  .img-credit a { color: var(--forest); }
+
+  /* ── TAXONOMY ── */
+  .taxonomy-box { background: var(--section-bg); border: 1px solid var(--border); border-left: 4px solid var(--forest); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 36px; }
+  .taxonomy-box h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 14px; }
+  .taxonomy-box table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .taxonomy-box td { padding: 4px 8px 4px 0; }
+  .taxonomy-box td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; width: 110px; vertical-align: top; padding-top: 5px; }
+  .taxonomy-box td em { color: var(--forest-light); font-style: italic; }
+
+  /* ── CONTENT ── */
+  .content-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 13px; display: flex; align-items: center; gap: 9px; }
+  .content-section p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  /* ── INLINE IMAGE ── */
+  .inline-img { float: right; margin: 0 0 16px 22px; width: 250px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .inline-img img { width: 100%; display: block; }
+  .inline-img figcaption { font-size: 11px; color: var(--text-muted); font-style: italic; padding: 6px 10px; background: var(--cream); border: 1px solid var(--border); border-top: none; line-height: 1.4; }
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* ── BOXES ── */
+  .highlight-box { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14.5px; line-height: 1.7; color: var(--forest-dark); }
+  .highlight-box strong { color: var(--forest); }
+  .warning-box { background: #fff8e6; border: 1px solid #e8cc88; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+  .warning-box strong { color: var(--accent); }
+
+  /* ── PROTECTION ── */
+  .protection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .protection-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; }
+  .protection-card .pcard-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .protection-card .pcard-value { font-weight: 600; color: var(--forest-dark); }
+
+  /* ══ НОВЕ СЕКЦИЈЕ ══════════════════════════════ */
+
+  /* ── ФЕНОСЕЗОНСКИ КАЛЕНДАР ── */
+  .pheno-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .pheno-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .pheno-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-bottom: 12px; }
+  .pheno-month { text-align: center; border-radius: 6px; padding: 8px 2px 6px; font-size: 11px; font-weight: 700; color: #fff; }
+  .pheno-month .m-name { display: block; font-size: 10px; opacity: 0.88; margin-bottom: 4px; }
+  .pheno-month .m-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  .ph-active { background: var(--forest); }
+  .ph-mating { background: #c4500a; }
+  .ph-young  { background: #e8a020; color: #3a2000; }
+  .ph-sleep  { background: #7a9ab0; color: #fff; }
+  .pheno-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; margin-top: 10px; }
+  .pheno-legend span { display: flex; align-items: center; gap: 6px; }
+  .pheno-legend .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── ТРАГОВИ ── */
+  .tracks-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .tracks-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .track-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .track-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
+  .track-card p { font-size: 14px; line-height: 1.65; color: var(--text); }
+  .paw-diagram { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; gap: 24px; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; }
+  .paw-svg-wrap { text-align: center; }
+  .paw-svg-wrap .paw-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+  .paw-specs { flex: 1; min-width: 180px; }
+  .paw-specs table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+  .paw-specs td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .paw-specs td:first-child { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; width: 130px; }
+  .paw-specs tr:last-child td { border-bottom: none; }
+  .track-photo-wrap { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .track-photo-wrap img { width: 100%; display: block; max-height: 260px; object-fit: cover; }
+  .track-photo-wrap figcaption { font-size: 11.5px; color: var(--text-muted); font-style: italic; padding: 7px 12px; background: var(--cream); border: 1px solid var(--border); border-top: none; }
+
+  /* ── ЗВУЦИ ── */
+  .sounds-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .sounds-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .sounds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .sound-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .sound-card h4 { font-size: 13px; font-weight: 700; color: var(--forest-dark); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .sound-card p { font-size: 13.5px; line-height: 1.65; color: var(--text-muted); margin-bottom: 10px; }
+  .sound-card .sound-context { font-size: 12px; color: var(--forest); font-weight: 600; background: var(--tag-bg); padding: 3px 9px; border-radius: 4px; display: inline-block; }
+  .audio-player-wrap { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 8px; }
+  .audio-player-wrap audio { width: 100%; height: 36px; accent-color: var(--forest); }
+  .audio-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; display: block; }
+  .sound-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .sound-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .sound-link-btn:hover { background: var(--forest); color: #fff; }
+
+  /* ── КУЋИЦА ЗА ЈЕЖА ── */
+  .house-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .house-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .house-intro { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+  .steps-list { list-style: none; margin-bottom: 20px; }
+  .steps-list li { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; line-height: 1.7; }
+  .steps-list li:last-child { border-bottom: none; }
+  .step-num { background: var(--forest); color: #fff; font-weight: 700; font-size: 14px; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step-body strong { color: var(--forest-dark); display: block; margin-bottom: 3px; }
+  .materials-box { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 18px; }
+  .materials-box h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
+  .materials-box ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+  .materials-box li { font-size: 14px; padding-left: 16px; position: relative; color: var(--text); }
+  .materials-box li::before { content: '✓'; position: absolute; left: 0; color: var(--forest); font-weight: 700; }
+  .house-photo { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .house-photo img { width: 100%; display: block; max-height: 280px; object-fit: cover; }
+  .house-photo figcaption { font-size: 11.5px; color: var(--text-muted); font-style: italic; padding: 7px 12px; background: var(--cream); border: 1px solid var(--border); border-top: none; }
+
+  /* ── КВИЗ ── */
+  .quiz-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .quiz-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .quiz-wrap { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .quiz-progress { height: 5px; background: var(--border); border-radius: 3px; margin-bottom: 20px; overflow: hidden; }
+  .quiz-progress-bar { height: 100%; background: var(--forest); border-radius: 3px; transition: width 0.4s ease; }
+  .quiz-counter { font-size: 12px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .quiz-question { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 18px; line-height: 1.5; }
+  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .quiz-opt { background: #fff; border: 2px solid var(--border); border-radius: 8px; padding: 11px 14px; font-size: 14px; cursor: pointer; transition: all 0.18s; text-align: left; font-family: var(--font-sans); color: var(--text); line-height: 1.4; }
+  .quiz-opt:hover { border-color: var(--forest-light); background: var(--tag-bg); }
+  .quiz-opt.correct { border-color: var(--forest); background: var(--tag-bg); color: var(--forest-dark); font-weight: 600; }
+  .quiz-opt.wrong { border-color: #d44; background: #fff5f5; color: #a00; }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-feedback { font-size: 14px; line-height: 1.7; padding: 12px 16px; border-radius: 8px; margin-bottom: 14px; display: none; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--forest-dark); }
+  .quiz-feedback.wrong { background: #fff5f5; border: 1px solid #f0b0b0; color: #700; }
+  .quiz-next-btn { background: var(--forest); color: #fff; border: none; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--font-sans); transition: background 0.2s; display: none; }
+  .quiz-next-btn.show { display: inline-block; }
+  .quiz-next-btn:hover { background: var(--forest-dark); }
+  .quiz-result { text-align: center; padding: 20px; display: none; }
+  .quiz-result.show { display: block; }
+  .quiz-score { font-size: 3rem; font-weight: 700; color: var(--forest); font-family: var(--font-serif); }
+  .quiz-score-label { font-size: 15px; color: var(--text-muted); margin-bottom: 16px; }
+  .quiz-share-btn { background: var(--forest); color: #fff; border: none; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--font-sans); margin-right: 8px; transition: background 0.2s; }
+  .quiz-share-btn:hover { background: var(--forest-dark); }
+  .quiz-restart-btn { background: #fff; color: var(--forest); border: 2px solid var(--forest); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s; }
+  .quiz-restart-btn:hover { background: var(--forest); color: #fff; }
+
+  /* ── ФОТО-ЗАМКЕ ── */
+  .camtrap-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .camtrap-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .camtrap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .camtrap-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--forest); border-radius: var(--radius); padding: 14px 15px; }
+  .camtrap-card .ct-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .camtrap-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 6px; }
+  .camtrap-card p { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .ct-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .ct-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .ct-link-btn:hover { background: var(--forest); color: #fff; }
+
+  /* ── NAV / FOOTER ── */
+  .species-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--border); gap: 12px; flex-wrap: wrap; }
+  .species-nav a { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 9px 16px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .species-nav a:hover { background: var(--forest); color: #fff; }
+  .species-nav .center-link { border: none !important; padding: 0 !important; font-size: 13px; color: var(--text-muted); }
+  .species-nav .center-link:hover { background: none !important; color: var(--forest) !important; }
+  .site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 22px; font-size: 13px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 660px) {
+    .gallery-grid, .camtrap-grid, .sounds-grid, .quiz-options { grid-template-columns: 1fr; }
+    .tracks-grid, .protection-grid, .materials-box ul { grid-template-columns: 1fr; }
+    .pheno-grid { grid-template-columns: repeat(6, 1fr); }
+    .species-hero .common-name { font-size: 1.9rem; }
+    .site-header nav { display: none; }
+    .inline-img { float: none; width: 100%; margin: 0 0 16px 0; }
+    .paw-diagram { flex-direction: column; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a>
+    <span class="sep">›</span>
+    Јеж — <em>Erinaceus roumanicus</em>
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <!-- ① HERO HEADER -->
+  <div class="species-hero">
+    <h1 class="common-name">Јеж</h1>
+    <div class="latin-name"><em>Erinaceus roumanicus</em> Barrett-Hamilton, 1900</div>
+    <div class="badges">
+      <span class="badge badge-iucn">IUCN LC — Најмање забрињавајућа</span>
+      <span class="badge badge-tag">🦔 Инсективор</span>
+      <span class="badge badge-tag">💤 Зимски сан</span>
+    </div>
+  </div>
+
+  <!-- ② HERO IMAGE -->
+  <div class="hero-image-wrap">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Erinaceus_roumanicus.jpg/1200px-Erinaceus_roumanicus.jpg" alt="Јеж (Erinaceus roumanicus) — одрасла јединка у природном станишту" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Erinaceus_europaeus.jpg/1200px-Erinaceus_europaeus.jpg';this.onerror=null;">
+  </div>
+  <p class="img-caption">Јеж (<em>Erinaceus roumanicus</em>) — одрасла јединка у природном станишту. Карактеристичне бодљике на леђима и шиљаста njušка. © Wikimedia Commons CC BY-SA</p>
+
+  <!-- ③ GALLERY -->
+  <div class="gallery-section">
+    <div class="section-label">□ Галерија</div>
+    <div class="gallery-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Erinaceus_roumanicus.jpg/800px-Erinaceus_roumanicus.jpg" alt="Јеж (Erinaceus roumanicus) — профил јединке у трави" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <figcaption>Erinaceus roumanicus — профил · CC BY-SA</figcaption>
+      </figure>
+
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Erinaceus_europaeus_1.jpg/800px-Erinaceus_europaeus_1.jpg" alt="Јеж у трави — ноћна активност" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <figcaption>Јеж у трави — ноћна активност · CC BY-SA</figcaption>
+      </figure>
+
+    </div>
+    <p class="img-credit">Слике: Wikimedia Commons — <a href="https://commons.wikimedia.org/wiki/Category:Erinaceus_roumanicus" target="_blank">Category: Erinaceus roumanicus</a> · CC BY-SA</p>
+  </div>
+
+  <!-- ④ TAXONOMY -->
+  <div class="taxonomy-box">
+    <h3>□ Таксономија</h3>
+    <table>
+      <tbody><tr><td>Царство:</td><td>Animalia</td></tr>
+      <tr><td>Тип:</td><td>Chordata</td></tr>
+      <tr><td>Класа:</td><td><em>Mammalia</em> — Сисари</td></tr>
+      <tr><td>Ред:</td><td><em>Eulipotyphla</em> — Инсективори</td></tr>
+      <tr><td>Породица:</td><td><em>Erinaceidae</em> — Јежеви</td></tr>
+      <tr><td>Род:</td><td><em>Erinaceus</em> Linnaeus, 1758</td></tr>
+      <tr><td>Врста:</td><td><em>Erinaceus roumanicus</em> Barrett-Hamilton, 1900</td></tr>
+      <tr><td>Народни назив:</td><td>Јеж, Источноевропски јеж, Румунски јеж</td></tr>
+      <tr><td>Статус:</td><td>IUCN LC · Строго заштићена врста у Србији</td></tr>
+      <tr><td>Станиште на Рајцу:</td><td>Шумске ивице, ливаде, баште, листопадне шуме</td></tr>
+      <tr><td>Маса / дужина:</td><td>400–1200 g · 20–30 cm</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- ⑤ ОПИС -->
+  <div class="content-section clearfix">
+    <h2 class="section-title"><span>🔍</span> Морфологија и карактеристике</h2>
+
+    <figure class="inline-img" style="display: none;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Erinaceus_roumanicus_spine_detail.jpg/400px-Erinaceus_roumanicus_spine_detail.jpg" alt="Детаљ бодљика јежа (Erinaceus roumanicus) — структура и боја кератинских бодљи са тамним врховима" loading="lazy" onerror="this.parentElement.style.display=&#39;none&#39;">
+      <figcaption>Детаљ бодљика — кератинска структура · CC BY-SA</figcaption>
+    </figure>
+
+    <p>Јеж (<em>Erinaceus roumanicus</em>) је источноевропска врста јежа широко распрострањена на Балканском полуострву и у средњој Европи. Тело је збијено и округласто, дужине 20–30 cm, са масом 400–1200 g. Горња страна тела прекривена је са 5000–7000 кератинских бодљика дужине 2–3 cm, светлосмеђих до тамносивих са белим или жућкастим основама и тамним врховима.</p>
+    <p>Лице, трбух и удови прекривени су мekom грубом длаком сивкасте до смеђе боје. Уши су кратке и округласте, очи мале. Кљун (rострум) је издужен и покретљив — кључни орган за тражење плена у листинцу. Задњи удови незнатно су дужи од предњих; све четири шапе имају по пет прстију са чврстим ноктима.</p>
+
+    <div class="highlight-box">
+      <strong>Одбрамбена стратегија:</strong> Угрожени јеж скупља се у чврсту куглу — мишићи леђа конtрахују се тако да бодљике усмеравају навани у свим правцима. Ово је ефикасна заштита против лисица, куна и паса, али не и против аутомобила — главног узрока смртности у урбаним срединама.
+    </div>
+  </div>
+
+  <!-- ⑥ СТАНИШТЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🌿</span> Станиште на Рајцу</h2>
+    <p>На подручју ПИО „Рајац" јеж насељава разноврсна станишта — шумске ивице са густим листинцем, полуотворене ливаде са жбунастом вегетацијом, дрворедне потезе и периферне делове насеља. Кључни захтев станишта је присуство слоја листинца и органске материје у ком се крије и тражи плен. Избегава влажна тла и интензивно обрађиване пашњаке без покривача.</p>
+    <p>На Рајцу је посебно карактеристично присуство јежа у мозаичним стаништима другог и трећег степена заштите — тамо где се традиционалне баште и воћарске башче сусрећу са ивицом листопадне шуме. Ово је идеалан хабитат са обиљем инсеката, земљаних червa и пужева.</p>
+  </div>
+
+  <!-- ⑦ БИОЛОГИЈА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🔬</span> Биологија — зимски сан</h2>
+    <p>Јеж је инсективор са изразитом сезоналношћу. Активан је од априла до новембра, а зими улази у праву хиберну — зимски сан у ком телесна температура пада са 35°C на 5–10°C, срчана фреквенција са 190 на 5–20 откуцаја у минути, а дисање са 50 на 1–4 удаха у минути. У том стању јеж троши масне резерве накупљене током јесени.</p>
+    <p>Зимски хибернакулум гради испод хомпе листова, у шупљини корена или испод гомиле грана — природно место за кућицу за јежа (видети секцију испод). Пробуђивање зависи од температуре: при трајном загревању изнад 10°C јеж се постепено пробуђује, процес који траје и до 2–3 сата.</p>
+    <div class="highlight-box">
+      <strong>Климатске промене и зимски сан:</strong> Топле јесени узрокују касни улазак у хибернацију — јежеви накупљају мање масних резерви и имају мање шансе да преживе зиму. Истовремено, топла зима може их пробудити прерано, када нема хране. Ово је један од највидљивијих ефеката климатских промена на сисаре Рајца.
+    </div>
+  </div>
+
+  <!-- ⑧ ИСХРАНА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🍃</span> Исхрана</h2>
+    <p>Јеж је опортунистички инсективор са широком дијетом. Примарна храна укључује: земљане црве (до 50% дијете), инсекте и ларве инсеката (бубе, стонпге, мрави, осе), пужеве и пужице без кућице, гусенице. Повремено конзумира и јаја птица гнездарица, жабе, гуштере, ситне глодаре и шумске плодове.</p>
+    <p>Јеж тражи храну ноћу, прелазећи и до 2–3 km у потрази за плeном. Карактеристично „рокће" и „шушка" у листинцу — звук добро препознатљив у вртовима и шумским ивицама. На Рајцу је јеж природни сjавезник у контроли популација пужева и инсеката.</p>
+  </div>
+
+  <!-- ⑨ РАЗМНОЖАВАЊЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+    <p>Парење се одвија у мају–јулу. Женка рађа 1–2 легла годишње, са 2–7 младунаца (просечно 4–5). Гравидитет траје 35–40 дана. Новорођени јежићи тешки 10–25 g, слепи и са меким белим бодљикама испод заштитне мембране (која се повлачи у сатима после рођења). Отварање очију после 14 дана, излазак из гнезда после 4–5 недеља. Дојење траје 6–8 недеља.</p>
+    <p>Женка сама одгаја младе. Ако гнездо буде узнемирено, женка може напустити легло — важно је не дирати гнезда у башти у јуну и јулу. Јежићи постижу самосталност са 6–8 недеља, а пред зиму морају достићи минималну масу од 450–500 g да би преживели хибернацију.</p>
+  </div>
+
+  <!-- ⑩ ЗАШТИТА -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>Јеж је у Србији класификован као <strong>строго заштићена дивља врста</strong> на основу Правилника о проглашавању и заштити строго заштићених и заштићених дивљих врста биљака, животиња и гљива (Сл. гласник РС, бр. 5/2010). Забрањено је хватање, убијање, ометање у гнезду и уклањање из природног станишта.</p>
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — са умерено опадајућим трендом</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Строго заштићена дивља врста</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Бернска конвенција</div>
+        <div class="pcard-value">Анекс III — заштићена врста</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Саобраћај, пестициди, уклањање листинца</div>
+      </div>
+    </div>
+    <div class="warning-box">
+      <strong>⚠️ Ако нађете рањеног јежа:</strong> Не стављајте у воду, не давајте млеко (штетно!). Ставите у картонску кутију са листовима, на топло место. Контактирајте најближи ветеринарски центар или управљача ПИО „Рајац".
+    </div>
+  </div>
+
+  <!-- ══ НОВЕ СЕКЦИЈЕ ══════════════════════════════════ -->
+
+  <!-- ⑪ ФЕНОСЕЗОНСКИ КАЛЕНДАР -->
+  <div class="pheno-section">
+    <h2 class="section-title"><span>🗓</span> Календар активности на Рајцу</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Када је јежа <strong>најлакше опазити</strong> — и кад је потпуно одсутан:</p>
+
+    <div class="pheno-grid">
+      <div class="pheno-month ph-sleep"><span class="m-name">ЈАН</span><span class="m-icon">💤</span></div>
+      <div class="pheno-month ph-sleep"><span class="m-name">ФЕБ</span><span class="m-icon">💤</span></div>
+      <div class="pheno-month ph-sleep"><span class="m-name">МАР</span><span class="m-icon">💤</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">АПР</span><span class="m-icon">🌱</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">МАЈ</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">ЈУН</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">ЈУЛ</span><span class="m-icon">🦔</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">АВГ</span><span class="m-icon">🦔</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">НОВ</span><span class="m-icon">🍃</span></div>
+      <div class="pheno-month ph-sleep"><span class="m-name">ДЕЦ</span><span class="m-icon">💤</span></div>
+    </div>
+
+    <div class="pheno-legend">
+      <span><span class="dot" style="background:#7a9ab0"></span> Хибернација — зимски сан</span>
+      <span><span class="dot" style="background:#c4500a"></span> Парење</span>
+      <span><span class="dot" style="background:#e8a020"></span> Одгој младих</span>
+      <span><span class="dot" style="background:#2d5a27"></span> Пуна активност</span>
+    </div>
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Кад га чути:</strong> Мај–јун, после 21:00 — карактеристично гласно „рокtање" мужjака у потрази за женком. Јул–август у зору — мајка са младима у листинцу. Јесен: гласно шуштање у лишћу — јеж гради хибернакулум.
+    </div>
+  </div>
+
+  <!-- ⑫ ТРАГОВИ И ЗНАЦИ -->
+  <div class="tracks-section">
+    <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Јеж је ноћна животиња — али оставља препознатљиве трагове:</p>
+
+    <div class="paw-diagram">
+      <div class="paw-svg-wrap">
+        <svg width="90" height="115" viewBox="0 0 90 115" xmlns="http://www.w3.org/2000/svg">
+          <!-- Централни јастучић -->
+          <ellipse cx="45" cy="75" rx="16" ry="11" fill="#8b7355" opacity="0.85"></ellipse>
+          <!-- 5 прстију јежа -->
+          <ellipse cx="20" cy="60" rx="7.5" ry="9" fill="#8b7355" opacity="0.82"></ellipse>
+          <ellipse cx="33" cy="50" rx="7.5" ry="9" fill="#8b7355" opacity="0.82"></ellipse>
+          <ellipse cx="47" cy="47" rx="7.5" ry="9" fill="#8b7355" opacity="0.82"></ellipse>
+          <ellipse cx="61" cy="50" rx="7.5" ry="9" fill="#8b7355" opacity="0.82"></ellipse>
+          <ellipse cx="72" cy="60" rx="7.5" ry="9" fill="#8b7355" opacity="0.82"></ellipse>
+          <!-- Ноктиви — 5 прстiju -->
+          <line x1="20" y1="50" x2="19" y2="43" stroke="#4a3a28" stroke-width="2.5" stroke-linecap="round"></line>
+          <line x1="33" y1="40" x2="32" y2="33" stroke="#4a3a28" stroke-width="2.5" stroke-linecap="round"></line>
+          <line x1="47" y1="37" x2="47" y2="30" stroke="#4a3a28" stroke-width="2.5" stroke-linecap="round"></line>
+          <line x1="61" y1="40" x2="62" y2="33" stroke="#4a3a28" stroke-width="2.5" stroke-linecap="round"></line>
+          <line x1="72" y1="50" x2="73" y2="43" stroke="#4a3a28" stroke-width="2.5" stroke-linecap="round"></line>
+          <!-- мерна линија -->
+          <line x1="2" y1="105" x2="88" y2="105" stroke="#bbb" stroke-width="1"></line>
+          <text x="45" y="114" text-anchor="middle" font-size="9" fill="#888">3–4 cm</text>
+        </svg>
+        <div class="paw-label">Отисак шапе — 5 прстију</div>
+      </div>
+      <div class="paw-specs">
+        <table>
+          <tbody><tr><td>Број прстију</td><td><strong>5</strong> — карактеристично, за разлику од лисице (4)</td></tr>
+          <tr><td>Дужина отиска</td><td>3–4 cm</td></tr>
+          <tr><td>Ноктиви</td><td>Дуги и увек видљиви — за копање</td></tr>
+          <tr><td>Образац кретања</td><td>Неправилан, зигзаг — стаnе, смоches нос, настavi</td></tr>
+          <tr><td>Дужина корака</td><td>8–15 cm</td></tr>
+          <tr><td>Специфика</td><td>Траг репа понекад видљив као линија између отисака</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <figure class="track-photo-wrap" style="display: none;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Hedgehog_footprint.jpg/800px-Hedgehog_footprint.jpg" alt="Отисак шапе јежа (Erinaceus) — јасно видљивих 5 прстију са дугим ноктивима у влажном тлу" loading="lazy" onerror="this.parentElement.style.display=&#39;none&#39;">
+      <figcaption>Отисак шапе јежа — карактеристичних 5 прстiju са дугим ноктивима · Wikimedia Commons CC BY-SA</figcaption>
+    </figure>
+
+    <div class="tracks-grid">
+      <div class="track-card">
+        <h4>💩 Измет</h4>
+        <p>Цевасти, тамносиви до crни, дужине 2–4 cm, потпуно сjajан. Садржај: крљушти инсеката, длакице и части земљаних червa. Налазе се по трави и стазама. Карактеристичан интензиван непријатан мирис — разликује се од измета глодара.</p>
+      </div>
+      <div class="track-card">
+        <h4>🏠 Хибернакулум</h4>
+        <p>Гомила листова и грана у облику куполе, пречника 30–50 cm. Обично испод живице, комплта, хомпе или испод корена дрвета. Непoмерати зими — јеж је унутра! Присуство: тихо цвркутање из гомиле у топлим данима.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌿 Рупе у земљи</h4>
+        <p>Мале плитке рупе у трави или влажном тлу — трагови копања у потрази за земљаним crvима. Пречник 3–5 cm. Разликује се од кртичних рупа (веће, са хрпом земље). Концентрисане на влажним деловима ливаде.</p>
+      </div>
+      <div class="track-card">
+        <h4>🔊 Звучни знаци</h4>
+        <p>Гласно шуштање у листинцу у мраку — јеж не труди да буде тих. Карактеристично гроктање/рокtање мужjака у мају–јуну. Пронашавање носем уз карактеристично „фркање". Понекад чујно и преко 10 m у тишини.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑬ ЗВУЦИ -->
+  <div class="sounds-section">
+    <h2 class="section-title"><span>🔊</span> Гласање и звуци јежа</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:18px;">Јеж је изненађујуће гласна животиња — нарочито у сезони парења. Ево звукова које можеш чути ноћу на Рајцу:</p>
+
+    <div class="sounds-grid">
+      <div class="sound-card">
+        <h4>🎵 Рокtање у парењу</h4>
+        <p>Мужjак прати женку и гласно „рокта" и фрca — неколико минута непрекидно. Чујно и до 30 m. Сезона: мај–јун, после 21:00.</p>
+        <span class="sound-context">📅 Мај–Јун · 🌙 После 21:00</span>
+      </div>
+      <div class="sound-card">
+        <h4>🎵 Шуштање у листинцу</h4>
+        <p>Карактеристичан звук кретања кроз суво лишће — непропорционално гласан за величину животиње. Свакодневно у активном периоду.</p>
+        <span class="sound-context">📅 Апр–Нов · 🌙 Цела ноћ</span>
+      </div>
+      <div class="sound-card">
+        <h4>🎵 Пискање — упозорење</h4>
+        <p>Оштро пискање кad је јеж уплашен или у болу. Такође — звук младих кад траже мajку. Необично висок и продоран за тако малу животињу.</p>
+        <span class="sound-context">📅 Јул–Авг · 🌙 Цела ноћ</span>
+      </div>
+      <div class="sound-card">
+        <h4>🎵 Фркање — одбрана</h4>
+        <p>Серија наглих „фр-фр-фр" звукова при узнемиравању — упозорење пре заузимања одбрамбеног положаja у куглу. Понекад праћено подизањем бодљика.</p>
+        <span class="sound-context">📅 Апр–Нов · 🌙 Ноћ и сумрак</span>
+      </div>
+    </div>
+
+    <div class="sound-links">
+      <a href="https://xeno-canto.org/explore?query=Erinaceus" class="sound-link-btn" target="_blank">🔊 Xeno-canto — снимци гласања</a>
+      <a href="https://www.youtube.com/results?search_query=hedgehog+sounds+erinaceus+roumanicus" class="sound-link-btn" target="_blank">🎥 YouTube — звуци јежа</a>
+      <a href="https://www.inaturalist.org/taxa/43340" class="sound-link-btn" target="_blank">📍 iNaturalist — Erinaceus roumanicus</a>
+    </div>
+  </div>
+
+  <!-- ⑭ КУЋИЦА ЗА ЈЕЖА -->
+  <div class="house-section">
+    <h2 class="section-title"><span>🏠</span> Направи кућицу за јежа — корак по корак</h2>
+    <p class="house-intro">Јеж је природни заштитник баште — уништава пужеве, инсекте и ларве штетних инсеката. Постављањем кућице за јежа у башту или шумски рт можеш директно помоћи опстанку врсте на Рајцу. Градња траје 1–2 сата, а јеж ће је заузети у року неколико дана!</p>
+
+    <!-- Фотографија кућице -->
+    <figure class="house-photo" style="display: none;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Hedgehog_in_garden.jpg/800px-Hedgehog_in_garden.jpg" alt="Кућица за јежа у башти — дрвена конструкција са улазом и покривачем од листова, природно станиште за зимски сан" loading="lazy" onerror="this.parentElement.style.display=&#39;none&#39;">
+      <figcaption>Кућица за јежа у башти — дрвена конструкција са природним покривачем · Wikimedia Commons CC BY-SA</figcaption>
+    </figure>
+
+    <!-- Материјали -->
+    <div class="materials-box">
+      <h4>🔨 Материјали и алат</h4>
+      <ul>
+        <li>Даске 18–20 mm (смреково дрво)</li>
+        <li>Основа 40 × 40 cm</li>
+        <li>Бочне стране 4 × (30 × 25 cm)</li>
+        <li>Кров 45 × 45 cm (нагнут)</li>
+        <li>Улазна цев: PVC цев Ø8–9 cm, дуж. 15–20 cm</li>
+        <li>Ексери или завртњи без поцинковања</li>
+        <li>Пила, чекић / завртач</li>
+        <li>Необрађено уље за дрво (природно)</li>
+      </ul>
+    </div>
+
+    <!-- Кораци -->
+    <ol class="steps-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Основа са дренажним рупама</strong>
+          Исечи основу 40×40 cm. Избуши 4–6 рупа Ø8 mm за дренажу воде. Основа спречава хладноћу из земље и влагу.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Бочне стране и унутрашња преграда</strong>
+          Монтирај четири бочне стране. У предњу страну урежи отвор 8–9 cm — улаз за јежа, предобар против лисице (не може да провуче шапу). Додај унутрашњу преграду са малим пролазом — лисица не може да дохвати јежа директно.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Кров са нагибом</strong>
+          Постави кров са нагибом за одвод кише (минимум 15°). Кров треба да буде скидљив — ради чишћења кућице у пролеће. Не залепити трајно.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Улазна цев против предатора</strong>
+          Причврсти PVC цев на улаз — дужина 15–20 cm спречава да лисица провуче шапу до гнезда. Цев треба да буде закривљена под углом 45° — додатна заштита.
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Претрај природним уљем</strong>
+          Премажи све спољашње површине необрађеним ланеним или тунговим уљем — заштита без хемикалија. Никакав лак, боja или импрегнација — токсично за јежа!
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Постављање кућице</strong>
+          Постави кућицу уз живицу, зид или хомпу шибља — не на отвореном. Улаз окрени ка истоку или југу. Прекрij кућицу листовима, гранчицама и земљом до висине 20–30 cm — природна изолација. <strong>Не дирати од новембра до марта!</strong>
+        </div>
+      </li>
+    </ol>
+
+    <div class="highlight-box">
+      <strong>💡 Савет:</strong> Постави кућицу у јулу–августу — пре него што јеж почне да тражи хибернакулум. Поред кућице стави плитку посуду са свежом водом (не млеком!). Повремено остави и парче влажне хране за мачке или псе без зачина — јеж ће је заузети прве ноћи.
+    </div>
+  </div>
+
+  <!-- ⑮ КВИЗ -->
+  <div class="quiz-section">
+    <h2 class="section-title"><span>🧠</span> Квиз — Колико знаш о јежу?</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:18px;">Тестирај своје знање о јежу и сисарима Рајца. 5 питања — колико ћеш тачних?</p>
+
+    <div class="quiz-wrap">
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="qProgress" style="width: 100%;"></div></div>
+      <div class="quiz-counter" id="qCounter">Квиз завршен!</div>
+
+      <div id="quizGame" style="display: none;">
+        <div class="quiz-question" id="qQuestion">Зашто јеж НЕ треба да буде испод 450 g пред зиму?</div>
+        <div class="quiz-options" id="qOptions"><button class="quiz-opt" data-index="0" disabled="">Лакше се спотиче</button><button class="quiz-opt correct" data-index="1" disabled="">Нема довољно масних резерви за хибернацију</button><button class="quiz-opt" data-index="2" disabled="">Бодљике нису довољно развијене</button><button class="quiz-opt" data-index="3" disabled="">Не може да нађе партнера</button></div>
+        <div class="quiz-feedback correct show" id="qFeedback"><strong>Тачно!</strong> Јежеви испод 450–500 g пред хибернацију немају довољно масних резерви да преживе зимски сан — умиру од исцрпљености пре пролећа. Ово је посебан проблем за друго легло рођено у септембру.</div>
+        <button class="quiz-next-btn show" id="qNext" onclick="nextQuestion()">Погледај резултат →</button>
+      </div>
+
+      <div class="quiz-result show" id="quizResult">
+        <div class="quiz-score" id="qScore">3 / 5</div>
+        <div class="quiz-score-label" id="qScoreLabel">Одлично — познавалац јежа Рајца! 🏆</div>
+        <button class="quiz-share-btn" onclick="shareResult()">📤 Подели резултат</button>
+        <button class="quiz-restart-btn" onclick="restartQuiz()">🔄 Покушај поново</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑯ ФОТО-ЗАМКЕ -->
+  <div class="camtrap-section">
+    <h2 class="section-title"><span>📷</span> Фото-замке — водич за посматрање</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Јеж је <strong>искључиво ноћна животиња</strong> — фото-замка је практично једини начин да га снимиш. Поставља се лако уз кућицу или дуж познате стазе.</p>
+
+    <div class="camtrap-grid">
+      <div class="camtrap-card">
+        <span class="ct-icon">📍</span>
+        <h4>Где поставити</h4>
+        <p>Уз кућицу за јежа — 50 cm испред улаза. Дуж живичних стаза у башти. Код плитке посуде са водом. Uz влажне делове ливаде где су трагови рупица.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">📐</span>
+        <h4>Висина и угао</h4>
+        <p>Само 10–15 cm висине — јеж је низак! Угао благо надоле, паралелно са тлом. ИР осетљивост на максимум — јеж је спор и топао, лако га детектује.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">🌙</span>
+        <h4>Кад очекивати</h4>
+        <p>Après 21:00 до 2:00 у јетро — највећа активност. Мај–јун: парење — два јежа на снимку. Јул–авг: мajka са млаcjima. Јесен: свако вече пред хибернацију.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Бонус:</strong> Јеж је спор и знатижељан — за разлику од лисице и куне, неће побећи кад угледа камеру. Ако имаш кућицу за јежа, постави камеру усмерену ка улазу — добићеш снимке сваке ноћи у активном периоду.
+    </div>
+    <div class="ct-links">
+      <a href="https://www.inaturalist.org/taxa/43340" class="ct-link-btn" target="_blank">📍 iNaturalist — Erinaceus roumanicus</a>
+      <a href="https://www.youtube.com/results?search_query=hedgehog+camera+trap+garden" class="ct-link-btn" target="_blank">🎥 Camera trap примери — YouTube</a>
+      <a href="https://mammalnet.com/" class="ct-link-btn" target="_blank">🦔 MammalNet — грађанска наука</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="species-nav">
+    <a href="https://piorajac.rs/sisari/talpa-europaea/">← Кртица — <em>Talpa europaea</em></a>
+    <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+    <a href="https://piorajac.rs/sisari/sorex-araneus/">Рилорепица — <em>Sorex araneus</em> →</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг · WordPress Theme by CreativeThemes
+</footer>
+
+<!-- ══ QUIZ JAVASCRIPT ══════════════════════════════ -->
+<script>
+const questions = [
+  {
+    q: "Колико бодљика има одрасли јеж?",
+    opts: ["500–1000", "2000–3000", "5000–7000", "преко 10.000"],
+    correct: 2,
+    explanation: "Одрасли јеж носи 5000–7000 кератинских бодљика дужине 2–3 cm. Бодљике нису отровне и не могу се бацати."
+  },
+  {
+    q: "Шта НЕ треба давати рањеном или болесном јежу?",
+    opts: ["Свежу воду", "Храну за мачке", "Млеко", "Суву траву за скровиште"],
+    correct: 2,
+    explanation: "Млеко је ШТЕТНО за јежа — он је лактозно нетолерантан и млеко може проузроковати тешке пробавне сметње и угинуће. Увек само свежа вода!"
+  },
+  {
+    q: "У ком периоду јеж на Рајцу улази у хибернацију?",
+    opts: ["Септембар–октобар", "Новембар–децембар", "Јануар–фебруар", "Март–април"],
+    correct: 1,
+    explanation: "Јеж обично улази у зимски сан у новембру–децембру, кад температура падне испод 10°C. Пробуђује се у марту–априлу. Топле јесени одлажу хибернацију."
+  },
+  {
+    q: "По чему се траг јежа разликује од трага лисице?",
+    opts: ["Јеж има 3 прста", "Јеж нема ноктиве", "Јеж има 5 прстију, лисица 4", "Траг јежа је два пута већи"],
+    correct: 2,
+    explanation: "Јеж има 5 прстију на свакој шапи са дугим ноктивима за копање. Лисица и сви псолики имају 4 прста у отиску. Ово је поуздан теренски знак за разликовање."
+  },
+  {
+    q: "Зашто јеж НЕ треба да буде испод 450 g пред зиму?",
+    opts: ["Лакше се спотиче", "Нема довољно масних резерви за хибернацију", "Бодљике нису довољно развијене", "Не може да нађе партнера"],
+    correct: 1,
+    explanation: "Јежеви испод 450–500 g пред хибернацију немају довољно масних резерви да преживе зимски сан — умиру од исцрпљености пре пролећа. Ово је посебан проблем за друго легло рођено у септембру."
+  }
+];
+
+let current = 0, score = 0, answered = false;
+
+function renderQuestion() {
+  const q = questions[current];
+  document.getElementById('qCounter').textContent = 'Питање ' + (current + 1) + ' од ' + questions.length;
+  document.getElementById('qProgress').style.width = ((current / questions.length) * 100) + '%';
+  document.getElementById('qQuestion').textContent = q.q;
+  document.getElementById('qFeedback').className = 'quiz-feedback';
+  document.getElementById('qFeedback').innerHTML = '';
+  document.getElementById('qNext').className = 'quiz-next-btn';
+  answered = false;
+
+  const optsEl = document.getElementById('qOptions');
+  optsEl.innerHTML = '';
+  q.opts.forEach(function(opt, i) {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    btn.setAttribute('data-index', i);
+    btn.onclick = function() { selectAnswer(parseInt(this.getAttribute('data-index'))); };
+    optsEl.appendChild(btn);
+  });
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = questions[current];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(function(b) { b.disabled = true; });
+
+  const feedback = document.getElementById('qFeedback');
+  if (idx === q.correct) {
+    score++;
+    opts[idx].classList.add('correct');
+    feedback.className = 'quiz-feedback correct show';
+    feedback.innerHTML = '<strong>Тачно!</strong> ' + q.explanation;
+  } else {
+    opts[idx].classList.add('wrong');
+    opts[q.correct].classList.add('correct');
+    feedback.className = 'quiz-feedback wrong show';
+    feedback.innerHTML = '<strong>Нетачно.</strong> ' + q.explanation;
+  }
+
+  const nextBtn = document.getElementById('qNext');
+  nextBtn.textContent = current < questions.length - 1 ? 'Следеће питање →' : 'Погледај резултат →';
+  nextBtn.className = 'quiz-next-btn show';
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById('qProgress').style.width = '100%';
+  document.getElementById('quizGame').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.className = 'quiz-result show';
+  document.getElementById('qScore').textContent = score + ' / ' + questions.length;
+  const labels = [
+    "Још треба учити — прочитај страницу поново! 📖",
+    "Добар почетак — врати се на терен! 🌿",
+    "Солидно знање — прави посматрач! 🦔",
+    "Одлично — познавалац јежа Рајца! 🏆",
+    "Савршено! Ти си стручњак за сисаре Рајца! 🌟"
+  ];
+  document.getElementById('qScoreLabel').textContent = labels[Math.min(score, 4)];
+  document.getElementById('qCounter').textContent = 'Квиз завршен!';
+}
+
+function shareResult() {
+  const text = 'Решио сам квиз о јежу на piorajac.rs и освојио ' + score + '/' + questions.length + ' поена! 🦔 Колико можеш ти?';
+  if (navigator.share) {
+    navigator.share({ title: 'Квиз — Јеж на Рајцу', text: text, url: window.location.href });
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(text + ' ' + window.location.href)
+      .then(function() { alert('Текст копиран у clipboard — налепи га где желиш!'); });
+  }
+}
+
+function restartQuiz() {
+  current = 0; score = 0;
+  document.getElementById('quizResult').className = 'quiz-result';
+  document.getElementById('quizGame').style.display = '';
+  renderQuestion();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderQuestion();
+});
+</script>
+
+
+
+</body></html>
