@@ -485,7 +485,7 @@ function sisari1_render( $content ) {
 add_action('wp_head','sisari1_head');
 function sisari1_head(){
     if(!is_singular('sisari') && !is_post_type_archive('sisari')) return;
-    echo '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">';
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'"><noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>';
     echo '<style id="sisari1-css">
 :root{--forest:#2d5a27;--forest-dark:#1a3a15;--forest-mid:#3a6e30;--gold:#a07a2a;--gold-light:#c8a84b;--cream:#f7f4ef;--text:#1a1a1a;--muted:#6b7280;--border:#ddd8cc;--sage:#4a8c5c;--sage-bg:#edf7f0;--sage-border:#b8dfc5}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -979,9 +979,11 @@ function sisari1_get_page_hero_map(){
         }
 
         if($hero || $fallback){
+            $hero_r     = $hero     ? sisari1_normalize_commons_image_url($hero)     : '';
+            $fallback_r = $fallback ? sisari1_normalize_commons_image_url($fallback) : '';
             $cache[$slug] = [
-                'src' => $hero,
-                'fallback' => ($fallback && $fallback !== $hero) ? $fallback : '',
+                'src'      => $hero_r,
+                'fallback' => ($fallback_r && $fallback_r !== $hero_r) ? $fallback_r : '',
             ];
         }
     }
@@ -1089,7 +1091,10 @@ function sisari1_render_archive(){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Сисари Рајца | ПИО „Рајац"</title>
 <meta name="description" content="Комплетан преглед врста сисара (Mammalia) Предела изузетних одлика Рајац — папкари, звери, глодари, бубоједи, слепи мишеви.">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{--forest:#2d5a27;--forest-dark:#1a3a15;--forest-light:#4a7c43;--cream:#f7f4ef;--warm-white:#fdfcfa;--text:#2a2a2a;--text-muted:#5a5a5a;--border:#d8d0c4;--accent:#8b6914;--section-bg:#f2f0eb;--tag-bg:#e8f0e6;--tag-border:#a8c4a4;--shadow:0 2px 12px rgba(0,0,0,.08);--shadow-hover:0 6px 24px rgba(0,0,0,.14);--radius:10px;--font-serif:'Merriweather',Georgia,serif;--font-sans:'Source Sans 3',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
