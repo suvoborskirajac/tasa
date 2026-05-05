@@ -726,12 +726,19 @@ function sisari1_static_html_redirect(){
     $file = plugin_dir_path(__FILE__) . 'species-pages/' . sanitize_file_name($slug) . '.html';
     if( ! file_exists($file) ) return;
 
-    // Serve the static HTML file with local image URL substitution
+    // Serve the static HTML file with local image URL substitution (fallback to Wikimedia CDN)
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
     $html = file_get_contents($file);
-    $img_base = plugins_url('images/', __FILE__);
-    $html = str_replace('SISARI_IMG_URL/', $img_base, $html);
+    $plugin_dir = plugin_dir_path(__FILE__);
+    $img_base   = plugins_url('images/', __FILE__);
+    $html = preg_replace_callback(
+        '/SISARI_IMG_URL\/([^"\'>\s]+)/',
+        function($m) use ($plugin_dir, $img_base){
+            return sisari1_resolve_img($m[1], $plugin_dir, $img_base);
+        },
+        $html
+    );
     echo $html;
     exit;
 }
@@ -749,6 +756,167 @@ function sisari1_archive_redirect(){
 }
 
 
+
+function sisari1_wikimedia_fallback_url($filename){
+    static $map = [
+        'Akademiepark_a_herd_of_Roe_Deer_(Capreolus_capreolus)_DSC_7111w.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Akademiepark_a_herd_of_Roe_Deer_%28Capreolus_capreolus%29_DSC_7111w.jpg?width=800',
+        'Apodemus_agrarius.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Apodemus_agrarius.jpg/800px-Apodemus_agrarius.jpg',
+        'Apodemus_agrarius_2.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Apodemus_agrarius_2.jpg/800px-Apodemus_agrarius_2.jpg',
+        'Apodemus_flavicollis.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Apodemus_flavicollis.JPG?width=800',
+        'Apodemus_flavicollis.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Apodemus_flavicollis.jpg/800px-Apodemus_flavicollis.jpg',
+        'Apodemus_flavicollis_(29513898646).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Apodemus_flavicollis_%2829513898646%29.jpg?width=800',
+        'Apodemus_flavicollis_2.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Apodemus_flavicollis_2.jpg/800px-Apodemus_flavicollis_2.jpg',
+        'Apodemus_flavicollis_neck.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Apodemus_flavicollis_neck.jpg/800px-Apodemus_flavicollis_neck.jpg',
+        'Apodemus_sylvaticus.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Apodemus_sylvaticus.JPG?width=800',
+        'Apodemus_sylvaticus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Apodemus_sylvaticus.jpg/800px-Apodemus_sylvaticus.jpg',
+        'Apodemus_sylvaticus_(29467493571).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Apodemus_sylvaticus_%2829467493571%29.jpg?width=800',
+        'Apodemus_sylvaticus_bosmuis.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Apodemus_sylvaticus_bosmuis.jpg/800px-Apodemus_sylvaticus_bosmuis.jpg',
+        'Arctic_gray_wolf_(52360324811).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Arctic_gray_wolf_%2852360324811%29.jpg?width=800',
+        'Aux_aguets_attentive_(906003479).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Aux_aguets_attentive_%28906003479%29.jpg?width=800',
+        'Badger-badger.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Badger-badger.jpg/800px-Badger-badger.jpg',
+        'Bank_Vole_Myodes_glareolus_Grand_Union_Canal_1.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Bank_Vole_Myodes_glareolus_Grand_Union_Canal_1.jpg?width=800',
+        'Bank_vole_(Myodes_glareolus).jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bank_vole_(Myodes_glareolus).jpg/800px-Bank_vole_(Myodes_glareolus).jpg',
+        'Brown_bear.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brown_bear.jpg/800px-Brown_bear.jpg',
+        'Brown_bear_(Ursus_arctos_arctos)_running.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Brown_bear_%28Ursus_arctos_arctos%29_running.jpg?width=800',
+        'Canine_print.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Canine_print.jpg?width=800',
+        'Canis_aureus_-_golden_jackal.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Canis_aureus_-_golden_jackal.jpg/800px-Canis_aureus_-_golden_jackal.jpg',
+        'Canis_lupus_in_the_snow.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Canis_lupus_in_the_snow.jpg/800px-Canis_lupus_in_the_snow.jpg',
+        'Canis_lupus_laying.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Canis_lupus_laying.jpg/800px-Canis_lupus_laying.jpg',
+        'Capreolus_capreolus_2.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Capreolus_capreolus_2.jpg/800px-Capreolus_capreolus_2.jpg',
+        'Chevreuil_roux.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Chevreuil_roux.jpg/800px-Chevreuil_roux.jpg',
+        'Clethrionomys_glareolus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Clethrionomys_glareolus.jpg/800px-Clethrionomys_glareolus.jpg',
+        'Crocidura_leucodon-1.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Crocidura_leucodon-1.jpg?width=800',
+        'Crocidura_leucodon.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Crocidura_leucodon.jpg/800px-Crocidura_leucodon.jpg',
+        'Crocidura_leucodon_2.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Crocidura_leucodon_2.jpg/800px-Crocidura_leucodon_2.jpg',
+        'Crocidura_suaveolens.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Crocidura_suaveolens.jpg/800px-Crocidura_suaveolens.jpg',
+        'Crocidura_suaveolens_100694622.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Crocidura_suaveolens_100694622.jpg?width=800',
+        'Crocidura_suaveolens_2.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Crocidura_suaveolens_2.jpg/800px-Crocidura_suaveolens_2.jpg',
+        'Edible_dormouse_(Glis_glis).jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Edible_dormouse_(Glis_glis).jpg/800px-Edible_dormouse_(Glis_glis).jpg',
+        'Ekorre_01.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Ekorre_01.jpg?width=800',
+        'Erinaceus_europaeus.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Erinaceus_europaeus.jpg?width=800',
+        'Erinaceus_europaeus_1.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Erinaceus_europaeus_1.jpg/800px-Erinaceus_europaeus_1.jpg',
+        'Erinaceus_roumanicus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Erinaceus_roumanicus.jpg/800px-Erinaceus_roumanicus.jpg',
+        'Erinaceus_roumanicus_spine_detail.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Erinaceus_roumanicus_spine_detail.jpg?width=800',
+        'Europaeischer_Iltis_Mustela_putorius.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Europaeischer_Iltis_Mustela_putorius.jpg/800px-Europaeischer_Iltis_Mustela_putorius.jpg',
+        'European_Brown_Bear.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/European_Brown_Bear.jpg?width=800',
+        'European_wildcat_Nationalpark_Bayerischer_Wald_01.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/European_wildcat_Nationalpark_Bayerischer_Wald_01.jpg?width=800',
+        'Feldhase%2C_Lepus_europaeus_1a.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Feldhase%2C_Lepus_europaeus_1a.JPG?width=800',
+        'Feldhase%2C_Lepus_europaeus_3a.JPG' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Feldhase%2C_Lepus_europaeus_3a.JPG/800px-Feldhase%2C_Lepus_europaeus_3a.JPG',
+        'Feldhase_Anfang_Mai.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Feldhase_Anfang_Mai.JPG?width=800',
+        'Feldhase_Spur_Schnee.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Feldhase_Spur_Schnee.jpg?width=800',
+        'Felis_silvestris_-_Cabárceno_1.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Felis_silvestris_-_Cab%C3%A1rceno_1.jpg?width=800',
+        'Felis_silvestris_-_Nationalpark_Bayerischer_Wald.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Felis_silvestris_-_Nationalpark_Bayerischer_Wald.jpg?width=800',
+        'Felis_silvestris_felixi.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Felis_silvestris_felixi.jpg/800px-Felis_silvestris_felixi.jpg',
+        'Felis_silvestris_silvestris.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Felis_silvestris_silvestris.jpg/800px-Felis_silvestris_silvestris.jpg',
+        'Foraging_Badger.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Foraging_Badger.jpg?width=800',
+        'Fox_portrait.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Fox_portrait.jpg?width=800',
+        'Fu%C3%9Fabdruck_Rotfuchs.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Fu%C3%9Fabdruck_Rotfuchs.jpg?width=800',
+        'Glis_glis_03.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Glis_glis_03.jpg/800px-Glis_glis_03.jpg',
+        'Glis_glis_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Glis_glis_2.jpg?width=800',
+        'Golden_Jackal_Closeup.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Golden_Jackal_Closeup.jpg?width=800',
+        'Golden_Jackal_sa.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Golden_Jackal_sa.jpg?width=800',
+        'Golden_jackal_-_portrait.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Golden_jackal_-_portrait.jpg?width=800',
+        'Golden_jackal_at_Keoladeo_Ghana_National_Park.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Golden_jackal_at_Keoladeo_Ghana_National_Park.jpg?width=800',
+        'Golden_jackal_cub.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Golden_jackal_cub.jpg?width=800',
+        'Hare_tracks_in_snow.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Hare_tracks_in_snow.jpg?width=800',
+        'Hazel_dormouse.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Hazel_dormouse.jpg?width=800',
+        'Hedgehog_footprint.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Hedgehog_footprint.jpg?width=800',
+        'Hedgehog_in_garden.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Hedgehog_in_garden.jpg?width=800',
+        'Least_Weasel_%28Mustela_nivalis%29.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Least_Weasel_%28Mustela_nivalis%29.jpg?width=800',
+        'Least_weasel.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Least_weasel.jpg?width=800',
+        'Lutra_lutra.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lutra_lutra.jpg/800px-Lutra_lutra.jpg',
+        'Lutra_lutra_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Lutra_lutra_2.jpg?width=800',
+        'Martes_foina_1.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_foina_1.jpg?width=800',
+        'Martes_foina_4.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_foina_4.jpg?width=800',
+        'Martes_foina_MHNT.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_foina_MHNT.jpg?width=800',
+        'Martes_foina_ct.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Martes_foina_ct.jpg/800px-Martes_foina_ct.jpg',
+        'Martes_foina_white_throat.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_foina_white_throat.jpg?width=800',
+        'Martes_martes-08-WA-Jochen.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Martes_martes-08-WA-Jochen.jpg/800px-Martes_martes-08-WA-Jochen.jpg',
+        'Martes_martes_2_%28Stephan_Morris%29.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_martes_2_%28Stephan_Morris%29.jpg?width=800',
+        'Martes_martes_crop.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_martes_crop.jpg?width=800',
+        'Martes_martes_in_Sweden.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_martes_in_Sweden.jpg?width=800',
+        'Martes_martes_on_tree.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_martes_on_tree.jpg?width=800',
+        'Martes_martes_throat.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Martes_martes_throat.jpg?width=800',
+        'Meles_meles_-_British_Wildlife_Centre_%281%29.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Meles_meles_-_British_Wildlife_Centre_%281%29.jpg?width=800',
+        'Meles_meles_-_Sett.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Meles_meles_-_Sett.jpg?width=800',
+        'Meles_meles_face.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Meles_meles_face.jpg?width=800',
+        'Meles_meles_Усть-Каменогорск.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Meles_meles_%D0%A3%D1%81%D1%82%D1%8C-%D0%9A%D0%B0%D0%BC%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE%D1%80%D1%81%D0%BA.jpg?width=800',
+        'Microtus_arvalis.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Microtus_arvalis.jpg/800px-Microtus_arvalis.jpg',
+        'Microtus_arvalis_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Microtus_arvalis_2.jpg?width=800',
+        'Microtus_arvalis_walks.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Microtus_arvalis_walks.JPG?width=800',
+        'Microtus_subterraneus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microtus_subterraneus.jpg/800px-Microtus_subterraneus.jpg',
+        'Microtus_subterraneus_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Microtus_subterraneus_2.jpg?width=800',
+        'Microtus_subterraneus_I.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Microtus_subterraneus_I.jpg?width=800',
+        'Muscardinus_avellanarius.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Muscardinus_avellanarius.jpg/800px-Muscardinus_avellanarius.jpg',
+        'Muscardinus_avellanarius_1.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Muscardinus_avellanarius_1.jpg?width=800',
+        'Muscardinus_avellanarius_7.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Muscardinus_avellanarius_7.jpg?width=800',
+        'Mustela_nivalis_-British_Wildlife_Centre-_edit.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Mustela_nivalis_-British_Wildlife_Centre-_edit.jpg/800px-Mustela_nivalis_-British_Wildlife_Centre-_edit.jpg',
+        'Mustela_nivalis_-_weasel.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Mustela_nivalis_-_weasel.jpg?width=800',
+        'Mustela_nivalis_upright.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Mustela_nivalis_upright.jpg?width=800',
+        'Mustela_putorius.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Mustela_putorius.jpg/800px-Mustela_putorius.jpg',
+        'Mustela_putorius_-_Vrancea%2C_Romania.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Mustela_putorius_-_Vrancea%2C_Romania.jpg?width=800',
+        'Mustela_putorius_01.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Mustela_putorius_01.jpg?width=800',
+        'Myodes_glareolus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Myodes_glareolus.jpg/800px-Myodes_glareolus.jpg',
+        'Myodes_glareolus2.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Myodes_glareolus2.JPG?width=800',
+        'Myotis_myotis_head.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Myotis_myotis_head.jpg/800px-Myotis_myotis_head.jpg',
+        'Mysz_polna,_PL.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Mysz_polna%2C_PL.jpg?width=800',
+        'Nannospalax_leucodon.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nannospalax_leucodon.jpg/800px-Nannospalax_leucodon.jpg',
+        'Neomys_fodiens.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Neomys_fodiens.jpg/800px-Neomys_fodiens.jpg',
+        'Neomys_fodiens_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Neomys_fodiens_2.jpg?width=800',
+        'Neomys_fodiens_TF_090829.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Neomys_fodiens_TF_090829.jpg?width=800',
+        'Neugieriges_Mauswiesel.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Neugieriges_Mauswiesel.jpg?width=800',
+        'Nyctalus_noctula_01.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Nyctalus_noctula_01.jpg/800px-Nyctalus_noctula_01.jpg',
+        'Putorius_putorius_Sturm.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Putorius_putorius_Sturm.jpg?width=800',
+        'Red_Fox_(Vulpes_vulpes)_(4).jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Red_Fox_(Vulpes_vulpes)_(4).jpg/800px-Red_Fox_(Vulpes_vulpes)_(4).jpg',
+        'Red_fox_at_Gamla.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Red_fox_at_Gamla.jpg?width=800',
+        'Red_fox_kit_3_(Vulpes_vulpes).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Red_fox_kit_3_%28Vulpes_vulpes%29.jpg?width=800',
+        'Red_fox_snout.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Red_fox_snout.jpg?width=800',
+        'Red_squirrel_Sciurus_vulgaris_Istria.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Red_squirrel_Sciurus_vulgaris_Istria.jpg?width=800',
+        'Rhinolophus_ferrumequinum.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Rhinolophus_ferrumequinum.jpg/800px-Rhinolophus_ferrumequinum.jpg',
+        'Rhinolophus_hipposideros_-_Gzenyme.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Rhinolophus_hipposideros_-_Gzenyme.jpg/800px-Rhinolophus_hipposideros_-_Gzenyme.jpg',
+        'Roe_deer_(Capreolus_capreolus).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Roe_deer_%28Capreolus_capreolus%29.jpg?width=800',
+        'Roe_deer_male_kitz1.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Roe_deer_male_kitz1.jpg?width=800',
+        'Sciurus_vulgaris_07.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sciurus_vulgaris_07.jpg?width=800',
+        'Sciurus_vulgaris_Narew.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Sciurus_vulgaris_Narew.jpg/800px-Sciurus_vulgaris_Narew.jpg',
+        'Siebenschläfer_auf_Baum.JPG' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Siebenschl%C3%A4fer_auf_Baum.JPG?width=800',
+        'Sorex-araneus.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sorex-araneus.jpg?width=800',
+        'Sorex_araneus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Sorex_araneus.jpg/800px-Sorex_araneus.jpg',
+        'Sorex_araneus_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sorex_araneus_2.jpg?width=800',
+        'Sorex_minutus.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sorex_minutus.jpg/800px-Sorex_minutus.jpg',
+        'Sorex_minutus_crop.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sorex_minutus_crop.jpg?width=800',
+        'Sorex_minutus_palm.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sorex_minutus_palm.jpg?width=800',
+        'Spalax_leucodon.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Spalax_leucodon.jpg?width=800',
+        'Speicherkoog_Lepus_europaeus.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Speicherkoog_Lepus_europaeus.jpg?width=800',
+        'Steinmarder-2007-Asio.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Steinmarder-2007-Asio.jpg?width=800',
+        'Sus_scrofa_head.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sus_scrofa_head.jpg?width=800',
+        'Sus_scrofa_in_a_field.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sus_scrofa_in_a_field.jpg?width=800',
+        'Sus_scrofa_scrofa.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sus_scrofa_scrofa.jpg/800px-Sus_scrofa_scrofa.jpg',
+        'Sus_scrofa_young.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Sus_scrofa_young.jpg?width=800',
+        'Talpa_europaea.jpg' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Talpa_europaea.jpg/800px-Talpa_europaea.jpg',
+        'Talpa_europaea_2.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Talpa_europaea_2.jpg?width=800',
+        'Talpa_europaea_MHNT.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Talpa_europaea_MHNT.jpg?width=800',
+        'Ursus_arctos_Björnen.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Ursus_arctos_Bj%C3%B6rnen.jpg?width=800',
+        'Ursus_arctos_arctos.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Ursus_arctos_arctos.jpg?width=800',
+        'Vulpes_Vulpes_in_snow.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Vulpes_Vulpes_in_snow.jpg?width=800',
+        'Wachsamer_Feldhase_in_Birkholz_bei_Bernau.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Wachsamer_Feldhase_in_Birkholz_bei_Bernau.jpg?width=800',
+        'Westelijke_blindmuis_-_Lesser_Blind_Mole-rat_-_Nannospalax_leucodon.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Westelijke_blindmuis_-_Lesser_Blind_Mole-rat_-_Nannospalax_leucodon.jpg?width=800',
+        'Whiskers_(30452296398).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Whiskers_%2830452296398%29.jpg?width=800',
+        'Wild_Boar_Sow_and_Piglets.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Wild_Boar_Sow_and_Piglets.jpg?width=800',
+        'Wildcat_on_a_tree.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Wildcat_on_a_tree.jpg?width=800',
+        'Wood_mouse_(Apodemus_sylvaticus).jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/Wood_mouse_%28Apodemus_sylvaticus%29.jpg?width=800',
+        'Тхір_лісовий.jpg' => 'https://commons.wikimedia.org/wiki/Special:FilePath/%D0%A2%D1%85%D1%96%D1%80_%D0%BB%D1%96%D1%81%D0%BE%D0%B2%D0%B8%D0%B9.jpg?width=800',
+    ];
+    return isset($map[$filename]) ? $map[$filename] : '';
+}
+
+function sisari1_resolve_img($filename, $plugin_dir, $img_base){
+    $local_path = $plugin_dir . 'images/' . $filename;
+    if(file_exists($local_path) && filesize($local_path) > 10240){
+        return $img_base . $filename;
+    }
+    $fallback = sisari1_wikimedia_fallback_url($filename);
+    return $fallback !== '' ? $fallback : ($img_base . $filename);
+}
 
 function sisari1_commons_original_filename($url){
     $url = trim((string)$url);
@@ -768,13 +936,13 @@ function sisari1_commons_original_filename($url){
 function sisari1_normalize_commons_image_url($url, $width = 1200){
     $url = trim((string)$url);
     if($url === '') return '';
-    // Local image — resolve SISARI_IMG_URL/ to plugin images/ folder
     if(strpos($url, 'SISARI_IMG_URL/') === 0){
-        return plugins_url('images/' . substr($url, 15), __FILE__);
+        $filename = substr($url, 15);
+        return sisari1_resolve_img($filename, plugin_dir_path(__FILE__), plugins_url('images/', __FILE__));
     }
     $filename = sisari1_commons_original_filename($url);
     if($filename !== ''){
-        return plugins_url('images/' . $filename, __FILE__);
+        return sisari1_resolve_img($filename, plugin_dir_path(__FILE__), plugins_url('images/', __FILE__));
     }
     return $url;
 }
