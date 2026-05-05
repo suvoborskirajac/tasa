@@ -726,19 +726,10 @@ function sisari1_static_html_redirect(){
     $file = plugin_dir_path(__FILE__) . 'species-pages/' . sanitize_file_name($slug) . '.html';
     if( ! file_exists($file) ) return;
 
-    // Serve the static HTML file with local image URL substitution (fallback to Wikimedia CDN)
+    // Serve the static HTML file directly (Wikimedia CDN URLs are embedded in HTML)
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
     $html = file_get_contents($file);
-    $plugin_dir = plugin_dir_path(__FILE__);
-    $img_base   = plugins_url('images/', __FILE__);
-    $html = preg_replace_callback(
-        '/SISARI_IMG_URL\/([^"\'>\s]+)/',
-        function($m) use ($plugin_dir, $img_base){
-            return sisari1_resolve_img($m[1], $plugin_dir, $img_base);
-        },
-        $html
-    );
     echo $html;
     exit;
 }
@@ -936,13 +927,13 @@ function sisari1_commons_original_filename($url){
 function sisari1_normalize_commons_image_url($url, $width = 1200){
     $url = trim((string)$url);
     if($url === '') return '';
+    // Return Wikimedia URLs as-is (browser loads them directly)
+    if(strpos($url, 'http') === 0) return $url;
+    // SISARI_IMG_URL/ prefix: look up in fallback map
     if(strpos($url, 'SISARI_IMG_URL/') === 0){
         $filename = substr($url, 15);
-        return sisari1_resolve_img($filename, plugin_dir_path(__FILE__), plugins_url('images/', __FILE__));
-    }
-    $filename = sisari1_commons_original_filename($url);
-    if($filename !== ''){
-        return sisari1_resolve_img($filename, plugin_dir_path(__FILE__), plugins_url('images/', __FILE__));
+        $fallback = sisari1_wikimedia_fallback_url($filename);
+        return $fallback !== '' ? $fallback : '';
     }
     return $url;
 }
@@ -979,11 +970,9 @@ function sisari1_get_page_hero_map(){
         }
 
         if($hero || $fallback){
-            $hero_r     = $hero     ? sisari1_normalize_commons_image_url($hero)     : '';
-            $fallback_r = $fallback ? sisari1_normalize_commons_image_url($fallback) : '';
             $cache[$slug] = [
-                'src'      => $hero_r,
-                'fallback' => ($fallback_r && $fallback_r !== $hero_r) ? $fallback_r : '',
+                'src'      => $hero,
+                'fallback' => ($fallback && $fallback !== $hero) ? $fallback : '',
             ];
         }
     }
