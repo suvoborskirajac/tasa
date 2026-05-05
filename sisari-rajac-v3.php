@@ -668,48 +668,48 @@ function sisari1_lista(){
     // Koristimo PROVERENE URL-ove sa Wikimedia — isti kao u originalnom HTML katalogu
     return [
         // ── ПАПКАРИ ──────────────────────────────────────────────
-        ['naziv'=>'Срна',         'latin'=>'Capreolus capreolus','slug'=>'capreolus-capreolus','iucn'=>'LC','red'=>'Artiodactyla','porodica'=>'Cervidae',  'kategorija'=>'papkari',   'status'=>'potvrdjen',    'foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Capreolus_capreolus_2.jpg?width=400'],
-        ['naziv'=>'Дивља свиња', 'latin'=>'Sus scrofa',         'slug'=>'sus-scrofa',         'iucn'=>'LC','red'=>'Artiodactyla','porodica'=>'Suidae',    'kategorija'=>'papkari',   'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sus_scrofa_scrofa.jpg/400px-Sus_scrofa_scrofa.jpg'],
+        ['naziv'=>'Срна',         'latin'=>'Capreolus capreolus','slug'=>'capreolus-capreolus','iucn'=>'LC','red'=>'Artiodactyla','porodica'=>'Cervidae',  'kategorija'=>'papkari',   'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Capreolus_capreolus_2.jpg'],
+        ['naziv'=>'Дивља свиња', 'latin'=>'Sus scrofa',         'slug'=>'sus-scrofa',         'iucn'=>'LC','red'=>'Artiodactyla','porodica'=>'Suidae',    'kategorija'=>'papkari',   'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Sus_scrofa_scrofa.jpg'],
         // ── ЗЕЧЕВИ ───────────────────────────────────────────────
-        ['naziv'=>'Дивљи зец',   'latin'=>'Lepus europaeus',    'slug'=>'lepus-europaeus',    'iucn'=>'LC','red'=>'Lagomorpha',  'porodica'=>'Leporidae', 'kategorija'=>'zecevi',    'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Feldhase%2C_Lepus_europaeus_3a.JPG/800px-Feldhase%2C_Lepus_europaeus_3a.JPG'],
+        ['naziv'=>'Дивљи зец',   'latin'=>'Lepus europaeus',    'slug'=>'lepus-europaeus',    'iucn'=>'LC','red'=>'Lagomorpha',  'porodica'=>'Leporidae', 'kategorija'=>'zecevi',    'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Feldhase%2C_Lepus_europaeus_3a.JPG'],
         // ── ЗВЕРИ ────────────────────────────────────────────────
-        ['naziv'=>'Лисица',       'latin'=>'Vulpes vulpes',      'slug'=>'vulpes-vulpes',      'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Canidae',    'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Red%20Fox%20%28Vulpes%20vulpes%29%20%284%29.jpg?width=400'],
-        ['naziv'=>'Шакал',        'latin'=>'Canis aureus',       'slug'=>'canis-aureus',       'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Canidae',    'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Canis%20aureus%20-%20golden%20jackal.jpg?width=400'],
-        ['naziv'=>'Јазавац',      'latin'=>'Meles meles',        'slug'=>'meles-meles',        'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Meles_meles_Усть-Каменогорск.jpg/400px-Meles_meles_Усть-Каменогорск.jpg'],
-        ['naziv'=>'Дивља мачка', 'latin'=>'Felis silvestris',   'slug'=>'felis-silvestris',   'iucn'=>'NT','red'=>'Carnivora',  'porodica'=>'Felidae',    'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Felis_silvestris_silvestris.jpg/400px-Felis_silvestris_silvestris.jpg'],
-        ['naziv'=>'Куна белица', 'latin'=>'Martes foina',        'slug'=>'martes-foina',       'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Martes_foina_ct.jpg/400px-Martes_foina_ct.jpg'],
-        ['naziv'=>'Куна златица','latin'=>'Martes martes',       'slug'=>'martes-martes',      'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Martes_martes-08-WA-Jochen.jpg/400px-Martes_martes-08-WA-Jochen.jpg'],
-        ['naziv'=>'Мрки твор',   'latin'=>'Mustela putorius',   'slug'=>'mustela-putorius',   'iucn'=>'VU','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Mustela_putorius.jpg/400px-Mustela_putorius.jpg'],
-        ['naziv'=>'Риђа ласица', 'latin'=>'Mustela nivalis',    'slug'=>'mustela-nivalis',    'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Mustela_nivalis_-British_Wildlife_Centre-_edit.jpg/400px-Mustela_nivalis_-British_Wildlife_Centre-_edit.jpg'],
+        ['naziv'=>'Лисица',       'latin'=>'Vulpes vulpes',      'slug'=>'vulpes-vulpes',      'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Canidae',    'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Red_Fox_(Vulpes_vulpes)_(4).jpg'],
+        ['naziv'=>'Шакал',        'latin'=>'Canis aureus',       'slug'=>'canis-aureus',       'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Canidae',    'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Canis_aureus_-_golden_jackal.jpg'],
+        ['naziv'=>'Јазавац',      'latin'=>'Meles meles',        'slug'=>'meles-meles',        'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Meles_meles_Усть-Каменогорск.jpg'],
+        ['naziv'=>'Дивља мачка', 'latin'=>'Felis silvestris',   'slug'=>'felis-silvestris',   'iucn'=>'NT','red'=>'Carnivora',  'porodica'=>'Felidae',    'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Felis_silvestris_silvestris.jpg'],
+        ['naziv'=>'Куна белица', 'latin'=>'Martes foina',        'slug'=>'martes-foina',       'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Martes_foina_ct.jpg'],
+        ['naziv'=>'Куна златица','latin'=>'Martes martes',       'slug'=>'martes-martes',      'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Martes_martes-08-WA-Jochen.jpg'],
+        ['naziv'=>'Мрки твор',   'latin'=>'Mustela putorius',   'slug'=>'mustela-putorius',   'iucn'=>'VU','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Mustela_putorius.jpg'],
+        ['naziv'=>'Риђа ласица', 'latin'=>'Mustela nivalis',    'slug'=>'mustela-nivalis',    'iucn'=>'LC','red'=>'Carnivora',  'porodica'=>'Mustelidae', 'kategorija'=>'zveri',     'status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Mustela_nivalis_-British_Wildlife_Centre-_edit.jpg'],
         // ── ГЛОДАРИ ──────────────────────────────────────────────
-        ['naziv'=>'Веверица',           'latin'=>'Sciurus vulgaris',        'slug'=>'sciurus-vulgaris',        'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Sciuridae',  'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Sciurus_vulgaris_Narew.jpg/400px-Sciurus_vulgaris_Narew.jpg'],
-        ['naziv'=>'Сиви пух',           'latin'=>'Glis glis',               'slug'=>'glis-glis',               'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Gliridae',   'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Glis_glis_03.jpg/400px-Glis_glis_03.jpg'],
-        ['naziv'=>'Пух лешникар',       'latin'=>'Muscardinus avellanarius','slug'=>'muscardinus-avellanarius','iucn'=>'LC','red'=>'Rodentia','porodica'=>'Gliridae',   'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Muscardinus_avellanarius.jpg/400px-Muscardinus_avellanarius.jpg'],
-        ['naziv'=>'Слепо куче',         'latin'=>'Nannospalax leucodon',    'slug'=>'nannospalax-leucodon',    'iucn'=>'VU','red'=>'Rodentia','porodica'=>'Spalacidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nannospalax_leucodon.jpg/400px-Nannospalax_leucodon.jpg'],
-        ['naziv'=>'Жутогрли миш',       'latin'=>'Apodemus flavicollis',    'slug'=>'apodemus-flavicollis',    'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Muridae',    'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Apodemus_flavicollis.jpg/400px-Apodemus_flavicollis.jpg'],
-        ['naziv'=>'Шумски миш',         'latin'=>'Apodemus sylvaticus',     'slug'=>'apodemus-sylvaticus',     'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Muridae',    'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Apodemus_sylvaticus.jpg/400px-Apodemus_sylvaticus.jpg'],
-        ['naziv'=>'Пругасти миш',       'latin'=>'Apodemus agrarius',       'slug'=>'apodemus-agrarius',       'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Muridae',    'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Apodemus_agrarius.jpg/400px-Apodemus_agrarius.jpg'],
-        ['naziv'=>'Риђа волухарица',    'latin'=>'Myodes glareolus',        'slug'=>'myodes-glareolus',        'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Cricetidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Myodes_glareolus.jpg/400px-Myodes_glareolus.jpg'],
-        ['naziv'=>'Подземна волухарица','latin'=>'Microtus subterraneus',   'slug'=>'microtus-subterraneus',   'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Cricetidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microtus_subterraneus.jpg/400px-Microtus_subterraneus.jpg'],
-        ['naziv'=>'Пољска волухарица',  'latin'=>'Microtus arvalis',        'slug'=>'microtus-arvalis',        'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Cricetidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Microtus_arvalis.jpg/400px-Microtus_arvalis.jpg'],
+        ['naziv'=>'Веверица',           'latin'=>'Sciurus vulgaris',        'slug'=>'sciurus-vulgaris',        'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Sciuridae',  'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Sciurus_vulgaris_Narew.jpg'],
+        ['naziv'=>'Сиви пух',           'latin'=>'Glis glis',               'slug'=>'glis-glis',               'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Gliridae',   'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Glis_glis_03.jpg'],
+        ['naziv'=>'Пух лешникар',       'latin'=>'Muscardinus avellanarius','slug'=>'muscardinus-avellanarius','iucn'=>'LC','red'=>'Rodentia','porodica'=>'Gliridae',   'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Muscardinus_avellanarius.jpg'],
+        ['naziv'=>'Слепо куче',         'latin'=>'Nannospalax leucodon',    'slug'=>'nannospalax-leucodon',    'iucn'=>'VU','red'=>'Rodentia','porodica'=>'Spalacidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Nannospalax_leucodon.jpg'],
+        ['naziv'=>'Жутогрли миш',       'latin'=>'Apodemus flavicollis',    'slug'=>'apodemus-flavicollis',    'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Muridae',    'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Apodemus_flavicollis.jpg'],
+        ['naziv'=>'Шумски миш',         'latin'=>'Apodemus sylvaticus',     'slug'=>'apodemus-sylvaticus',     'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Muridae',    'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Apodemus_sylvaticus.jpg'],
+        ['naziv'=>'Пругасти миш',       'latin'=>'Apodemus agrarius',       'slug'=>'apodemus-agrarius',       'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Muridae',    'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Apodemus_agrarius.jpg'],
+        ['naziv'=>'Риђа волухарица',    'latin'=>'Myodes glareolus',        'slug'=>'myodes-glareolus',        'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Cricetidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Myodes_glareolus.jpg'],
+        ['naziv'=>'Подземна волухарица','latin'=>'Microtus subterraneus',   'slug'=>'microtus-subterraneus',   'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Cricetidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Microtus_subterraneus.jpg'],
+        ['naziv'=>'Пољска волухарица',  'latin'=>'Microtus arvalis',        'slug'=>'microtus-arvalis',        'iucn'=>'LC','red'=>'Rodentia','porodica'=>'Cricetidae', 'kategorija'=>'glodari', 'status'=>'potvrdjen', 'foto'=>'SISARI_IMG_URL/Microtus_arvalis.jpg'],
         // ── БУБОЈЕДИ ─────────────────────────────────────────────
-        ['naziv'=>'Јеж',              'latin'=>'Erinaceus roumanicus','slug'=>'erinaceus-roumanicus','iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Erinaceidae','kategorija'=>'bubojedи','status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Erinaceus_roumanicus.jpg/400px-Erinaceus_roumanicus.jpg'],
-        ['naziv'=>'Кртица',           'latin'=>'Talpa europaea',      'slug'=>'talpa-europaea',      'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Talpidae',    'kategorija'=>'bubojedи','status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Talpa_europaea.jpg/400px-Talpa_europaea.jpg'],
-        ['naziv'=>'Шумска ровчица',   'latin'=>'Sorex araneus',       'slug'=>'sorex-araneus',       'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae',   'kategorija'=>'bubojedи','status'=>'potvrdjen',    'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Sorex_araneus.jpg/400px-Sorex_araneus.jpg'],
+        ['naziv'=>'Јеж',              'latin'=>'Erinaceus roumanicus','slug'=>'erinaceus-roumanicus','iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Erinaceidae','kategorija'=>'bubojedи','status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Erinaceus_roumanicus.jpg'],
+        ['naziv'=>'Кртица',           'latin'=>'Talpa europaea',      'slug'=>'talpa-europaea',      'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Talpidae',    'kategorija'=>'bubojedи','status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Talpa_europaea.jpg'],
+        ['naziv'=>'Шумска ровчица',   'latin'=>'Sorex araneus',       'slug'=>'sorex-araneus',       'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae',   'kategorija'=>'bubojedи','status'=>'potvrdjen',    'foto'=>'SISARI_IMG_URL/Sorex_araneus.jpg'],
         // ── ПОТЕНЦИЈАЛНЕ / СПОРАДИЧНЕ ЗВЕРИ ─────────────────────────
-        ['naziv'=>'Вук',         'latin'=>'Canis lupus',   'slug'=>'canis-lupus',   'iucn'=>'LC','red'=>'Carnivora','porodica'=>'Canidae',    'kategorija'=>'zveri',   'status'=>'sporadican','foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20gray%20wolf%20%2852360324811%29.jpg?width=400'],
-        ['naziv'=>'Мрки медвед','latin'=>'Ursus arctos',   'slug'=>'ursus-arctos',  'iucn'=>'LC','red'=>'Carnivora','porodica'=>'Ursidae',    'kategorija'=>'zveri',   'status'=>'sporadican','foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/European%20Brown%20Bear.jpg?width=400'],
-        ['naziv'=>'Видра',       'latin'=>'Lutra lutra',   'slug'=>'lutra-lutra',   'iucn'=>'NT','red'=>'Carnivora','porodica'=>'Mustelidae', 'kategorija'=>'zveri',   'status'=>'sporadican','foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lutra_lutra.jpg/400px-Lutra_lutra.jpg'],
+        ['naziv'=>'Вук',         'latin'=>'Canis lupus',   'slug'=>'canis-lupus',   'iucn'=>'LC','red'=>'Carnivora','porodica'=>'Canidae',    'kategorija'=>'zveri',   'status'=>'sporadican','foto'=>'SISARI_IMG_URL/Canis_lupus_laying.jpg'],
+        ['naziv'=>'Мрки медвед','latin'=>'Ursus arctos',   'slug'=>'ursus-arctos',  'iucn'=>'LC','red'=>'Carnivora','porodica'=>'Ursidae',    'kategorija'=>'zveri',   'status'=>'sporadican','foto'=>'SISARI_IMG_URL/Brown_bear.jpg'],
+        ['naziv'=>'Видра',       'latin'=>'Lutra lutra',   'slug'=>'lutra-lutra',   'iucn'=>'NT','red'=>'Carnivora','porodica'=>'Mustelidae', 'kategorija'=>'zveri',   'status'=>'sporadican','foto'=>'SISARI_IMG_URL/Lutra_lutra.jpg'],
         // ── ПОТЕНЦИЈАЛНЕ РОВЧИЦЕ (Бубоједи) ─────────────────────────
-        ['naziv'=>'Мала ровчица',      'latin'=>'Sorex minutus',       'slug'=>'sorex-minutus',       'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sorex_minutus.jpg/400px-Sorex_minutus.jpg'],
-        ['naziv'=>'Водена ровчица',    'latin'=>'Neomys fodiens',      'slug'=>'neomys-fodiens',      'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Neomys_fodiens.jpg/400px-Neomys_fodiens.jpg'],
-        ['naziv'=>'Баштенска ровчица', 'latin'=>'Crocidura suaveolens','slug'=>'crocidura-suaveolens','iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Crocidura_suaveolens.jpg/400px-Crocidura_suaveolens.jpg'],
-        ['naziv'=>'Пољска ровчица',    'latin'=>'Crocidura leucodon',  'slug'=>'crocidura-leucodon',  'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Crocidura_leucodon.jpg/400px-Crocidura_leucodon.jpg'],
+        ['naziv'=>'Мала ровчица',      'latin'=>'Sorex minutus',       'slug'=>'sorex-minutus',       'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'SISARI_IMG_URL/Sorex_minutus.jpg'],
+        ['naziv'=>'Водена ровчица',    'latin'=>'Neomys fodiens',      'slug'=>'neomys-fodiens',      'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'SISARI_IMG_URL/Neomys_fodiens.jpg'],
+        ['naziv'=>'Баштенска ровчица', 'latin'=>'Crocidura suaveolens','slug'=>'crocidura-suaveolens','iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'SISARI_IMG_URL/Crocidura_suaveolens.jpg'],
+        ['naziv'=>'Пољска ровчица',    'latin'=>'Crocidura leucodon',  'slug'=>'crocidura-leucodon',  'iucn'=>'LC','red'=>'Eulipotyphla','porodica'=>'Soricidae','kategorija'=>'bubojedи','status'=>'sporadican','foto'=>'SISARI_IMG_URL/Crocidura_leucodon.jpg'],
         // ── СЛЕПИ МИШЕВИ ─────────────────────────────────────────
-        ['naziv'=>'Велики потковичар',        'latin'=>'Rhinolophus ferrumequinum','slug'=>'rhinolophus-ferrumequinum','iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Rhinolophidae',    'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Rhinolophus_ferrumequinum.jpg?width=400'],
-        ['naziv'=>'Мали потковичар',          'latin'=>'Rhinolophus hipposideros','slug'=>'rhinolophus-hipposideros', 'iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Rhinolophidae',    'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Rhinolophus_hipposideros_-_Gzenyme.jpg?width=400'],
-        ['naziv'=>'Велики мишоуши вечерњак', 'latin'=>'Myotis myotis',            'slug'=>'myotis-myotis',            'iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Vespertilionidae', 'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Myotis_myotis_head.jpg?width=400'],
-        ['naziv'=>'Средњи ноћник',            'latin'=>'Nyctalus noctula',         'slug'=>'nyctalus-noctula',         'iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Vespertilionidae', 'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Nyctalus_noctula_01.jpg?width=400'],
+        ['naziv'=>'Велики потковичар',        'latin'=>'Rhinolophus ferrumequinum','slug'=>'rhinolophus-ferrumequinum','iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Rhinolophidae',    'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'SISARI_IMG_URL/Rhinolophus_ferrumequinum.jpg'],
+        ['naziv'=>'Мали потковичар',          'latin'=>'Rhinolophus hipposideros','slug'=>'rhinolophus-hipposideros', 'iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Rhinolophidae',    'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'SISARI_IMG_URL/Rhinolophus_hipposideros_-_Gzenyme.jpg'],
+        ['naziv'=>'Велики мишоуши вечерњак', 'latin'=>'Myotis myotis',            'slug'=>'myotis-myotis',            'iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Vespertilionidae', 'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'SISARI_IMG_URL/Myotis_myotis_head.jpg'],
+        ['naziv'=>'Средњи ноћник',            'latin'=>'Nyctalus noctula',         'slug'=>'nyctalus-noctula',         'iucn'=>'LC','red'=>'Chiroptera','porodica'=>'Vespertilionidae', 'kategorija'=>'slepi_misevi','status'=>'potvrdjen','foto'=>'SISARI_IMG_URL/Nyctalus_noctula_01.jpg'],
     ];
 }
 
@@ -726,10 +726,13 @@ function sisari1_static_html_redirect(){
     $file = plugin_dir_path(__FILE__) . 'species-pages/' . sanitize_file_name($slug) . '.html';
     if( ! file_exists($file) ) return;
 
-    // Serve the static HTML file
+    // Serve the static HTML file with local image URL substitution
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
-    readfile($file);
+    $html = file_get_contents($file);
+    $img_base = plugins_url('images/', __FILE__);
+    $html = str_replace('SISARI_IMG_URL/', $img_base, $html);
+    echo $html;
     exit;
 }
 
@@ -765,9 +768,13 @@ function sisari1_commons_original_filename($url){
 function sisari1_normalize_commons_image_url($url, $width = 1200){
     $url = trim((string)$url);
     if($url === '') return '';
+    // Local image — resolve SISARI_IMG_URL/ to plugin images/ folder
+    if(strpos($url, 'SISARI_IMG_URL/') === 0){
+        return plugins_url('images/' . substr($url, 15), __FILE__);
+    }
     $filename = sisari1_commons_original_filename($url);
     if($filename !== ''){
-        return 'https://commons.wikimedia.org/wiki/Special:FilePath/' . rawurlencode($filename) . '?width=' . intval($width);
+        return plugins_url('images/' . $filename, __FILE__);
     }
     return $url;
 }
@@ -1164,13 +1171,13 @@ a{text-decoration:none;color:inherit}
       </div>
       <div class="bats-img-row">
         <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Rhinolophus_ferrumequinum.jpg/400px-Rhinolophus_ferrumequinum.jpg"
-               alt="Велики потковичар (Rhinolophus ferrumequinum)" loading="lazy" onerror="this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Rhinolophus_ferrumequinum.jpg?width=400';this.onerror=null;">
+          <img src="SISARI_IMG_URL/Rhinolophus_ferrumequinum.jpg"
+               alt="Велики потковичар (Rhinolophus ferrumequinum)" loading="lazy" onerror="this.src='SISARI_IMG_URL/Rhinolophus_ferrumequinum.jpg';this.onerror=null;">
           <figcaption>Велики потковичар · <em>Rhinolophus ferrumequinum</em> · Строго заштићена · CC BY-SA</figcaption>
         </figure>
         <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Myotis_myotis_head.jpg/400px-Myotis_myotis_head.jpg"
-               alt="Велики мишоуши вечерњак (Myotis myotis)" loading="lazy" onerror="this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Myotis_myotis_head.jpg?width=400';this.onerror=null;">
+          <img src="SISARI_IMG_URL/Myotis_myotis_head.jpg"
+               alt="Велики мишоуши вечерњак (Myotis myotis)" loading="lazy" onerror="this.src='SISARI_IMG_URL/Myotis_myotis_head.jpg';this.onerror=null;">
           <figcaption>Велики мишоуши вечерњак · <em>Myotis myotis</em> · Анекс II Хабитатне директиве · CC BY-SA</figcaption>
         </figure>
       </div>
@@ -1207,13 +1214,13 @@ a{text-decoration:none;color:inherit}
     <div class="potential-list">
 <?php
     $pot_species = [
-      ['slug'=>'canis-lupus',         'naziv'=>'Вук',                  'latin'=>'Canis lupus',        'note'=>'Рајац користи само као „саобраћајницу" при сезонском кретању.',               'foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20gray%20wolf%20%2852360324811%29.jpg?width=400'],
-      ['slug'=>'ursus-arctos',         'naziv'=>'Мрки медвед',          'latin'=>'Ursus arctos',       'note'=>'Крајње спорадична опажања. Не сматра се сталним фаунистичким саставом.',         'foto'=>'https://commons.wikimedia.org/wiki/Special:FilePath/European%20Brown%20Bear.jpg?width=400'],
-      ['slug'=>'lutra-lutra',          'naziv'=>'Видра',                'latin'=>'Lutra lutra',        'note'=>'Могућа повремена појава уз водотокове. IUCN NT — индикатор чистих вода.',          'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lutra_lutra.jpg/400px-Lutra_lutra.jpg'],
-      ['slug'=>'sorex-minutus',        'naziv'=>'Мала ровчица',         'latin'=>'Sorex minutus',      'note'=>'Погодна станишта присутна. Недостају директни теренски налази.',                   'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sorex_minutus.jpg/400px-Sorex_minutus.jpg'],
-      ['slug'=>'neomys-fodiens',       'naziv'=>'Водена ровчица',       'latin'=>'Neomys fodiens',     'note'=>'Везана за влажне обале потока и ивице мочвара.',                                   'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Neomys_fodiens.jpg/400px-Neomys_fodiens.jpg'],
-      ['slug'=>'crocidura-suaveolens', 'naziv'=>'Баштенска ровчица',    'latin'=>'Crocidura suaveolens','note'=>'Погодна станишта у рубним зонама насеља и баштама.',                            'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Crocidura_suaveolens.jpg/400px-Crocidura_suaveolens.jpg'],
-      ['slug'=>'crocidura-leucodon',   'naziv'=>'Пољска ровчица',       'latin'=>'Crocidura leucodon', 'note'=>'Очекивана на полуотвореним стаништима у периферним зонама.',                       'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Crocidura_leucodon.jpg/400px-Crocidura_leucodon.jpg'],
+      ['slug'=>'canis-lupus',         'naziv'=>'Вук',                  'latin'=>'Canis lupus',        'note'=>'Рајац користи само као „саобраћајницу" при сезонском кретању.',               'foto'=>'SISARI_IMG_URL/Canis_lupus_laying.jpg'],
+      ['slug'=>'ursus-arctos',         'naziv'=>'Мрки медвед',          'latin'=>'Ursus arctos',       'note'=>'Крајње спорадична опажања. Не сматра се сталним фаунистичким саставом.',         'foto'=>'SISARI_IMG_URL/Brown_bear.jpg'],
+      ['slug'=>'lutra-lutra',          'naziv'=>'Видра',                'latin'=>'Lutra lutra',        'note'=>'Могућа повремена појава уз водотокове. IUCN NT — индикатор чистих вода.',          'foto'=>'SISARI_IMG_URL/Lutra_lutra.jpg'],
+      ['slug'=>'sorex-minutus',        'naziv'=>'Мала ровчица',         'latin'=>'Sorex minutus',      'note'=>'Погодна станишта присутна. Недостају директни теренски налази.',                   'foto'=>'SISARI_IMG_URL/Sorex_minutus.jpg'],
+      ['slug'=>'neomys-fodiens',       'naziv'=>'Водена ровчица',       'latin'=>'Neomys fodiens',     'note'=>'Везана за влажне обале потока и ивице мочвара.',                                   'foto'=>'SISARI_IMG_URL/Neomys_fodiens.jpg'],
+      ['slug'=>'crocidura-suaveolens', 'naziv'=>'Баштенска ровчица',    'latin'=>'Crocidura suaveolens','note'=>'Погодна станишта у рубним зонама насеља и баштама.',                            'foto'=>'SISARI_IMG_URL/Crocidura_suaveolens.jpg'],
+      ['slug'=>'crocidura-leucodon',   'naziv'=>'Пољска ровчица',       'latin'=>'Crocidura leucodon', 'note'=>'Очекивана на полуотвореним стаништима у периферним зонама.',                       'foto'=>'SISARI_IMG_URL/Crocidura_leucodon.jpg'],
     ];
     foreach($pot_species as $ps):
         $url = isset($has_page[$ps['slug']]) ? get_permalink(get_page_by_path($ps['slug'],'OBJECT','sisari')->ID ?? 0) : '';
