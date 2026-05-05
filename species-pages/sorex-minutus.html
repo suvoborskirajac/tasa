@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мала ровчица — Sorex minutus | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Мала ровчица (Sorex minutus) — међу најмањим сисарима Европе, потенцијална врста ПИО Рајац.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2d5a27;
+    --forest-dark: #1a3a15;
+    --forest-light: #4a7c43;
+    --cream: #f7f4ef;
+    --warm-white: #fdfcfa;
+    --text: #2a2a2a;
+    --text-muted: #5a5a5a;
+    --border: #d8d0c4;
+    --accent: #8b6914;
+    --accent-warm: #c4500a;
+    --iucn-lc: #4caf50;
+    --section-bg: #f2f0eb;
+    --tag-bg: #e8f0e6;
+    --tag-border: #a8c4a4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.75; color: var(--text); background: var(--warm-white); }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--forest-dark); color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--forest-light); }
+  .site-header .logo { font-weight: 700; font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .site-header nav a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 20px; font-size: 12.5px; }
+  .site-header nav a:hover { color: #fff; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 0; }
+  .breadcrumb-bar .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: var(--text-muted); }
+  .breadcrumb-bar a { color: var(--forest); text-decoration: none; font-weight: 600; }
+  .breadcrumb-bar .sep { margin: 0 6px; opacity: 0.5; }
+
+  /* ── WRAP ── */
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  /* ── HERO ── */
+  .species-hero { text-align: center; padding: 8px 0 28px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .species-hero .common-name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 6px; }
+  .species-hero .latin-name { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--forest-light); margin-bottom: 14px; }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.03em; }
+  .badge-iucn { background: var(--iucn-lc); color: #fff; }
+  .badge-pred { background: #e8f0e6; color: var(--forest); border: 1px solid var(--tag-border); }
+
+  /* ── HERO IMAGE ── */
+  .hero-image-wrap { width: 100%; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow); aspect-ratio: 16/8; background: #d4b896; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .hero-image-wrap:hover img { transform: scale(1.02); }
+  .img-caption { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 30px; font-style: italic; padding: 0 16px; }
+
+  /* ── GALLERY ── */
+  .gallery-section { margin-bottom: 36px; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid figure { margin: 0; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #d4b896; box-shadow: var(--shadow); position: relative; cursor: pointer; }
+  .gallery-grid figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+  .gallery-grid figure:hover img { transform: scale(1.06); }
+  .gallery-grid figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 11px; padding: 22px 8px 7px; line-height: 1.35; opacity: 0; transition: opacity 0.25s; }
+  .gallery-grid figure:hover figcaption { opacity: 1; }
+  .img-credit { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: right; margin-top: 6px; }
+  .img-credit a { color: var(--forest); }
+
+  /* ── UPLOAD PLACEHOLDERS ── */
+  .gallery-grid figure.upload-slot {
+    background: var(--section-bg);
+    border: 2px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+  }
+  .gallery-grid figure.upload-slot:hover { box-shadow: var(--shadow); }
+  .upload-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    gap: 5px;
+    text-align: center;
+  }
+  .upload-placeholder .up-icon { font-size: 28px; }
+  .upload-placeholder .up-title { font-size: 12px; font-weight: 700; color: var(--forest-dark); line-height: 1.3; }
+  .upload-placeholder .up-hint { font-size: 10.5px; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+  .gallery-grid figure.upload-slot figcaption {
+    position: static;
+    opacity: 1;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 8px;
+    font-size: 10.5px;
+    font-style: italic;
+    line-height: 1.35;
+  }
+
+  /* ── TAXONOMY BOX ── */
+  .taxonomy-box { background: var(--section-bg); border: 1px solid var(--border); border-left: 4px solid var(--forest); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 36px; }
+  .taxonomy-box h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 14px; }
+  .taxonomy-box table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .taxonomy-box td { padding: 4px 8px 4px 0; }
+  .taxonomy-box td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; width: 110px; vertical-align: top; padding-top: 5px; }
+  .taxonomy-box td em { color: var(--forest-light); font-style: italic; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .content-section:last-of-type { border-bottom: none; }
+  .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 13px; display: flex; align-items: center; gap: 9px; }
+  .content-section p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  /* ── INLINE IMAGE ── */
+  .inline-img { float: right; margin: 0 0 16px 22px; width: 260px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .inline-img img { width: 100%; display: block; }
+  .inline-img figcaption { font-size: 11px; color: var(--text-muted); font-style: italic; padding: 6px 10px; background: var(--cream); border: 1px solid var(--border); border-top: none; line-height: 1.4; }
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* ── HIGHLIGHT / WARNING ── */
+  .highlight-box { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14.5px; line-height: 1.7; color: var(--forest-dark); }
+  .highlight-box strong { color: var(--forest); }
+  .warning-box { background: #fff8e6; border: 1px solid #e8cc88; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+  .warning-box strong { color: var(--accent); }
+
+  /* ── PROTECTION GRID ── */
+  .protection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .protection-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; }
+  .protection-card .pcard-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .protection-card .pcard-value { font-weight: 600; color: var(--forest-dark); }
+
+  /* ══════════════════════════════════════════
+     ── НОВЕ СЕКЦИЈЕ ──
+  ══════════════════════════════════════════ */
+
+  /* ── ФЕНОСЕЗОНСКИ КАЛЕНДАР ── */
+  .pheno-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .pheno-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .pheno-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .pheno-month {
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 2px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+  }
+  .pheno-month .m-name { display: block; font-size: 10px; opacity: 0.88; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .pheno-month .m-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  /* боје по активностима */
+  .ph-active    { background: var(--forest); }
+  .ph-mating    { background: #c4500a; }
+  .ph-young     { background: #e8a020; color: #3a2000; }
+  .ph-low       { background: #b0bfaa; color: #2a3a28; }
+
+  .pheno-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; margin-top: 10px; }
+  .pheno-legend span { display: flex; align-items: center; gap: 6px; }
+  .pheno-legend .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── ТРАГОВИ И ЗНАЦИ ── */
+  .tracks-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .tracks-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .track-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .track-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
+  .track-card p { font-size: 14px; line-height: 1.65; color: var(--text); }
+
+  .paw-diagram {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .paw-svg-wrap { text-align: center; }
+  .paw-svg-wrap svg { display: block; margin: 0 auto 6px; }
+  .paw-svg-wrap .paw-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .paw-specs { flex: 1; min-width: 180px; }
+  .paw-specs table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+  .paw-specs td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .paw-specs td:first-child { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; width: 130px; }
+  .paw-specs tr:last-child td { border-bottom: none; }
+
+  .track-photo-wrap { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .track-photo-wrap img { width: 100%; display: block; max-height: 260px; object-fit: cover; }
+  .track-photo-wrap figcaption { font-size: 11.5px; color: var(--text-muted); font-style: italic; padding: 7px 12px; background: var(--cream); border: 1px solid var(--border); border-top: none; }
+
+  /* ── ФОТО-ЗАМКЕ ── */
+  .camtrap-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .camtrap-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .camtrap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .camtrap-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--forest); border-radius: var(--radius); padding: 14px 15px; font-size: 14px; }
+  .camtrap-card .ct-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .camtrap-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 6px; }
+  .camtrap-card p { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .ct-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .ct-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .ct-link-btn:hover { background: var(--forest); color: #fff; }
+
+  /* ── NAV ── */
+  .species-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--border); gap: 12px; flex-wrap: wrap; }
+  .species-nav a { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 9px 16px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .species-nav a:hover { background: var(--forest); color: #fff; }
+  .species-nav .center-link { border: none !important; padding: 0 !important; font-size: 13px; color: var(--text-muted); }
+  .species-nav .center-link:hover { background: none !important; color: var(--forest) !important; }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 22px; font-size: 13px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 660px) {
+    .gallery-grid, .camtrap-grid { grid-template-columns: repeat(2, 1fr); }
+    .tracks-grid, .protection-grid { grid-template-columns: 1fr; }
+    .pheno-grid { grid-template-columns: repeat(6, 1fr); }
+    .species-hero .common-name { font-size: 1.9rem; }
+    .site-header nav { display: none; }
+    .inline-img { float: none; width: 100%; margin: 0 0 16px 0; }
+    .paw-diagram { flex-direction: column; }
+  }
+</style>
+<style>
+  .taxonomy-box{background:var(--section-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:24px}
+  .taxonomy-box h3{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:10px}
+  .taxonomy-box table{border-collapse:collapse;width:100%;font-size:13.5px}
+  .taxonomy-box td{padding:5px 10px 5px 0;vertical-align:top}
+  .taxonomy-box td:first-child{font-weight:700;color:var(--text-muted);font-size:12px;text-transform:uppercase;white-space:nowrap;width:30%}
+  .content-section{margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+  .content-section:last-of-type{border-bottom:none}
+  .section-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--forest-dark);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+  .highlight-box{background:var(--section-bg);border-left:4px solid var(--forest);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:14px;line-height:1.65}
+  .warning-box{background:#fff3cd;border:1px solid #ffc107;border-left:4px solid #e6a700;border-radius:8px;padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.6}
+  .inline-img{float:right;width:280px;margin:0 0 16px 24px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .inline-img img{width:100%;display:block}
+  .inline-img figcaption{font-size:11px;color:var(--text-muted);font-style:italic;padding:6px 8px;background:var(--cream);border:1px solid var(--border);border-top:none}
+  .clearfix::after{content:'';display:table;clear:both}
+  .pheno-section{margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+  .pheno-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:10px}
+  .pheno-month{text-align:center;padding:4px 2px;border-radius:5px}
+  .ph-active{background:#c8dfc4}
+  .ph-mating{background:#e8a060}
+  .ph-young{background:#e8c84a}
+  .ph-low{background:#d0d8e8}
+  .m-name{display:block;font-size:9px;font-weight:700;color:var(--text-muted);margin-bottom:3px}
+  .m-icon{display:block;font-size:14px}
+  .pheno-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-muted)}
+  .pheno-legend span{display:flex;align-items:center;gap:5px}
+  .dot{width:12px;height:12px;border-radius:3px;display:inline-block;flex-shrink:0}
+  .paw-diagram{display:flex;gap:24px;align-items:flex-start;background:var(--section-bg);border-radius:var(--radius);padding:16px;margin:14px 0}
+  .paw-svg-wrap{text-align:center;flex-shrink:0}
+  .paw-label{font-size:11px;color:var(--text-muted);margin-top:4px;font-style:italic}
+  .paw-specs table{border-collapse:collapse;font-size:13px;width:100%}
+  .paw-specs td{padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+  .paw-specs td:first-child{font-weight:700;color:var(--text-muted);font-size:11px;text-transform:uppercase;white-space:nowrap;width:35%}
+  .paw-specs tr:last-child td{border-bottom:none}
+  .tracks-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .track-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+  .track-card h4{font-size:13px;font-weight:700;color:var(--forest-dark);margin-bottom:6px}
+  .track-card p{font-size:13px;line-height:1.65;color:var(--text)}
+  .camtrap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+  .camtrap-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:13px}
+  .camtrap-card h4{font-size:13px;font-weight:700;color:var(--forest-dark);margin-bottom:6px}
+  .camtrap-card p{font-size:13px;line-height:1.65}
+  .ct-icon{font-size:22px;display:block;margin-bottom:6px}
+  .ct-links{display:flex;gap:10px;flex-wrap:wrap}
+  .ct-link-btn{display:inline-flex;align-items:center;gap:6px;background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:6px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none}
+  .ct-link-btn:hover{background:var(--forest);color:#fff}
+  .visitor-guide-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .guide-status-bar{border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:14px;font-size:15px;font-weight:700;line-height:1.4}
+  .gsb-icon{font-size:26px;flex-shrink:0;margin-top:1px}
+  .gsb-protect{background:#e8f4e8;border:1px solid #a8cca8;border-left:4px solid var(--forest);color:var(--forest-dark)}
+  .guide-rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .guide-rule{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 15px;font-size:14px;line-height:1.6;display:flex;gap:10px;align-items:flex-start}
+  .gr-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+  .gr-text strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:3px}
+  .rule-no{border-left:3px solid #e74c3c}
+  .rule-yes{border-left:3px solid var(--forest)}
+  .rule-inf{border-left:3px solid var(--accent)}
+  .contact-card{background:var(--section-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-top:14px;font-size:14px;line-height:1.7}
+  .hero-image-wrap{background:#d0c8ba;border-radius:var(--radius);overflow:hidden;margin-bottom:10px;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center}
+  .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+  .img-caption{font-size:11.5px;color:var(--text-muted);font-style:italic;margin-bottom:24px;text-align:right}
+  .gallery-section{margin-bottom:30px}
+  .section-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);font-weight:700;margin-bottom:12px}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .gallery-grid figure{border-radius:8px;overflow:hidden;box-shadow:var(--shadow);background:#c0b8a8}
+  .gallery-grid figure img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .gallery-grid figcaption{font-size:11px;color:var(--text-muted);font-style:italic;padding:5px 8px;background:var(--cream);border:1px solid var(--border);border-top:none}
+  .upload-slot{background:var(--section-bg);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center}
+  .upload-placeholder{text-align:center;padding:20px}
+  .up-icon{font-size:28px;display:block;margin-bottom:6px}
+  .up-title{display:block;font-size:13px;font-weight:700;color:var(--forest)}
+  .up-hint{display:block;font-size:11px;color:var(--text-muted);margin-top:4px}
+  .species-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:2px solid var(--border);gap:10px;flex-wrap:wrap}
+  .species-nav a{font-size:13px;font-weight:600;color:var(--forest);padding:8px 16px;border:1.5px solid var(--tag-border);border-radius:7px;background:var(--tag-bg);transition:all .18s}
+  .species-nav a:hover{background:var(--forest);color:#fff}
+  .species-nav .center-link{background:var(--forest);color:#fff;border-color:var(--forest)}
+  @media(max-width:620px){.inline-img{float:none;width:100%;margin:0 0 16px 0}.tracks-grid,.camtrap-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr}.pheno-grid{grid-template-columns:repeat(6,1fr)}.guide-rules{grid-template-columns:1fr}.paw-diagram{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs">ПИО „Рајац"</a><span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a><span class="sep">›</span>
+    Мала ровчица — <em>Sorex minutus</em>
+  </div>
+</div>
+<main class="page-wrap">
+<div class="species-hero">
+  <h1 class="common-name">Мала ровчица</h1>
+  <div class="latin-name"><em>Sorex minutus</em></div>
+  <div class="badges">
+    <span class="badge" style="background:#4caf50;color:#fff">IUCN LC — Минимална забринутост</span>
+    <span class="badge" style="background:#e8f4e8;color:#2d5a27;border:1px solid #a8cca8">🟡 Потенцијална врста</span>
+    <span class="badge" style="background:#e8f0e6;color:#2d5a27;border:1px solid #a8c4a4">Eulipotyphla — Бубоједи</span>
+  </div>
+</div>
+<div class="hero-image-wrap">
+  <img src="SISARI_IMG_URL/Sorex_minutus.jpg" alt="Мала ровчица" onerror="this.src='SISARI_IMG_URL/Sorex_minutus_crop.jpg';this.onerror=null;">
+</div>
+<p class="img-caption">Мала ровчица (<em>Sorex minutus</em>) — природно станиште. © Wikimedia Commons CC BY-SA 4.0</p>
+<div class="gallery-section">
+  <div class="section-label">□ Галерија</div>
+  <div class="gallery-grid">
+    <figure>
+      <img src="SISARI_IMG_URL/Sorex_minutus.jpg" alt="Мала ровчица" loading="lazy" onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Мала ровчица · Wikimedia CC BY-SA</figcaption>
+    </figure>
+    <figure>
+      <img src="SISARI_IMG_URL/Sorex_minutus_crop.jpg" alt="Мала ровчица" loading="lazy" onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Мала ровчица — природно станиште</figcaption>
+    </figure>
+    <figure>
+      <img src="SISARI_IMG_URL/Sorex_minutus_palm.jpg" alt="Мала ровчица — величина врсте јасно се види у односу на длан" loading="lazy" onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Мала ровчица — величина врсте јасно се види у односу на длан</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="taxonomy-box"><h3>□ Таксономија</h3><table>
+  <tr><td>Ред:</td><td><em>Eulipotyphla</em></td></tr>
+  <tr><td>Породица:</td><td><em>Soricidae</em></td></tr>
+  <tr><td>Врста:</td><td><em>Sorex minutus</em> Linnaeus, 1766</td></tr>
+  <tr><td>Статус:</td><td>IUCN LC · Заштићена — Закон о заштити природе</td></tr>
+  <tr><td>Маса:</td><td>2,5–7,5 g — међу најмањим сисарима Европе</td></tr>
+  <tr><td>Дужина:</td><td>4,5–6,5 cm тело + реп 3–4,5 cm</td></tr>
+</table></div>
+
+<div class="content-section clearfix">
+  <h2 class="section-title"><span>🔍</span> Морфологија — мала сестра шумске ровчице</h2>
+  <figure class="inline-img">
+    <img src="SISARI_IMG_URL/Sorex_minutus.jpg" alt="мала ровчица" loading="lazy" onerror="this.style.display='none';this.parentElement.style.display='none'">
+    <figcaption>Sorex minutus — карактеристично дугачак реп · CC BY-SA</figcaption>
+  </figure>
+  <p>Мала ровчица је <strong>међу три-четири најмања сисара Европе</strong>, само нешто мања од шумске ровчице (<em>Sorex araneus</em>). Кључна разлика: <strong>реп изузетно дугачак</strong> у односу на тело — 75–100% дужине тела, за разлику од шумске ровчице (60–70%). Длака тамносмеђа горе, светлија испод.</p>
+  <p>Нос дугачак и покретљив — типичан за ровчице. Зуби пигментирани смеђе-наранџасто (карактеристично за <em>Sorex</em> род). Очи минијатурне. Уши кратке, скривене у длаци.</p>
+  <div class="highlight-box"><strong>Мала ровчица vs. Шумска ровчица:</strong> Величина слична, али реп мале ровчице пропорционално знатно дужи. У руци: шумска ровчица тежа (5–14 g), мала лакша (2,5–7,5 g). Обе имају јак мускусни мирис.</div>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🌿</span> Станиште на Рајцу</h2>
+  <p>Мала ровчица преферира <strong>влажније шумске стазе и ивице</strong>, маховинске покривене подлоге, камените шумске пределе. На Рајцу — потенцијалне локације: буково-граброве шуме са гушћим маховинским покривачем, ивице потока. Вероватно присутна али тешко детектовати.</p>
+  <p>Нема хибернацију. Активна 365 дана — и при -20°C. Мора јести сваких 2–3 сата. Ноћна и сутоначна активност, али и дневна.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🦎</span> Исхрана — инсекти и паукови</h2>
+  <p>Ларве инсеката, земљани црви, паукови, мали пужеви. Хвата пацифике плен на тлу и у листинцу. Изузетно активан метаболизам — поједе 1–1,5× своје телесне масе дневно.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+  <p>Парење март–август. 2–4 легла годишње. 4–8 младих по леглу. Гнездо куглолико у маховини или испод камена. Животни век само 12–18 месеци — jedna од najkraćih životnih veka kod sisara.</p>
+</div>
+
+
+  <!-- ЗАШТИТА И СТАТУС -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>Мала ровчица је строго заштићена у Србији. Најмањи сисар Европе — изузетно осетљив на поремећаје у станишту. Потребна јој су влажна, нетакнута шумска станишта каква пружа Рајац.</p>
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — Најмање забрињавајућа</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Строго заштићена дивља врста</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Бернска конвенција</div>
+        <div class="pcard-value">Анекс III</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Мачке, пестициди, уклањање влажних станишта</div>
+      </div>
+    </div>
+  </div>
+
+<div class="pheno-section"><h2 class="section-title"><span>🗓</span> Феносезонски календар</h2><div class="pheno-grid"><div class="pheno-month ph-active"><span class="m-name">ЈАН</span><span class="m-icon">❄️</span></div><div class="pheno-month ph-active"><span class="m-name">ФЕБ</span><span class="m-icon">❄️</span></div><div class="pheno-month ph-mating"><span class="m-name">МАР</span><span class="m-icon">💕</span></div><div class="pheno-month ph-mating"><span class="m-name">АПР</span><span class="m-icon">💕</span></div><div class="pheno-month ph-young"><span class="m-name">МАЈ</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-young"><span class="m-name">ЈУН</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-young"><span class="m-name">ЈУЛ</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-young"><span class="m-name">АВГ</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🌿</span></div><div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🌿</span></div><div class="pheno-month ph-active"><span class="m-name">НОВ</span><span class="m-icon">❄️</span></div><div class="pheno-month ph-active"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div></div><div class="pheno-legend"><span><span class="dot" style="background:#e8a060"></span> Парење (март–апр)</span><span><span class="dot" style="background:#e8c84a"></span> Легло — 2–4 год.</span><span><span class="dot" style="background:#4a7c43"></span> Активна 365 дана</span></div></div>
+
+<div class="tracks-section content-section">
+  <h2 class="section-title"><span>🐾</span> Трагови и детекција</h2>
+  <div class="paw-diagram">
+  <div class="paw-svg-wrap">
+    <svg width="55" height="72" viewBox="0 0 55 72" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="27" cy="50" rx="8" ry="6" fill="#3a5828" opacity="0.82"/>
+      <ellipse cx="10" cy="41" rx="5" ry="7" fill="#3a5828" opacity="0.82"/>
+      <ellipse cx="20" cy="36" rx="5" ry="7" fill="#3a5828" opacity="0.82"/>
+      <ellipse cx="34" cy="36" rx="5" ry="7" fill="#3a5828" opacity="0.82"/>
+      <ellipse cx="44" cy="41" rx="5" ry="7" fill="#3a5828" opacity="0.82"/>
+      <line x1="10" y1="34" x2="8" y2="26" stroke="#1a3818" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="20" y1="28" x2="18" y2="20" stroke="#1a3818" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="34" y1="28" x2="36" y2="20" stroke="#1a3818" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="44" y1="34" x2="47" y2="26" stroke="#1a3818" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="2" y1="64" x2="53" y2="64" stroke="#aaa" stroke-width="1"/>
+      <text x="27" y="71" text-anchor="middle" font-size="8" fill="#888">~0,8 cm</text>
+    </svg>
+    <div class="paw-label">Задња шапа</div>
+  </div>
+  <div class="paw-specs"><table>
+    <tr><td>Задња шапа</td><td>~0,8–1,0 cm — мале 5 прста</td></tr>
+    <tr><td>Образац</td><td>Минијатурни лунарни образац, ретко видљив</td></tr>
+    <tr><td>Детекција</td><td>Практично немогућа по траговима — само хватање у живу замку</td></tr>
+    <tr><td>Нос</td><td>Шиљаст носни наставак — кључан теренски знак</td></tr>
+  </table></div>
+</div>
+  <div class="tracks-grid">
+    <div class="track-card"><h4>🔬 Живе замке</h4><p>Jedini pouzdan metod. Mala rovčica ne ulazi u klasične mišje zamke — koriste se Sherman live trap ili Longworth trap. Обавезна дозвола за хватање заштићених врста.</p></div>
+    <div class="track-card"><h4>🐈 Мачке</h4><p>Мачке убијају ровчице, али не поједу (мирис). Пронађен леш ровчице без видљивих повреда — вероватна мачка. Добар метод за случајну детекцију.</p></div>
+    <div class="track-card"><h4>🦉 Исправља сова</h4><p>Анализа сова-исплувака (pellets) — сигуран доказ присуства. Кости лубање у исплувку јасно показују дужину нозa малих зуба.</p></div>
+    <div class="track-card"><h4>📡 iNaturalist</h4><p>Пријавите свако опажање — посебно вредна фотографска документација. Чак и леш нађен у шуми је важан налаз.</p></div>
+  </div>
+</div>
+
+<div class="camtrap-section content-section">
+  <h2 class="section-title"><span>📷</span> Фото-замке — изазовна врста</h2>
+  <div class="camtrap-grid">
+    <div class="camtrap-card"><span class="ct-icon">📍</span><h4>Где</h4><p>Поред шумских потока, испод камења у влажним деловима шуме, маховинске зоне.</p></div>
+    <div class="camtrap-card"><span class="ct-icon">📐</span><h4>Висина</h4><p><strong>5–10 cm</strong> — скоро тло. Врло осетљив PIR сензор — ровчица је мала за стандардне камере.</p></div>
+    <div class="camtrap-card"><span class="ct-icon">🌙</span><h4>Активност</h4><p>Лети у сумрак и ноћу. Зими и дању. Непрекидна активност (мора да јeде).</p></div>
+  </div>
+  <div class="ct-links">
+    <a href="https://www.inaturalist.org/taxa/43826-Sorex-minutus" class="ct-link-btn" target="_blank">📍 iNaturalist</a>
+    <a href="https://gbif.org/species/2436342" class="ct-link-btn" target="_blank">🗺️ GBIF</a>
+  </div>
+</div>
+<div class="visitor-guide-section">
+  <h2 class="section-title"><span>🧭</span> Водич за посетиоце</h2>
+  <div class="guide-status-bar gsb-protect">
+    <span class="gsb-icon">🟢</span>
+    <div><div>ЗАШТИЋЕНА ВРСТА — Закон о заштити природе Р. Србије</div>
+    <div style="font-weight:400;font-size:13px;margin-top:4px">Узнемиравање, хватање или убијање строго забрањено на подручју ПИО „Рајац".</div></div>
+  </div>
+  <div class="guide-rules">
+    <div class="guide-rule rule-no"><span class="gr-icon">🚫</span><div class="gr-text"><strong>Забрањено</strong>Хватање и узнемиравање без дозволе.</div></div>
+    <div class="guide-rule rule-yes"><span class="gr-icon">📷</span><div class="gr-text"><strong>Фотографисање ОК</strong>Са безбедне удаљености.</div></div>
+    <div class="guide-rule rule-inf"><span class="gr-icon">🌿</span><div class="gr-text"><strong>Кретање стазама</strong>Само обележеним стазама.</div></div>
+    <div class="guide-rule rule-inf"><span class="gr-icon">📱</span><div class="gr-text"><strong>Пријава налаза</strong>iNaturalist — прикупљамо теренске податке.</div></div>
+  </div>
+  <div class="contact-card"><strong>📷 Помозите науци:</strong> Пријавите налаз ровчице на iNaturalist — подаци су кључни за процену стварне заступљености ових врста на Рајцу.</div>
+</div>
+<nav class="species-nav">
+  <a href="https://piorajac.rs/sisari/sorex-araneus/">← Шумска ровчица</a>
+  <a href="https://piorajac.rs/sisari" class="center-link">📋 Сисари Рајца</a>
+  <a href="https://piorajac.rs/sisari/neomys-fodiens/">Водена ровчица →</a>
+</nav>
+</main>
+<footer class="site-footer">Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг</footer>
+</body>
+</html>

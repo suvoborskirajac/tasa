@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шумски миш | Сисари Рајца</title>
+<meta name="description" content="Шумски миш — заштићена врста шумских ивица и башта, сродник жутогрлог миша.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2d5a27;
+    --forest-dark: #1a3a15;
+    --forest-light: #4a7c43;
+    --cream: #f7f4ef;
+    --warm-white: #fdfcfa;
+    --text: #2a2a2a;
+    --text-muted: #5a5a5a;
+    --border: #d8d0c4;
+    --accent: #8b6914;
+    --accent-warm: #c4500a;
+    --iucn-lc: #4caf50;
+    --section-bg: #f2f0eb;
+    --tag-bg: #e8f0e6;
+    --tag-border: #a8c4a4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.75; color: var(--text); background: var(--warm-white); }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--forest-dark); color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--forest-light); }
+  .site-header .logo { font-weight: 700; font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .site-header nav a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 20px; font-size: 12.5px; }
+  .site-header nav a:hover { color: #fff; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 0; }
+  .breadcrumb-bar .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: var(--text-muted); }
+  .breadcrumb-bar a { color: var(--forest); text-decoration: none; font-weight: 600; }
+  .breadcrumb-bar .sep { margin: 0 6px; opacity: 0.5; }
+
+  /* ── WRAP ── */
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  /* ── HERO ── */
+  .species-hero { text-align: center; padding: 8px 0 28px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .species-hero .common-name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 6px; }
+  .species-hero .latin-name { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--forest-light); margin-bottom: 14px; }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.03em; }
+  .badge-iucn { background: var(--iucn-lc); color: #fff; }
+  .badge-pred { background: #e8f0e6; color: var(--forest); border: 1px solid var(--tag-border); }
+
+  /* ── HERO IMAGE ── */
+  .hero-image-wrap { width: 100%; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow); aspect-ratio: 16/8; background: #d4b896; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .hero-image-wrap:hover img { transform: scale(1.02); }
+  .img-caption { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 30px; font-style: italic; padding: 0 16px; }
+
+  /* ── GALLERY ── */
+  .gallery-section { margin-bottom: 36px; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid figure { margin: 0; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #d4b896; box-shadow: var(--shadow); position: relative; cursor: pointer; }
+  .gallery-grid figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+  .gallery-grid figure:hover img { transform: scale(1.06); }
+  .gallery-grid figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 11px; padding: 22px 8px 7px; line-height: 1.35; opacity: 0; transition: opacity 0.25s; }
+  .gallery-grid figure:hover figcaption { opacity: 1; }
+  .img-credit { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: right; margin-top: 6px; }
+  .img-credit a { color: var(--forest); }
+
+  /* ── UPLOAD PLACEHOLDERS ── */
+  .gallery-grid figure.upload-slot {
+    background: var(--section-bg);
+    border: 2px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+  }
+  .gallery-grid figure.upload-slot:hover { box-shadow: var(--shadow); }
+  .upload-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    gap: 5px;
+    text-align: center;
+  }
+  .upload-placeholder .up-icon { font-size: 28px; }
+  .upload-placeholder .up-title { font-size: 12px; font-weight: 700; color: var(--forest-dark); line-height: 1.3; }
+  .upload-placeholder .up-hint { font-size: 10.5px; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+  .gallery-grid figure.upload-slot figcaption {
+    position: static;
+    opacity: 1;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 8px;
+    font-size: 10.5px;
+    font-style: italic;
+    line-height: 1.35;
+  }
+
+  /* ── TAXONOMY BOX ── */
+  .taxonomy-box { background: var(--section-bg); border: 1px solid var(--border); border-left: 4px solid var(--forest); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 36px; }
+  .taxonomy-box h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 14px; }
+  .taxonomy-box table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .taxonomy-box td { padding: 4px 8px 4px 0; }
+  .taxonomy-box td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; width: 110px; vertical-align: top; padding-top: 5px; }
+  .taxonomy-box td em { color: var(--forest-light); font-style: italic; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .content-section:last-of-type { border-bottom: none; }
+  .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 13px; display: flex; align-items: center; gap: 9px; }
+  .content-section p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  /* ── INLINE IMAGE ── */
+  .inline-img { float: right; margin: 0 0 16px 22px; width: 260px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .inline-img img { width: 100%; display: block; }
+  .inline-img figcaption { font-size: 11px; color: var(--text-muted); font-style: italic; padding: 6px 10px; background: var(--cream); border: 1px solid var(--border); border-top: none; line-height: 1.4; }
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* ── HIGHLIGHT / WARNING ── */
+  .highlight-box { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14.5px; line-height: 1.7; color: var(--forest-dark); }
+  .highlight-box strong { color: var(--forest); }
+  .warning-box { background: #fff8e6; border: 1px solid #e8cc88; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+  .warning-box strong { color: var(--accent); }
+
+  /* ── PROTECTION GRID ── */
+  .protection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .protection-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; }
+  .protection-card .pcard-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .protection-card .pcard-value { font-weight: 600; color: var(--forest-dark); }
+
+  /* ══════════════════════════════════════════
+     ── НОВЕ СЕКЦИЈЕ ──
+  ══════════════════════════════════════════ */
+
+  /* ── ФЕНОСЕЗОНСКИ КАЛЕНДАР ── */
+  .pheno-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .pheno-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .pheno-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .pheno-month {
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 2px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+  }
+  .pheno-month .m-name { display: block; font-size: 10px; opacity: 0.88; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .pheno-month .m-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  /* боје по активностима */
+  .ph-active    { background: var(--forest); }
+  .ph-mating    { background: #c4500a; }
+  .ph-young     { background: #e8a020; color: #3a2000; }
+  .ph-low       { background: #b0bfaa; color: #2a3a28; }
+
+  .pheno-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; margin-top: 10px; }
+  .pheno-legend span { display: flex; align-items: center; gap: 6px; }
+  .pheno-legend .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── ТРАГОВИ И ЗНАЦИ ── */
+  .tracks-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .tracks-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .track-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .track-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
+  .track-card p { font-size: 14px; line-height: 1.65; color: var(--text); }
+
+  .paw-diagram {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .paw-svg-wrap { text-align: center; }
+  .paw-svg-wrap svg { display: block; margin: 0 auto 6px; }
+  .paw-svg-wrap .paw-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .paw-specs { flex: 1; min-width: 180px; }
+  .paw-specs table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+  .paw-specs td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .paw-specs td:first-child { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; width: 130px; }
+  .paw-specs tr:last-child td { border-bottom: none; }
+
+  .track-photo-wrap { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .track-photo-wrap img { width: 100%; display: block; max-height: 260px; object-fit: cover; }
+  .track-photo-wrap figcaption { font-size: 11.5px; color: var(--text-muted); font-style: italic; padding: 7px 12px; background: var(--cream); border: 1px solid var(--border); border-top: none; }
+
+  /* ── ФОТО-ЗАМКЕ ── */
+  .camtrap-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .camtrap-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .camtrap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .camtrap-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--forest); border-radius: var(--radius); padding: 14px 15px; font-size: 14px; }
+  .camtrap-card .ct-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .camtrap-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 6px; }
+  .camtrap-card p { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .ct-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .ct-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .ct-link-btn:hover { background: var(--forest); color: #fff; }
+
+  /* ── NAV ── */
+  .species-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--border); gap: 12px; flex-wrap: wrap; }
+  .species-nav a { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 9px 16px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .species-nav a:hover { background: var(--forest); color: #fff; }
+  .species-nav .center-link { border: none !important; padding: 0 !important; font-size: 13px; color: var(--text-muted); }
+  .species-nav .center-link:hover { background: none !important; color: var(--forest) !important; }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 22px; font-size: 13px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 660px) {
+    .gallery-grid, .camtrap-grid { grid-template-columns: repeat(2, 1fr); }
+    .tracks-grid, .protection-grid { grid-template-columns: 1fr; }
+    .pheno-grid { grid-template-columns: repeat(6, 1fr); }
+    .species-hero .common-name { font-size: 1.9rem; }
+    .site-header nav { display: none; }
+    .inline-img { float: none; width: 100%; margin: 0 0 16px 0; }
+    .paw-diagram { flex-direction: column; }
+  }
+</style>
+<style>
+  .visitor-guide-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .visitor-guide-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .guide-status-bar { border-radius: var(--radius); padding: 14px 20px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 14px; font-size: 15px; font-weight: 700; line-height: 1.4; }
+  .guide-status-bar .gsb-icon { font-size: 26px; flex-shrink: 0; margin-top: 1px; }
+  .gsb-protect { background: #e8f4e8; border: 1px solid #a8cca8; border-left: 4px solid var(--forest); color: var(--forest-dark); }
+  .guide-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .guide-rule { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 15px; font-size: 14px; line-height: 1.6; display: flex; gap: 10px; align-items: flex-start; }
+  .guide-rule .gr-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .guide-rule .gr-text strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 3px; }
+  .guide-rule.rule-no { border-left: 3px solid #e74c3c; }
+  .guide-rule.rule-yes { border-left: 3px solid var(--forest); }
+  .guide-rule.rule-inf { border-left: 3px solid var(--accent); }
+  .contact-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 20px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 14px; }
+  .compare-table th { background: var(--forest); color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; padding: 8px 12px; text-align: left; }
+  .compare-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+  .compare-table tr:nth-child(even) td { background: var(--section-bg); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+  @media (max-width: 660px) { .guide-rules { grid-template-columns: 1fr; } }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+<div class="breadcrumb-bar"><div class="inner">
+  <a href="https://piorajac.rs">ПИО „Рајац"</a><span class="sep">›</span>
+  <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a><span class="sep">›</span>
+  Шумски миш
+</div></div>
+<main class="page-wrap">
+<div class="species-hero">
+  <h1 class="common-name">Шумски миш</h1>
+  <div class="latin-name"><em>Apodemus sylvaticus (Linnaeus, 1758)</em></div>
+  <div class="badges">
+    <span class="badge" style="background:#4caf50;color:#fff">IUCN LC — Наjмање забрињавуjућа</span>
+    <span class="badge" style="background:#e8f4e8;color:#2d5a27;border:1px solid currentColor">🟢 Заштићена</span>
+  </div>
+</div>
+<div class="hero-image-wrap">
+  <img src="SISARI_IMG_URL/Apodemus_sylvaticus.jpg" alt="Шумски миш" onerror="this.src='SISARI_IMG_URL/Apodemus_sylvaticus_bosmuis.jpg';this.onerror=null;">
+</div>
+<p class="img-caption">Шумски миш (<em>Apodemus sylvaticus (Linnaeus, 1758)</em>) — природно станиште. © Wikimedia Commons CC BY-SA 4.0</p>
+<div class="gallery-section">
+  <div class="section-label">□ Галерија</div>
+  <div class="gallery-grid">
+    <figure>
+      <img src="SISARI_IMG_URL/Apodemus_sylvaticus_bosmuis.jpg" alt="Шумски миш" loading="lazy" onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Шумски миш — светлосмеђа боja, без жуте огрлице</figcaption>
+    </figure>
+    <figure>
+      <img src="SISARI_IMG_URL/Apodemus_sylvaticus.jpg" alt="Шумски миш" loading="lazy" onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Шумски миш у природном станишту — шумска ивица</figcaption>
+    </figure>
+        <figure>
+      <img src="SISARI_IMG_URL/Apodemus_sylvaticus_(29467493571).jpg" alt="Шумски миш — у подлози листопадне шуме" loading="lazy"
+           onerror="this.src='SISARI_IMG_URL/Apodemus_sylvaticus.JPG';this.onerror=null;">
+      <figcaption>Шумски миш на шумском тлу — дуг реп, крупне уши и изражено скоковито кретање</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="taxonomy-box"><h3>□ Таксономија</h3><table>
+  <tr><td>Ред:</td><td><em>Rodentia</em></td></tr>
+  <tr><td>Породица:</td><td><em>Muridae</em></td></tr>
+  <tr><td>Врста:</td><td><em>Apodemus sylvaticus</em> (Linnaeus, 1758)</td></tr>
+  <tr><td>Статус:</td><td>IUCN LC · Заштићена врста у Србији</td></tr>
+  <tr><td>Маса / дужина:</td><td>14–25 g · 7,5–11 cm + реп 7–11 cm</td></tr>
+</table></div>
+
+<div class="content-section clearfix">
+  <h2 class="section-title"><span>🔍</span> Морфологија и разликовање</h2>
+  <figure class="inline-img">
+    <img src="SISARI_IMG_URL/Wood_mouse_(Apodemus_sylvaticus).jpg" alt="шумски миш" loading="lazy" onerror="this.style.display='none';this.parentElement.style.display='none'">
+    <figcaption>Шумски миш — без жуте огрлице, нешто ситниjи · CC BY-SA</figcaption>
+  </figure>
+  <p>Шумски миш је веома сличан жутогрлом мишу — кључна разлика je <strong>мала или одсутна пега на грлу</strong>. Нешто ситниjи, реп приближно исте дужине. Крзно смеђе, трбух светлосив.</p>
+  <p>На Рajцу чешћи на ивицама шуме, у шикарjу, баштама, воћњацима. Жутогрли мишмиш доминира у унутрашњости шуме.</p>
+  <div style="overflow-x:auto"><table class="compare-table">
+    <thead><tr><th>Особина</th><th>Жутогрли миш</th><th>Шумски миш</th></tr></thead>
+    <tbody>
+      <tr><td>Тежина</td><td>14–35 g</td><td>14–25 g</td></tr>
+      <tr><td>Грлна пега</td><td>Жута, велика, огрлица</td><td>Мала или одсутна</td></tr>
+      <tr><td>Станиште</td><td>Дубока шума</td><td>Шумска ивица, баште</td></tr>
+      <tr><td>Пењање</td><td>До 10 m</td><td>До 5 m</td></tr>
+      <tr><td>Реп</td><td>Дужи од тела</td><td>≈ дужина тела</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🌿</span> Станиште</h2>
+  <p>Генералист — шумске ивице, живице, шикарje, баште, воћњаци. Присутан у свим зонама Рajца са вегетациjским покривачем. Ревион 0,3–1,5 ha.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🍃</span> Исхрана и биологија</h2>
+  <p>Семена, инсекти, воће, гљиве. У пољопривредним зонама уз Рajац може јести кукуруз и жито. У шуми — природни дисперзер семена. Не хибернира — активна цела зима.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+  <p>Парење март–новембар. Бременитост 25–26 дана. Леглo 4–7 младих. До 4 легла годишnje. Полна зрелост са 8 недеља. Животни веk 12–20 месеци у природи.</p>
+</div>
+
+
+  <!-- ЗАШТИТА И СТАТУС -->
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>Шумски миш је заштићена врста у Србији. Широко распрострањен и адаптибилан, али осетљив на употребу родентицида. Важна карика у ланцу исхране — главни плен куна, лисица и сова на Рајцу.</p>
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — Најмање забрињавајућа</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Заштићена дивља врста</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Бернска конвенција</div>
+        <div class="pcard-value">Анекс III</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Пестициди, мачке, уклањање живица</div>
+      </div>
+    </div>
+  </div>
+
+<div class="pheno-section"><h2 class="section-title"><span>🗓</span> Календар активности</h2><div class="pheno-grid"><div class="pheno-month ph-active"><span class="m-name">ЈАН</span><span class="m-icon">❄️</span></div><div class="pheno-month ph-active"><span class="m-name">ФЕБ</span><span class="m-icon">🌫</span></div><div class="pheno-month ph-mating"><span class="m-name">МАР</span><span class="m-icon">💕</span></div><div class="pheno-month ph-mating"><span class="m-name">АПР</span><span class="m-icon">💕</span></div><div class="pheno-month ph-young"><span class="m-name">МАЈ</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-young"><span class="m-name">ЈУН</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-young"><span class="m-name">ЈУЛ</span><span class="m-icon">🐾</span></div><div class="pheno-month ph-active"><span class="m-name">АВГ</span><span class="m-icon">🌿</span></div><div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🌰</span></div><div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🌰</span></div><div class="pheno-month ph-mating"><span class="m-name">НОВ</span><span class="m-icon">💕</span></div><div class="pheno-month ph-active"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div></div><div class="pheno-legend"><span><span class="dot" style="background:#c4500a"></span> Парење (мар–нов)</span><span><span class="dot" style="background:#e8a020"></span> Легла</span><span><span class="dot" style="background:#2d5a27"></span> Активна 365 дана — не хибернира</span></div></div>
+
+<div class="tracks-section">
+  <h2 class="section-title"><span>🐾</span> Трагови — практично исти као жутогрли миш</h2>
+  <div class="paw-diagram">
+  <div class="paw-svg-wrap">
+    <svg width="70" height="90" viewBox="0 0 70 90" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="35" cy="62" rx="9" ry="7" fill="#6a5238" opacity="0.85"/>
+      <ellipse cx="17" cy="52" rx="5.5" ry="7" fill="#6a5238" opacity="0.85"/>
+      <ellipse cx="28" cy="47" rx="5.5" ry="7" fill="#6a5238" opacity="0.85"/>
+      <ellipse cx="42" cy="47" rx="5.5" ry="7" fill="#6a5238" opacity="0.85"/>
+      <ellipse cx="53" cy="52" rx="5.5" ry="7" fill="#6a5238" opacity="0.85"/>
+      <ellipse cx="9" cy="58" rx="4" ry="5.5" fill="#6a5238" opacity="0.7"/>
+      <line x1="17" y1="43" x2="15" y2="36" stroke="#3a2a18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="28" y1="38" x2="27" y2="31" stroke="#3a2a18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="42" y1="38" x2="43" y2="31" stroke="#3a2a18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="53" y1="43" x2="56" y2="36" stroke="#3a2a18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="3" y1="83" x2="67" y2="83" stroke="#aaa" stroke-width="1"/>
+      <text x="35" y="91" text-anchor="middle" font-size="8.5" fill="#888">1–1,5 cm</text>
+    </svg>
+    <div class="paw-label">Предња шапа</div>
+  </div>
+  <div class="paw-specs"><table>
+    <tr><td>Предња шапа</td><td>1–1,5 cm — 4 прста + мали палац</td></tr>
+    <tr><td>Задња шапа</td><td>1,5–2 cm — 5 прстова широко</td></tr>
+    <tr><td>Образац</td><td>Скок — задње испред предних</td></tr>
+    <tr><td>Корак</td><td>5–15 cm ход, до 40 cm при бегу</td></tr>
+    <tr><td>Реп</td><td>Танка линија у снегу</td></tr>
+  </table></div>
+</div>
+  <div class="tracks-grid">
+    <div class="track-card"><h4>❄️ Траг у снегу</h4><p>Готово идентичан жутогрлом мишу. Разликовање по контексту: шумска ивица vs. унутрашњост шуме. Задња шапа: отисак 1,3–1,8 cm.</p></div>
+    <div class="track-card"><h4>🕳️ Рупа</h4><p>2–3 cm пречника, чешћа при шумским ивицама и травнатим зонама. Без гомиле земље поред улаза.</p></div>
+    <div class="track-card"><h4>🌰 Знаци исхране</h4><p>Изгризене jабуке и шљиве у воћњаку. Угризен клас жита. Неравни прогриз на жиру и лешнику.</p></div>
+    <div class="track-card"><h4>🏠 Гнездо</h4><p>Округло 8–12 cm у тунелу или шупљини корена — трава, маховина, лишће. Повремено у кућним подрумима близу шуме.</p></div>
+  </div>
+</div>
+
+<div class="camtrap-section">
+  <h2 class="section-title"><span>📷</span> Фото-замке</h2>
+  <div class="camtrap-grid">
+    <div class="camtrap-card"><span class="ct-icon">📍</span><h4>Где поставити</h4><p>Шумска ивица, живице, испод воћака. Поред рупа при основи дрвећа.</p></div>
+    <div class="camtrap-card"><span class="ct-icon">📐</span><h4>Висина</h4><p><strong>5–15 cm</strong>. Пожељна двострука резолуциjа — помаже при разликовању врста (жута пега!).</p></div>
+    <div class="camtrap-card"><span class="ct-icon">🌙</span><h4>Активност</h4><p>21–04 ч. Активна цело лето. Окт: скупљање залиха.</p></div>
+  </div>
+  <div class="ct-links">
+    <a href="https://www.inaturalist.org/taxa/45826-Apodemus-sylvaticus" class="ct-link-btn" target="_blank">📍 iNaturalist</a>
+    <a href="https://gbif.org/species/2438820" class="ct-link-btn" target="_blank">🗺️ GBIF</a>
+  </div>
+</div>
+<div class="visitor-guide-section">
+  <h2 class="section-title"><span>🧭</span> Водич за посетиоце — Шта треба знати</h2>
+  <div class="guide-status-bar gsb-protect">
+    <span class="gsb-icon">🟢</span>
+    <div>
+      <div>ЗАШТИЋЕНА ВРСТА — Закон о заштити природе Р. Србије</div>
+      <div style="font-weight:400;font-size:13px;margin-top:4px">Ситни глодари су кључне карике прехрамбеног ланца — главни плен свих куновских предатора, сова и лисице. Узнемиравање и хватање без дозволе забрањено.</div>
+    </div>
+  </div>
+  <div class="guide-rules">
+    <div class="guide-rule rule-no">
+      <span class="gr-icon">🚫</span>
+      <div class="gr-text"><strong>Забрањено</strong>
+        Хватање, узнемиравање и убијање без посебне дозволе. Ове врсте нису штеточине — имају кључну улогу у шумском екосистему Рajца.</div>
+    </div>
+    <div class="guide-rule rule-no">
+      <span class="gr-icon">☠️</span>
+      <div class="gr-text"><strong>Не постављати отрове</strong>
+        Родентициди у шуми и пашњацима убијају заштићене предаторе (ласица, твор, кос, јастреб) секундарним тровањем. Строго забрањено у зони ПИО.</div>
+    </div>
+    <div class="guide-rule rule-yes">
+      <span class="gr-icon">🦉</span>
+      <div class="gr-text"><strong>Природна контрола</strong>
+        Лисица, ласица, ћук и веjа су природни регулатори глодара. Очувањем предатора избегавате потребу за хемиjом.</div>
+    </div>
+    <div class="guide-rule rule-inf">
+      <span class="gr-icon">😷</span>
+      <div class="gr-text"><strong>Хантавирус — опрез</strong>
+        Не дирати мртве глодаре голим рукама. Пре чишћења напуштених простора: FFP2 маска, рукавице, проветравање 30 мин. пре уласка.</div>
+    </div>
+  </div>
+  <div class="contact-card">
+    <strong>📷 Помозите науци:</strong> Пријавите налаз на iNaturalist — подаци о ситним глодарима Рajца важни су за праћење популациjа и предикциjу „мишjих година".
+  </div>
+</div>
+<nav class="species-nav">
+  <a href="https://piorajac.rs/sisari/apodemus-flavicollis/">← Жутогрли миш</a>
+  <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+  <a href="https://piorajac.rs/sisari/apodemus-agrarius/">Пругасти миш →</a>
+</nav>
+</main>
+<footer class="site-footer">Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг</footer>
+</body>
+</html>

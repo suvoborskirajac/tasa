@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дивља мачка — Felis silvestris | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Дивља мачка (Felis silvestris) — строго заштићена реликтна врста, тајновити предатор шума Рајца. Опис, трагови, биологија, хибридизација, заштита.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#2d5a27; --forest-dark:#1a3a15; --forest-light:#4a7c43;
+    --cream:#f7f4ef; --warm-white:#fdfcfa; --text:#2a2a2a; --text-muted:#5a5a5a;
+    --border:#d8d0c4; --accent:#8b6914; --accent-warm:#c4500a;
+    --iucn-nt:#f0a030; --section-bg:#f2f0eb; --tag-bg:#e8f0e6; --tag-border:#a8c4a4;
+    --shadow:0 2px 12px rgba(0,0,0,0.08); --shadow-hover:0 6px 24px rgba(0,0,0,0.14);
+    --radius:10px; --font-serif:'Merriweather',Georgia,serif; --font-sans:'Source Sans 3',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-sans);font-size:16px;line-height:1.75;color:var(--text);background:var(--warm-white)}
+  .site-header{background:var(--forest-dark);color:#fff;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:3px solid var(--forest-light)}
+  .site-header .logo{font-weight:700;font-size:15px;color:#fff;text-decoration:none;letter-spacing:.05em;text-transform:uppercase}
+  .site-header nav a{color:rgba(255,255,255,.85);text-decoration:none;margin-left:20px;font-size:12.5px}
+  .site-header nav a:hover{color:#fff}
+  .breadcrumb-bar{background:var(--cream);border-bottom:1px solid var(--border);padding:10px 0}
+  .breadcrumb-bar .inner{max-width:900px;margin:0 auto;padding:0 24px;font-size:13px;color:var(--text-muted)}
+  .breadcrumb-bar a{color:var(--forest);text-decoration:none;font-weight:600}
+  .breadcrumb-bar .sep{margin:0 6px;opacity:.5}
+  .page-wrap{max-width:900px;margin:0 auto;padding:36px 24px 60px}
+  .species-hero{text-align:center;padding:8px 0 28px;border-bottom:2px solid var(--border);margin-bottom:30px}
+  .species-hero .common-name{font-family:var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--forest-dark);line-height:1.2;margin-bottom:6px}
+  .species-hero .latin-name{font-family:var(--font-serif);font-size:1.3rem;font-style:italic;color:var(--forest-light);margin-bottom:14px}
+  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:.03em}
+  .badge-iucn-nt{background:#f0a030;color:#fff}
+  .badge-strictly{background:#fef2e8;color:#b05010;border:1px solid #f4c080}
+  .badge-relic{background:#f0e8f8;color:#5a2a8a;border:1px solid #c8a8e8}
+  .hero-image-wrap{width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow);aspect-ratio:16/8;background:#8a7858}
+  .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transition:transform .4s}
+  .hero-image-wrap:hover img{transform:scale(1.02)}
+  .img-caption{font-size:12px;color:var(--text-muted);text-align:center;margin-bottom:30px;font-style:italic;padding:0 16px}
+  .gallery-section{margin-bottom:36px}
+  .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .gallery-grid figure{margin:0;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#a8906a;box-shadow:var(--shadow);position:relative;cursor:pointer}
+  .gallery-grid figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .gallery-grid figure:hover img{transform:scale(1.06)}
+  .gallery-grid figcaption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-size:11px;padding:22px 8px 7px;line-height:1.35;opacity:0;transition:opacity .25s}
+  .gallery-grid figure:hover figcaption{opacity:1}
+  .gallery-grid figure.upload-slot{background:var(--section-bg);border:2px dashed var(--border);display:flex;flex-direction:column;cursor:default}
+  .upload-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 10px;gap:5px;text-align:center}
+  .upload-placeholder .up-icon{font-size:28px}
+  .upload-placeholder .up-title{font-size:12px;font-weight:700;color:var(--forest-dark);line-height:1.3}
+  .upload-placeholder .up-hint{font-size:10.5px;color:var(--text-muted);font-style:italic;line-height:1.4}
+  .gallery-grid figure.upload-slot figcaption{position:static;opacity:1;background:var(--cream);border-top:1px solid var(--border);color:var(--text-muted);padding:6px 8px;font-size:10.5px;font-style:italic;line-height:1.35}
+  .img-credit{font-size:11px;color:var(--text-muted);font-style:italic;text-align:right;margin-top:6px}
+  .img-credit a{color:var(--forest)}
+  .taxonomy-box{background:var(--section-bg);border:1px solid var(--border);border-left:4px solid #b05010;border-radius:var(--radius);padding:20px 22px;margin-bottom:36px}
+  .taxonomy-box h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:14px}
+  .taxonomy-box table{width:100%;border-collapse:collapse;font-size:14px}
+  .taxonomy-box td{padding:4px 8px 4px 0}
+  .taxonomy-box td:first-child{font-weight:700;color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;width:110px;vertical-align:top;padding-top:5px}
+  .taxonomy-box td em{color:var(--forest-light);font-style:italic}
+  .content-section{margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+  .content-section:last-of-type{border-bottom:none}
+  .section-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--forest-dark);margin-bottom:13px;display:flex;align-items:center;gap:9px}
+  .content-section p{font-size:15.5px;line-height:1.8;color:var(--text);margin-bottom:12px}
+  .content-section p:last-child{margin-bottom:0}
+  .inline-img{float:right;margin:0 0 16px 22px;width:260px;border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+  .inline-img img{width:100%;display:block}
+  .inline-img figcaption{font-size:11px;color:var(--text-muted);font-style:italic;padding:6px 10px;background:var(--cream);border:1px solid var(--border);border-top:none;line-height:1.4}
+  .clearfix::after{content:'';display:table;clear:both}
+  .highlight-box{background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14.5px;line-height:1.7;color:var(--forest-dark)}
+  .highlight-box strong{color:var(--forest)}
+  .warning-box{background:#fef5ec;border:1px solid #f4c080;border-left:4px solid #b05010;border-radius:var(--radius);padding:16px 20px;margin-top:14px;font-size:14px;line-height:1.7}
+  .warning-box strong{color:#b05010}
+  .hybrid-box{background:linear-gradient(135deg,#fdf0f8,#fff4fc);border:1px solid #e8a0d0;border-left:4px solid #8a2060;border-radius:var(--radius);padding:18px 20px;margin-top:14px;font-size:14.5px;line-height:1.7;color:#3a0a28}
+  .hybrid-box strong{color:#8a2060}
+  .protection-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .protection-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:14px}
+  .protection-card .pcard-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:700;margin-bottom:4px}
+  .protection-card .pcard-value{font-weight:600;color:var(--forest-dark)}
+  .pheno-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .pheno-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-bottom:12px}
+  .pheno-month{text-align:center;border-radius:6px;padding:8px 2px 6px;font-size:11px;font-weight:700;color:#fff}
+  .pheno-month .m-name{display:block;font-size:10px;opacity:.88;margin-bottom:4px;letter-spacing:.03em}
+  .pheno-month .m-icon{font-size:16px;display:block;margin-bottom:2px}
+  .ph-active{background:var(--forest)} .ph-mating{background:#c4500a}
+  .ph-young{background:#e8a020;color:#3a2000} .ph-low{background:#b0bfaa;color:#2a3a28}
+  .pheno-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;margin-top:10px}
+  .pheno-legend span{display:flex;align-items:center;gap:6px}
+  .pheno-legend .dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+  .tracks-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .tracks-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .track-card{background:var(--section-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px}
+  .track-card h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px}
+  .track-card p{font-size:14px;line-height:1.65;color:var(--text)}
+  .paw-diagram{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;gap:24px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
+  .paw-svg-wrap{text-align:center}
+  .paw-svg-wrap svg{display:block;margin:0 auto 6px}
+  .paw-svg-wrap .paw-label{font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .paw-specs{flex:1;min-width:180px}
+  .paw-specs table{width:100%;font-size:13.5px;border-collapse:collapse}
+  .paw-specs td{padding:5px 6px 5px 0;border-bottom:1px solid var(--border);vertical-align:top}
+  .paw-specs td:first-child{color:var(--text-muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;width:130px}
+  .paw-specs tr:last-child td{border-bottom:none}
+  .camtrap-section{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+  .camtrap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .camtrap-card{background:#fff;border:1px solid var(--border);border-top:3px solid #b05010;border-radius:var(--radius);padding:14px 15px;font-size:14px}
+  .camtrap-card .ct-icon{font-size:26px;margin-bottom:8px;display:block}
+  .camtrap-card h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:6px}
+  .camtrap-card p{font-size:13.5px;line-height:1.6;color:var(--text)}
+  .ct-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .ct-link-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;padding:8px 14px;border:1.5px solid var(--forest);border-radius:6px;transition:all .2s}
+  .ct-link-btn:hover{background:var(--forest);color:#fff}
+  .species-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:2px solid var(--border);gap:12px;flex-wrap:wrap}
+  .species-nav a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;padding:9px 16px;border:1.5px solid var(--forest);border-radius:6px;transition:all .2s}
+  .species-nav a:hover{background:var(--forest);color:#fff}
+  .species-nav .center-link{border:none!important;padding:0!important;font-size:13px;color:var(--text-muted)}
+  .species-nav .center-link:hover{background:none!important;color:var(--forest)!important}
+  .site-footer{background:var(--forest-dark);color:rgba(255,255,255,.7);text-align:center;padding:22px;font-size:13px}
+  @media(max-width:660px){
+    .gallery-grid,.camtrap-grid{grid-template-columns:repeat(2,1fr)}
+    .tracks-grid,.protection-grid{grid-template-columns:1fr}
+    .pheno-grid{grid-template-columns:repeat(6,1fr)}
+    .species-hero .common-name{font-size:1.9rem}
+    .site-header nav{display:none}
+    .inline-img{float:none;width:100%;margin:0 0 16px 0}
+    .paw-diagram{flex-direction:column}
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs">ПИО „Рајац"</a>
+    <span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a>
+    <span class="sep">›</span>
+    Дивља мачка — <em>Felis silvestris</em>
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <div class="species-hero">
+    <h1 class="common-name">Дивља мачка</h1>
+    <div class="latin-name"><em>Felis silvestris</em> Schreber, 1777</div>
+    <div class="badges">
+      <span class="badge badge-iucn-nt">IUCN NT — Близу угрожене</span>
+      <span class="badge badge-strictly">🛡 Строго заштићена</span>
+      <span class="badge badge-relic">🌿 Реликтна врста</span>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap">
+    <img src="SISARI_IMG_URL/Felis_silvestris_silvestris.jpg"
+         alt="Дивља мачка (Felis silvestris) — одрасла јединка са карактеристичним прстенастим репом"
+         onerror="this.src='SISARI_IMG_URL/European_wildcat_Nationalpark_Bayerischer_Wald_01.jpg';this.onerror=null;">
+  </div>
+  <p class="img-caption">Дивља мачка (<em>Felis silvestris silvestris</em>) — одрасла јединка. Запазити тупи, прстенасти реп са црним врхом — кључна разлика од домаће мачке. © Wikimedia Commons CC BY-SA 4.0</p>
+
+  <div class="gallery-section">
+    <div class="section-label">□ Галерија</div>
+    <div class="gallery-grid">
+      <figure>
+        <img src="SISARI_IMG_URL/Felis_silvestris_felixi.jpg"
+             alt="Дивља мачка — портрет" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Портрет — снажна грађа, широка глава и интензивни поглед</figcaption>
+      </figure>
+      <figure>
+        <img src="SISARI_IMG_URL/Felis_silvestris_-_Cabárceno_1.jpg"
+             alt="Дивља мачка — реп са прстеновима" loading="lazy"
+             onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+        <figcaption>Карактеристичан реп — тупи врх, тамни прстени — ниjedan примерак без тога</figcaption>
+      </figure>
+      <figure>
+        <img src="SISARI_IMG_URL/Wildcat_on_a_tree.jpg"
+             alt="Дивља мачка на дрвету" loading="lazy"
+             onerror="this.parentElement.style.display='none'">
+        <figcaption>Дивља мачка у пењању — снажне шапе и дугачак, прстенаст реп</figcaption>
+      </figure>
+    </div>
+    <p class="img-credit" style="font-style:normal;color:var(--forest);font-size:12px;text-align:left;margin-top:10px">
+      ℹ️ Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/Category:Felis_silvestris_silvestris" target="_blank">Felis silvestris silvestris</a>
+    </p>
+  </div>
+
+  <div class="taxonomy-box">
+    <h3>□ Таксономија</h3>
+    <table>
+      <tr><td>Царство:</td><td>Animalia</td></tr>
+      <tr><td>Тип:</td><td>Chordata</td></tr>
+      <tr><td>Класа:</td><td><em>Mammalia</em> — Сисари</td></tr>
+      <tr><td>Ред:</td><td><em>Carnivora</em> — Звери</td></tr>
+      <tr><td>Породица:</td><td><em>Felidae</em> — Мачке</td></tr>
+      <tr><td>Род:</td><td><em>Felis</em> Linnaeus, 1758</td></tr>
+      <tr><td>Врста:</td><td><em>Felis silvestris</em> Schreber, 1777</td></tr>
+      <tr><td>Подврста:</td><td><em>F. s. silvestris</em> — европска дивља мачка</td></tr>
+      <tr><td>Статус:</td><td>IUCN NT · Строго заштићена врста у Србији</td></tr>
+      <tr><td>Станиште:</td><td>Затворене листопадне шуме, нарочито храстово-буковe зоне Рајца</td></tr>
+      <tr><td>Маса / дужина:</td><td>3–9 kg · 50–75 cm тело + 28–37 cm реп</td></tr>
+    </table>
+  </div>
+
+  <div class="content-section clearfix">
+    <h2 class="section-title"><span>🔍</span> Морфологија — разлике vs. домаћа мачка</h2>
+    <figure class="inline-img">
+      <img src="SISARI_IMG_URL/Felis_silvestris_-_Nationalpark_Bayerischer_Wald.jpg"
+           alt="Дивља мачка — детаљ тела и репа"
+           loading="lazy"
+           onerror="this.style.display='none';this.parentElement.style.display='none'">
+      <figcaption>Снажна грађа и густа длака — видљиво крупнија и масивнија него домаћа мачка · CC BY-SA</figcaption>
+    </figure>
+    <p>Дивља мачка (<em>Felis silvestris silvestris</em>) спољашношћу подсећа на крупну, масивну домаћу мачку тиграсте шаре — таббе. Тело је ипак знатно масивније и снажније: мужjаци могу тежити 7–9 kg, а грађа мускулатуре вишеструко је снажнија. Глава је широка и округла; образна кост изражена; мускулатура вилице снажнија него код домаће мачке — адаптација за убијање плена ударом по потиљку.</p>
+    <p>Длака је густа, устаљена, сиво-смеђа са тамним пругама по леђима и боковима — никада без „дивљих" узорака. Реп је кључан за идентификацију: <strong>тупи, буђаваст, прстенасто шарен са одсечним, потпуно черним завршетком</strong> — домаће мачке тигровог узорка имају шиљасти реп са поступним прелазом. Трбух је жутасто-беличаст са понекад видљивим тамним тачкама.</p>
+    <div class="highlight-box">
+      <strong>Правило репа — теренска идентификација:</strong> Ако фотографијом са фото-замке снимите мачку у шуми, тупи, потпуно прстенасти реп са одсечним, апсолутно черним врхом представља доказ дивље мачке. Шиљасти реп = искључена дивља мачка, независно од шаре длаке.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌿</span> Станиште на Рајцу</h2>
+    <p>Дивља мачка је строго шумска врста — захтева затворене, зреле листопадне или мешовите шуме са богатом структуром приземља, падовином и шупљим стаблима. Избегава отворене и урбанизоване терене. На Рајцу је присутна у нajгушћим деловима шуме, нарочито у храстово-буковим зонама са добро развиjeним подраслом.</p>
+    <p>Индивидуални ревион мужjака 2–12 km², женке 1–4 km². Дивља мачка је строго солитарна — осим у периоду парења и подизања младих нема толеранциjу других јединки у ревиону. Ревион маркира урином и чешким жлездама на видљивим тачкама стаба.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🔬</span> Биологија и понашање</h2>
+    <p>Дивља мачка је готово искључиво ноћна животиња — активност почиње у потпуном мраку, са врхунцем у прво доба ноћи и пред зору. Дању мирује у шупљинама дрвета, буквишту, испод камених плоча или у густом шикарjу. Изузетно је опрезна и скривалачка — директно посматрање скоро немогуће без фото-замке или термалне оптике.</p>
+    <p>Лов је на земљи и у крошњи — прогоњење плена у краткој, експлозивној пратњи или заседа из дебљине. Сви чулни системи изразито развијени: вид у мраку до 6× бољи него људски, слух у опсегу 60 кHz (мишеви и птице), осетљиви вибриси (бркови) за детекцију кретања. Гласање ретко — само у риjу и при директном конфликту.</p>
+    <div class="highlight-box">
+      <strong>Реликтна врста Рајца:</strong> Дивља мачка је у Европи и Србији врста са фрагментираним ареалом — опстаје само у великим, мирним шумским комплексима удаљенима од људских насеља. Рајац представља jедан од квалитетнијих хабитата ове врсте у централној Србији, уз подразумеваjуће строге услове заштите.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🍃</span> Исхрана</h2>
+    <p>Дивља мачка је стриктни месоједер — основни плен чине ситни глодари (шумски мишеви <em>Apodemus</em>, волухарице <em>Myodes</em>, пољска мишевина) koji чинe 70–90% годишње дијете. Додатни плен: зечеви (нарочито млади), птице до величине шумске кокоши, гуштери, жабе. Веoma ретко напада срнчад.</p>
+    <p>Дивља мачка не конзумира стрвину и нема широку дијету попут лисице — строги је карнивор и ефикасан ловац прилагођен искључиво живом плену. Потражња: 250–300 g mesa dnevno. Pri visokoi Бројности мишева, јединка може убити знатно више него шта конзумира — кеширање је забележено али ретко.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+    <p>Риj (парење) одвиjа се у фебруару–марту. Гравидитет 63–68 дана. Котљење у априлу–мају, у шупљини дрвета, под коренjем или у напуштеnoj јазбини. Леглo 1–8 младих, просечно 2–4. Младунци се рађају слепи и беспомоћни. Мajка их одгаjа самостално — мужjак нe учествује у подизању.</p>
+    <p>Младунци отварaju очи са 10–14 дана. Излазе из скровишта са 4–5 недеља. Самостални лов са 3–4 месеца. Потпуно самостални до јесени, когда napuštaju мajчин ревион. Полна зрелост са 9–12 месеци. Животни вeк до 15 година у заробљеништву, 5–8 у природи.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>⚠️</span> Хибридизација са домаћом мачком</h2>
+    <p>Највећа еколошка претња дивљој мачки у Европи — укључуjући Рајац — јесте <strong>хибридизација са домаћом мачком</strong> (<em>Felis catus</em>). Домаће мачке луталице продиру у шуму, пре свега у периферним зонама ПИО, и парe се са дивљим јединкама. Хибридни потомци морфолошки su skoro неразлучиви од правих дивљих мачака — само генетска анализа може потврдити порекло.</p>
+    <p>Проблем је озбиљан: у неким деловима Европе „чистих" дивљих мачака готово и нема — у потпуности су замењене хибридима. У Србији, истраживања из 2010-их указуjу на присуство хибридизације, али и на опстанак значajних генетски чистих популација у крупним шумским масивима.</p>
+    <div class="hybrid-box">
+      <strong>🧬 Шта можете учинити:</strong> Не остављаjте домаће мачке да луtaju у и oko шуме Рајца. Нерастрељене и некастриране мачке луталице у шуми представљаjу директну генетску претњу дивљој мачки. Пријавите уочени проблем управи ПИО. Снимке са фото-замки са мачком у шуми нису нужно дивља мачка — важно је пријавити сваки налаз.
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+    <p>У Србији је дивља мачка <strong>строго заштићена врста</strong> — убијање, хватање, узнемиравање, уништавање станишта и поседовање забрањени под пуном законском одговорношћу. Конвенцијом о биолошкој разноврсности (CBD) и Бернском конвенцијом (Анекс II) класификована је као врста која захтева посебне мере заштите.</p>
+    <p>IUCN статус је NT (Near Threatened — Близу угрожена) на европском нивоу, са тенденцијом погоршавања услед фрагментације станишта, хибридизације и директног прогона. На Рајцу је присутна у малом броjу — процене говоре о свега неколико десетина јединки на целом подручjу. Свака јединка представља критично важан елемент генофонда.</p>
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">NT — Near Threatened (у опадању)</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Строго заштићена — потпуна заштита</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Хибридизација, фрагментација, лов (нелегал.)</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Управљање на Рајцу</div>
+        <div class="pcard-value">Строга заштита · Генетски мониторинг</div>
+      </div>
+    </div>
+    <div class="warning-box">
+      <strong>⚠️ Ако наиђете на дивљу мачку:</strong> Не прилазити — изузетно је агресивна ако се угрожена осети. Заустављена или повређена јединка НЕ представља „напуштену мачку" — контактирати управу ПИО или ветеринара специjализованог за дивљач. Хватање без овлашћења је строго кажњиво.
+    </div>
+  </div>
+
+  <div class="pheno-section">
+    <h2 class="section-title"><span>🗓</span> Календар активности на Рајцу</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Дивља мачка је <strong>тешко уочљива</strong> — фото-замка је готово jedini реалан начин документовања присуства:</p>
+    <div class="pheno-grid">
+      <div class="pheno-month ph-low"><span class="m-name">ЈАН</span><span class="m-icon">❄️</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">ФЕБ</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">МАР</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">АПР</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">МАЈ</span><span class="m-icon">🐾</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">ЈУН</span><span class="m-icon">🐾</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУЛ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">АВГ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">НОВ</span><span class="m-icon">🌫</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div>
+    </div>
+    <div class="pheno-legend">
+      <span><span class="dot" style="background:#c4500a"></span> Риј — гласање и кретање у парењу</span>
+      <span><span class="dot" style="background:#e8a020"></span> Котљење и одгај младих</span>
+      <span><span class="dot" style="background:#2d5a27"></span> Пуна активност (строго ноћна)</span>
+      <span><span class="dot" style="background:#b0bfaa"></span> Смањена активност</span>
+    </div>
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Нajбоље доба за бележење:</strong> Потпуни мрак — 22–03 ч. Фото-замка на шумску стазу у нетакнутом, мирном делу шуме без псеће активности. Феб–март: мужjаци шире кретање у потрази за женком — повећана шанса снимања. Снег открива трагове кретања.
+    </div>
+  </div>
+
+  <div class="tracks-section">
+    <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Трагови дивље мачке подсећaju на домаћу мачку, али крупнији — кључна разлика је <strong>увлачење ноктива</strong>:</p>
+
+    <div class="paw-diagram">
+      <div class="paw-svg-wrap">
+        <!-- SVG otisak divlje mačke — 4 prsta, bez noktiva (uvučeni), okrugao oblik -->
+        <svg width="88" height="105" viewBox="0 0 88 105" xmlns="http://www.w3.org/2000/svg">
+          <!-- Главни јастучић — округао и крупан -->
+          <ellipse cx="44" cy="72" rx="16" ry="12" fill="#6a5040" opacity="0.85"/>
+          <!-- 4 прстана јастучића — ситни, округли, без ноктива -->
+          <circle cx="44" cy="48" r="9" fill="#6a5040" opacity="0.85"/>
+          <circle cx="27" cy="54" r="8.5" fill="#6a5040" opacity="0.85"/>
+          <circle cx="61" cy="54" r="8.5" fill="#6a5040" opacity="0.85"/>
+          <!-- Само 4 прста видљива — 5. (palac) nikad nije видљив код мачке -->
+          <!-- БЕЗ ноктива линија — увучени! -->
+          <!-- Лабел за разлику -->
+          <text x="44" y="18" text-anchor="middle" font-size="9" fill="#8a5a3a" font-weight="bold">БЕЗ НОКТИВА</text>
+          <line x1="5" y1="98" x2="83" y2="98" stroke="#aaa" stroke-width="1"/>
+          <text x="44" y="107" text-anchor="middle" font-size="9" fill="#888">3–4 cm</text>
+        </svg>
+        <div class="paw-label">Отисак предње шапе</div>
+      </div>
+      <div class="paw-specs">
+        <table>
+          <tr><td>Дужина отиска</td><td>3.5–4.5 cm — крупнији него код домаће мачке</td></tr>
+          <tr><td>Ширина отиска</td><td>3.5–4.5 cm — округао, скоро кружан</td></tr>
+          <tr><td>Ноктиви</td><td><strong>Никада видљиви</strong> — увлаче се; главна разлика vs. пас/лисица</td></tr>
+          <tr><td>Број прстију</td><td>4 видљива јастучића + 1 главни</td></tr>
+          <tr><td>Ходни образац</td><td>Директна регистрација у касу — елегантна, пречна линија</td></tr>
+          <tr><td>Дужина корака</td><td>25–40 cm у умереном ходу</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tracks-grid">
+      <div class="track-card">
+        <h4>💩 Измет</h4>
+        <p>Цевасти, 5–8 cm, сличан домаћoj мачки али нешто крупнији. Карактеристика: дивља мачка УВЕК закопава измет у земљу — никада га не оставља на видљивом месту за разлику од лисице и куне. Ако у шуми нађете мачку-ски измет незакопан — домаћа мачка луталица.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌿 Стаза кретања</h4>
+        <p>Прецизна, уска, директна стаза — дивља мачка хода са великом прецизношћу и задња шапа пада тачно у отисак предње. У снегу стаза изгледа готово као рад jeдне јединке, иде дуж шумских стаза и падовина.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌲 Огреботине на стаблима</h4>
+        <p>Вертикалне огреботине ноктива на кори дрвета до висине 100–120 cm — чешћe него код домаће мачке. Служе за одржавање ноктива и маркирање ревиона. Обично на стаблима пречника 10–25 cm, поновљене на истим тачкама.</p>
+      </div>
+      <div class="track-card">
+        <h4>🦴 Остаци плена</h4>
+        <p>Мишеви и волухарице: глава и реп обично нетакнути; тело конзумирано чисто, без ломљења костију. За разлику од куне: мачка ретко носи плен далеко — конзумира га близу места убојства или га склања у оближње шкриlје.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="camtrap-section">
+    <h2 class="section-title"><span>📷</span> Фото-замке — водич за документовање</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px">Снимак дивље мачке са фото-замке <strong>драгоцен је научни налаз</strong> — пријавити управи ПИО и приложити фотографиjу за мониторинг популације.</p>
+    <div class="camtrap-grid">
+      <div class="camtrap-card">
+        <span class="ct-icon">📍</span>
+        <h4>Где поставити</h4>
+        <p>Унутрашњост густе шуме, далеко од насеља и домаћих животиња. Шумске стазе са меким тлом и видљивим трагима мачке. Падовине са буком — омиљени микростанит.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">📐</span>
+        <h4>Висина и угао</h4>
+        <p>25–40 cm — висина тела дивље мачке. Угао 20–30° надоле дуж стазе. Нe постављати уз локалитет са псима — поузданjost мрежа сигнала значajno опада.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">🌙</span>
+        <h4>Кад очекивати снимак</h4>
+        <p>22–04 ч — строго ноћна врста. Феб–март: шира активност у риjу. При великом снегу: повећано ноћно кретање у потрази за хранoм.</p>
+      </div>
+    </div>
+    <div class="warning-box">
+      <strong>⚠️ Важно:</strong> Мачка у шуми на снимку <em>nije</em> нужно дивља мачка — провери реп! Тупи, прстенасти реп са потпуно черним врхом = дивља мачка или хибрид. Сваки снимак могућег налаза пријавити управи ПИО Рајац — пример за мониторинг.
+    </div>
+    <div class="ct-links">
+      <a href="https://www.inaturalist.org/taxa/118552-Felis-silvestris-silvestris" class="ct-link-btn" target="_blank">📍 Felis silvestris — iNaturalist</a>
+      <a href="https://gbif.org/species/2435099" class="ct-link-btn" target="_blank">🗺️ Дистрибуција — GBIF</a>
+      <a href="https://www.wildcatconservation.org/" class="ct-link-btn" target="_blank">🐱 Wildcat Conservation</a>
+    </div>
+  </div>
+
+  <nav class="species-nav">
+    <a href="https://piorajac.rs/sisari/meles-meles/">← Јазавац — <em>Meles meles</em></a>
+    <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+    <a href="https://piorajac.rs/sisari/martes-foina/">Куна белица — <em>Martes foina</em> →</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мрки твор — Mustela putorius | Сисари Рајца</title>
+<meta name="description" content="Мрки твор (Mustela putorius) — заштићена угрожена врста, предак домаћег фретке. Опис, трагови, биологија, заштита на Рајцу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2d5a27;
+    --forest-dark: #1a3a15;
+    --forest-light: #4a7c43;
+    --cream: #f7f4ef;
+    --warm-white: #fdfcfa;
+    --text: #2a2a2a;
+    --text-muted: #5a5a5a;
+    --border: #d8d0c4;
+    --accent: #8b6914;
+    --accent-warm: #c4500a;
+    --iucn-lc: #4caf50;
+    --section-bg: #f2f0eb;
+    --tag-bg: #e8f0e6;
+    --tag-border: #a8c4a4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.75; color: var(--text); background: var(--warm-white); }
+
+  /* ── HEADER ── */
+  .site-header { background: var(--forest-dark); color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--forest-light); }
+  .site-header .logo { font-weight: 700; font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .site-header nav a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 20px; font-size: 12.5px; }
+  .site-header nav a:hover { color: #fff; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 0; }
+  .breadcrumb-bar .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: var(--text-muted); }
+  .breadcrumb-bar a { color: var(--forest); text-decoration: none; font-weight: 600; }
+  .breadcrumb-bar .sep { margin: 0 6px; opacity: 0.5; }
+
+  /* ── WRAP ── */
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  /* ── HERO ── */
+  .species-hero { text-align: center; padding: 8px 0 28px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .species-hero .common-name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 6px; }
+  .species-hero .latin-name { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--forest-light); margin-bottom: 14px; }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.03em; }
+  .badge-iucn { background: var(--iucn-lc); color: #fff; }
+  .badge-pred { background: #e8f0e6; color: var(--forest); border: 1px solid var(--tag-border); }
+
+  /* ── HERO IMAGE ── */
+  .hero-image-wrap { width: 100%; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow); aspect-ratio: 16/8; background: #d4b896; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .hero-image-wrap:hover img { transform: scale(1.02); }
+  .img-caption { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 30px; font-style: italic; padding: 0 16px; }
+
+  /* ── GALLERY ── */
+  .gallery-section { margin-bottom: 36px; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid figure { margin: 0; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #d4b896; box-shadow: var(--shadow); position: relative; cursor: pointer; }
+  .gallery-grid figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+  .gallery-grid figure:hover img { transform: scale(1.06); }
+  .gallery-grid figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 11px; padding: 22px 8px 7px; line-height: 1.35; opacity: 0; transition: opacity 0.25s; }
+  .gallery-grid figure:hover figcaption { opacity: 1; }
+  .img-credit { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: right; margin-top: 6px; }
+  .img-credit a { color: var(--forest); }
+
+  /* ── UPLOAD PLACEHOLDERS ── */
+  .gallery-grid figure.upload-slot {
+    background: var(--section-bg);
+    border: 2px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+  }
+  .gallery-grid figure.upload-slot:hover { box-shadow: var(--shadow); }
+  .upload-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    gap: 5px;
+    text-align: center;
+  }
+  .upload-placeholder .up-icon { font-size: 28px; }
+  .upload-placeholder .up-title { font-size: 12px; font-weight: 700; color: var(--forest-dark); line-height: 1.3; }
+  .upload-placeholder .up-hint { font-size: 10.5px; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+  .gallery-grid figure.upload-slot figcaption {
+    position: static;
+    opacity: 1;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 8px;
+    font-size: 10.5px;
+    font-style: italic;
+    line-height: 1.35;
+  }
+
+  /* ── TAXONOMY BOX ── */
+  .taxonomy-box { background: var(--section-bg); border: 1px solid var(--border); border-left: 4px solid var(--forest); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 36px; }
+  .taxonomy-box h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 14px; }
+  .taxonomy-box table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .taxonomy-box td { padding: 4px 8px 4px 0; }
+  .taxonomy-box td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; width: 110px; vertical-align: top; padding-top: 5px; }
+  .taxonomy-box td em { color: var(--forest-light); font-style: italic; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .content-section:last-of-type { border-bottom: none; }
+  .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 13px; display: flex; align-items: center; gap: 9px; }
+  .content-section p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  /* ── INLINE IMAGE ── */
+  .inline-img { float: right; margin: 0 0 16px 22px; width: 260px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .inline-img img { width: 100%; display: block; }
+  .inline-img figcaption { font-size: 11px; color: var(--text-muted); font-style: italic; padding: 6px 10px; background: var(--cream); border: 1px solid var(--border); border-top: none; line-height: 1.4; }
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* ── HIGHLIGHT / WARNING ── */
+  .highlight-box { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14.5px; line-height: 1.7; color: var(--forest-dark); }
+  .highlight-box strong { color: var(--forest); }
+  .warning-box { background: #fff8e6; border: 1px solid #e8cc88; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+  .warning-box strong { color: var(--accent); }
+
+  /* ── PROTECTION GRID ── */
+  .protection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .protection-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; }
+  .protection-card .pcard-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .protection-card .pcard-value { font-weight: 600; color: var(--forest-dark); }
+
+  /* ══════════════════════════════════════════
+     ── НОВЕ СЕКЦИЈЕ ──
+  ══════════════════════════════════════════ */
+
+  /* ── ФЕНОСЕЗОНСКИ КАЛЕНДАР ── */
+  .pheno-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .pheno-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .pheno-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .pheno-month {
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 2px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+  }
+  .pheno-month .m-name { display: block; font-size: 10px; opacity: 0.88; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .pheno-month .m-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  /* боје по активностима */
+  .ph-active    { background: var(--forest); }
+  .ph-mating    { background: #c4500a; }
+  .ph-young     { background: #e8a020; color: #3a2000; }
+  .ph-low       { background: #b0bfaa; color: #2a3a28; }
+
+  .pheno-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; margin-top: 10px; }
+  .pheno-legend span { display: flex; align-items: center; gap: 6px; }
+  .pheno-legend .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── ТРАГОВИ И ЗНАЦИ ── */
+  .tracks-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .tracks-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .track-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .track-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
+  .track-card p { font-size: 14px; line-height: 1.65; color: var(--text); }
+
+  .paw-diagram {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .paw-svg-wrap { text-align: center; }
+  .paw-svg-wrap svg { display: block; margin: 0 auto 6px; }
+  .paw-svg-wrap .paw-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .paw-specs { flex: 1; min-width: 180px; }
+  .paw-specs table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+  .paw-specs td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .paw-specs td:first-child { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; width: 130px; }
+  .paw-specs tr:last-child td { border-bottom: none; }
+
+  .track-photo-wrap { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .track-photo-wrap img { width: 100%; display: block; max-height: 260px; object-fit: cover; }
+  .track-photo-wrap figcaption { font-size: 11.5px; color: var(--text-muted); font-style: italic; padding: 7px 12px; background: var(--cream); border: 1px solid var(--border); border-top: none; }
+
+  /* ── ФОТО-ЗАМКЕ ── */
+  .camtrap-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .camtrap-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .camtrap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .camtrap-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--forest); border-radius: var(--radius); padding: 14px 15px; font-size: 14px; }
+  .camtrap-card .ct-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .camtrap-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 6px; }
+  .camtrap-card p { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .ct-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .ct-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .ct-link-btn:hover { background: var(--forest); color: #fff; }
+
+  /* ── NAV ── */
+  .species-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--border); gap: 12px; flex-wrap: wrap; }
+  .species-nav a { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 9px 16px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .species-nav a:hover { background: var(--forest); color: #fff; }
+  .species-nav .center-link { border: none !important; padding: 0 !important; font-size: 13px; color: var(--text-muted); }
+  .species-nav .center-link:hover { background: none !important; color: var(--forest) !important; }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 22px; font-size: 13px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 660px) {
+    .gallery-grid, .camtrap-grid { grid-template-columns: repeat(2, 1fr); }
+    .tracks-grid, .protection-grid { grid-template-columns: 1fr; }
+    .pheno-grid { grid-template-columns: repeat(6, 1fr); }
+    .species-hero .common-name { font-size: 1.9rem; }
+    .site-header nav { display: none; }
+    .inline-img { float: none; width: 100%; margin: 0 0 16px 0; }
+    .paw-diagram { flex-direction: column; }
+  }
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar"><div class="inner">
+  <a href="https://piorajac.rs">ПИО „Рајац"</a><span class="sep">›</span>
+  <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a><span class="sep">›</span>
+  Мрки твор — <em>Mustela putorius</em>
+</div></div>
+<main class="page-wrap">
+<div class="species-hero">
+  <h1 class="common-name">Мрки твор</h1>
+  <div class="latin-name"><em>Mustela putorius</em> Linnaeus, 1758</div>
+  <div class="badges">
+    <span class="badge" style="background:#e57c00;color:#fff">IUCN VU — Рањива врста</span>
+    <span class="badge badge-pred" style="background:#fef2e8;color:#8a2000;border:1px solid #f0b090">⚠️ Строго заштићена</span>
+  </div>
+</div>
+
+<div class="hero-image-wrap">
+  <img src="SISARI_IMG_URL/Mustela_putorius.jpg"
+       alt="Мрки твор — Mustela putorius"
+       onerror="this.src='SISARI_IMG_URL/Putorius_putorius_Sturm.jpg';this.onerror=null;">
+</div>
+<p class="img-caption">Мрки твор (<em>Mustela putorius</em>) — одрасла јединка. Бела маска лица и тамно тело — карактеристичан изглед. © Wikimedia Commons CC BY-SA 4.0</p>
+
+<div class="gallery-section">
+  <div class="section-label">□ Галерија</div>
+  <div class="gallery-grid">
+    <figure>
+      <img src="SISARI_IMG_URL/Mustela_putorius_-_Vrancea%2C_Romania.jpg"
+           alt="Мрки твор — детаљ главе" loading="lazy"
+           onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Детаљ главе — карактеристична бела маска и тамне очи</figcaption>
+    </figure>
+    <figure>
+      <img src="SISARI_IMG_URL/Mustela_putorius_01.jpg"
+           alt="Мрки твор — тело" loading="lazy"
+           onerror="this.parentElement.classList.add('upload-slot');this.remove()">
+      <figcaption>Витко тело и кратке ноге — типична куновска грађа</figcaption>
+    </figure>
+    <figure>
+        <img src="SISARI_IMG_URL/Тхір_лісовий.jpg"
+             alt="Мрки твор у полускровитом станишту" loading="lazy"
+             onerror="this.parentElement.style.display='none'">
+        <figcaption>Мрки твор у полускровитом станишту — тамно крзно и светлија маска на лицу</figcaption>
+      </figure>
+  </div>
+  <p style="font-size:12px;color:var(--forest);margin-top:8px">
+    ℹ️ Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/Category:Mustela_putorius" target="_blank">Mustela putorius</a>
+  </p>
+</div>
+
+<div class="taxonomy-box"><h3>□ Таксономија</h3>
+<table>
+  <tr><td>Класа:</td><td><em>Mammalia</em></td></tr>
+  <tr><td>Ред:</td><td><em>Carnivora</em></td></tr>
+  <tr><td>Породица:</td><td><em>Mustelidae</em> — Куне</td></tr>
+  <tr><td>Врста:</td><td><em>Mustela putorius</em> Linnaeus, 1758</td></tr>
+  <tr><td>Статус:</td><td>IUCN VU · Строго заштићена врста у Србији</td></tr>
+  <tr><td>Напомена:</td><td>Предак домаћег фретке (<em>Mustela putorius furo</em>)</td></tr>
+  <tr><td>Маса / дужина:</td><td>0,5–1,7 kg · 30–50 cm тело + 12–20 cm реп</td></tr>
+</table></div>
+
+<div class="content-section clearfix">
+  <h2 class="section-title"><span>🔍</span> Морфологија</h2>
+  <figure class="inline-img">
+    <img src="SISARI_IMG_URL/Europaeischer_Iltis_Mustela_putorius.jpg"
+         alt="Мрки твор — лице" loading="lazy"
+         onerror="this.style.display='none';this.parentElement.style.display='none'">
+    <figcaption>Карактеристична бела лицна маска са тамним стрипама · CC BY-SA</figcaption>
+  </figure>
+  <p>Мрки твор је средње велики куновски предатор — тело дугачко 30–50 cm, реп 12–20 cm, тежина 0,5–1,7 kg. Мужjаци знатно крупнији од женки (полни диморфизам 30–40%). Длака је двослојна: <strong>прљаво жута до бела подлака видљива испод тамних покривних длака</strong> — ефекат карактеристичне светле основе кроз тамне пруге. Лице са израженом белом маском — беле уши, бела нос-региjа и чело, оивичено тамним пругама пресеца очи.</p>
+  <p>Жлезде испод репа луче изузетно снажан, оштар мирис — jedan od najintenzivnijih међу европским сисарима. Мирис (феромони) кључни су у комуникациjи и одбрани. Назив врсте <em>putorius</em> потиче од латинске речи за „зауда" (putere — зауда).</p>
+  <div class="highlight-box">
+    <strong>Фретка — питоми потомак:</strong> Домаћи фретка (<em>Mustela putorius furo</em>) је питомa подврста мрког твора, селекциjски узгojaна током 2.500+ година. Понекад луталице или беглe fretke у природи се пaре са дивљим тworima — хибридизациjа прeдставља мању претnjу.
+  </div>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🌿</span> Станиште и биологија</h2>
+  <p>Мрки твор предпочитава влажна, мозаична станишта — ивице шума уз потоке и мочваре, рубови воде, шикара са добром покривношћу. На Рајцу је везан за долине потока и влажне шумске ивице. Избегава густу унутрашњост шуме. Ноћна животиња, самотна.</p>
+  <p>Скровиште прави у напуштеним јазбинама других животиня (јазавац, лисица), пукотинама камења, густом шикару. Ревион 50–200 ha; маркира измeтом и жлездaним секретом.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🍃</span> Исхрана</h2>
+  <p>Мрки твор је специjализован за лов у близини воде и у скровитим, влажним теренима. Основа исхране: жабе (60–80% годишnje дијете), водене мишеви и волухарице, мале рибе, гуштери, змиjе. Зими: ситни глодари, птице. Жабе лови у мраку поред воде, ухвaтajúri их ударцем предных шапа или угризом у потиљак.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🌸</span> Размножавање</h2>
+  <p>Парење у марту–мају. Гравидитет 40–42 дана — без дијапаузе (за разлику од куна). Леглo 3–8 младих (просечно 5–6). Рађање у мају–јуну. Младунци самостални са 2–3 месеца. Животни вeк до 14 година у заробљеништву, 5–7 у природи.</p>
+</div>
+
+<div class="content-section">
+  <h2 class="section-title"><span>🛡</span> Заштита и статус</h2>
+  <p>Мрки твор је у Европи значajno опао — IUCN VU (Vulnerable) на европском нивоу. У Србији је <strong>строго заштићена врста</strong>. Главне претnjе: уничтожeње влажних станишта (исушивање мочвара, регулациjа потока), интензивна употреба родентицида и инсектицида (уничтожавање плена — жаба), тровање нематрговинским средствима, и директан прогон. На Рајцу је врста присутна уз водотокове, а одржавање природног стања потока директно утиче на оpстанак врсте.</p>
+  <div class="protection-grid">
+    <div class="protection-card"><div class="pcard-label">IUCN Европа</div><div class="pcard-value">VU — Рањива (у опадању)</div></div>
+    <div class="protection-card"><div class="pcard-label">Србија</div><div class="pcard-value">Строго заштићена врста</div></div>
+    <div class="protection-card"><div class="pcard-label">Главне претnjе</div><div class="pcard-value">Уництожење мочвара, тровање, прогон</div></div>
+    <div class="protection-card"><div class="pcard-label">Рајац</div><div class="pcard-value">Ретка — уз потоке, ниже зоне</div></div>
+  </div>
+  <div class="warning-box">
+    <strong>⚠️ Строго заштићена:</strong> Убијање, хватање или узнемиравање мрког твора строго је забрањено законом. Свака угинула јединка или налаз у клопци пријавити управи ПИО — важно за мониторинг IUCN VU врсте.
+  </div>
+</div>
+
+<div class="pheno-section">
+  <h2 class="section-title"><span>🗓</span> Календар активности</h2>
+  <div class="pheno-grid">
+    <div class="pheno-month ph-low"><span class="m-name">ЈАН</span><span class="m-icon">❄️</span></div>
+    <div class="pheno-month ph-low"><span class="m-name">ФЕБ</span><span class="m-icon">🌫</span></div>
+    <div class="pheno-month ph-mating"><span class="m-name">МАР</span><span class="m-icon">💕</span></div>
+    <div class="pheno-month ph-mating"><span class="m-name">АПР</span><span class="m-icon">💕</span></div>
+    <div class="pheno-month ph-young"><span class="m-name">МАЈ</span><span class="m-icon">🐾</span></div>
+    <div class="pheno-month ph-young"><span class="m-name">ЈУН</span><span class="m-icon">🐾</span></div>
+    <div class="pheno-month ph-active"><span class="m-name">ЈУЛ</span><span class="m-icon">🌿</span></div>
+    <div class="pheno-month ph-active"><span class="m-name">АВГ</span><span class="m-icon">🌿</span></div>
+    <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🍂</span></div>
+    <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🍂</span></div>
+    <div class="pheno-month ph-low"><span class="m-name">НОВ</span><span class="m-icon">🌫</span></div>
+    <div class="pheno-month ph-low"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div>
+  </div>
+  <div class="pheno-legend">
+    <span><span class="dot" style="background:#c4500a"></span> Парење (мар–апр)</span>
+    <span><span class="dot" style="background:#e8a020"></span> Рађање и одгај</span>
+    <span><span class="dot" style="background:#2d5a27"></span> Пуна активност</span>
+    <span><span class="dot" style="background:#b0bfaa"></span> Смањена активност</span>
+  </div>
+</div>
+
+<div class="tracks-section">
+  <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+  <div class="paw-diagram">
+    <div class="paw-svg-wrap">
+      <svg width="75" height="100" viewBox="0 0 75 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="37" cy="66" rx="12" ry="9" fill="#5a4230" opacity="0.85"/>
+        <ellipse cx="37" cy="44" rx="6.5" ry="8.5" fill="#5a4230" opacity="0.85"/>
+        <ellipse cx="22" cy="50" rx="6" ry="7.5" fill="#5a4230" opacity="0.85"/>
+        <ellipse cx="52" cy="50" rx="6" ry="7.5" fill="#5a4230" opacity="0.85"/>
+        <ellipse cx="10" cy="58" rx="5.5" ry="7" fill="#5a4230" opacity="0.85"/>
+        <ellipse cx="64" cy="58" rx="5.5" ry="7" fill="#5a4230" opacity="0.85"/>
+        <line x1="37" y1="33" x2="37" y2="25" stroke="#2a1a0a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="19" y1="40" x2="16" y2="32" stroke="#2a1a0a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="55" y1="40" x2="58" y2="32" stroke="#2a1a0a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7" y1="48" x2="3" y2="41" stroke="#2a1a0a" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="67" y1="48" x2="71" y2="41" stroke="#2a1a0a" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="2" y1="92" x2="73" y2="92" stroke="#aaa" stroke-width="1"/>
+        <text x="37" y="101" text-anchor="middle" font-size="9" fill="#888">2,5–4 cm</text>
+      </svg>
+      <div class="paw-label">Предња шапа</div>
+    </div>
+    <div class="paw-specs"><table>
+      <tr><td>Дужина отиска</td><td>2,5–4 cm — мањи него куне</td></tr>
+      <tr><td>Ширина</td><td>2–3,5 cm</td></tr>
+      <tr><td>Прстова</td><td>5 — сви видљиви са ноктивима</td></tr>
+      <tr><td>Ходни образац</td><td>Скок 2+2, корак 20–40 cm уз воду</td></tr>
+      <tr><td>Терен</td><td>Редовно поред воде, влажно тло</td></tr>
+    </table></div>
+  </div>
+  <div class="tracks-grid">
+    <div class="track-card"><h4>💩 Измет</h4>
+      <p>Витак, 4–7 cm, спиралан. Садржи кости жаба, рибљe крљушти, длаку, инсекте. Изразит — специфичан мусни мирис. Одлаже на видним тачкама поред воде.</p></div>
+    <div class="track-card"><h4>🌿 Знаци лова</h4>
+      <p>Угинуле жабе поред воде са угризима по потиљку — карактеристичан знак твора. Рупице у блатnjавом тлу поред потока. Жабљи остаци у скровишту.</p></div>
+    <div class="track-card"><h4>🦨 Мирис</h4>
+      <p>Изразит, оштар и жестоки мирис мошуса може да се осети и неколико десетина метара — мирисно маркирање уједно служи одбрани. Примечен мирис поред потока јасан је знак присуства.</p></div>
+    <div class="track-card"><h4>🏠 Скровиште</h4>
+      <p>Напуштене јазбине (лисица, јазавац). Пукотине у камењу поред воде. Кореништа уз потоке. Густо трскариште. Улаз ужи него јазавачки — 8–12 cm.</p></div>
+  </div>
+</div>
+
+<div class="camtrap-section">
+  <h2 class="section-title"><span>📷</span> Фото-замке — документовање угрожене врсте</h2>
+  <div class="camtrap-grid">
+    <div class="camtrap-card"><span class="ct-icon">📍</span><h4>Где поставити</h4>
+      <p>Обале потока и мочвара. Пролази испод мостова и дрвља над водом. Дуж влажних шумских шетаљки. Поред напуштених јазбина уз воду.</p></div>
+    <div class="camtrap-card"><span class="ct-icon">📐</span><h4>Висина и угао</h4>
+      <p>15–30 cm — твор је мали и низак. Угао 15–25° дуж обале. Ближе тлу него за куне.</p></div>
+    <div class="camtrap-card"><span class="ct-icon">🌙</span><h4>Кад очекивати</h4>
+      <p>21–04 ч. Пролеће: мар–мај — парење и повећана активност. После кише: жабе активније, твор их прати.</p></div>
+  </div>
+  <div class="warning-box" style="margin-top:12px">
+    <strong>⚠️ VU врста:</strong> Сваки снимак мрког твора на фото-замци на Рајцу драгоцен је научни налаз. Пријавите управи ПИО са датумом и локацијом.
+  </div>
+  <div class="ct-links">
+    <a href="https://www.inaturalist.org/taxa/42561-Mustela-putorius" class="ct-link-btn" target="_blank">📍 iNaturalist — Mustela putorius</a>
+    <a href="https://gbif.org/species/2434266" class="ct-link-btn" target="_blank">🗺️ GBIF — дистрибуција</a>
+  </div>
+</div>
+
+<nav class="species-nav">
+  <a href="https://piorajac.rs/sisari/martes-martes/">← Куна златица</a>
+  <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+  <a href="https://piorajac.rs/sisari/mustela-nivalis/">Риђа ласица →</a>
+</nav>
+</main>
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг
+</footer>
+</body>
+</html>

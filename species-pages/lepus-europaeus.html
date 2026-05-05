@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зец — Lepus europaeus | Сисари Рајца | ПИО „Рајац"</title>
+<meta name="description" content="Зец (Lepus europaeus) — највећи европски зец, брзи становник ливада, пашњака и шумских ивица Предела изузетних одлика Рајац. Биологија, станиште, заштита.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #2d5a27;
+    --forest-dark: #1a3a15;
+    --forest-light: #4a7c43;
+    --cream: #f7f4ef;
+    --warm-white: #fdfcfa;
+    --text: #2a2a2a;
+    --text-muted: #5a5a5a;
+    --border: #d8d0c4;
+    --accent: #8b6914;
+    --iucn-lc: #4caf50;
+    --section-bg: #f2f0eb;
+    --tag-bg: #e8f0e6;
+    --tag-border: #a8c4a4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); font-size: 16px; line-height: 1.75; color: var(--text); background: var(--warm-white); }
+
+  /* HEADER */
+  .site-header { background: var(--forest-dark); color: #fff; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; border-bottom: 3px solid var(--forest-light); }
+  .site-header .logo { font-weight: 700; font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+  .site-header nav a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 20px; font-size: 12.5px; }
+  .site-header nav a:hover { color: #fff; }
+
+  /* BREADCRUMB */
+  .breadcrumb-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 10px 0; }
+  .breadcrumb-bar .inner { max-width: 900px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: var(--text-muted); }
+  .breadcrumb-bar a { color: var(--forest); text-decoration: none; font-weight: 600; }
+  .breadcrumb-bar .sep { margin: 0 6px; opacity: 0.5; }
+
+  /* MAIN */
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  /* HERO */
+  .species-hero { text-align: center; padding: 8px 0 30px; border-bottom: 2px solid var(--border); margin-bottom: 32px; }
+  .species-hero .common-name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 6px; }
+  .species-hero .latin-name { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--forest-light); margin-bottom: 14px; }
+  .iucn-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--iucn-lc); color: #fff; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.04em; }
+
+  /* HERO IMAGE */
+  .hero-image-wrap { width: 100%; border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow); aspect-ratio: 16/8; background: #d4c8b0; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .hero-image-wrap:hover img { transform: scale(1.02); }
+  .hero-img-caption { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 28px; font-style: italic; padding: 0 16px; }
+
+  /* INFO TABLE */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 36px; background: #fff; box-shadow: var(--shadow); }
+  .info-grid .cell { padding: 11px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .info-grid .cell:nth-child(odd) { border-right: 1px solid var(--border); background: var(--cream); }
+  .info-grid .cell label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 2px; }
+  .info-grid .cell span { font-weight: 600; color: var(--text); }
+  .info-grid .cell span em { font-weight: 400; font-style: italic; color: var(--forest-light); }
+  .info-grid .cell:last-child, .info-grid .cell:nth-last-child(2) { border-bottom: none; }
+  .status-badge { display: inline-block; background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--forest); font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 4px; }
+
+  /* GALLERY */
+  .gallery-section { margin-bottom: 36px; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid figure { margin: 0; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #d4c8b0; box-shadow: var(--shadow); position: relative; cursor: pointer; }
+  .gallery-grid figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease; }
+  .gallery-grid figure:hover img { transform: scale(1.06); }
+  .gallery-grid figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 11px; padding: 22px 8px 7px; line-height: 1.35; opacity: 0; transition: opacity 0.25s; }
+  .gallery-grid figure:hover figcaption { opacity: 1; }
+  .img-credit { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: right; margin-top: 6px; }
+  .img-credit a { color: var(--forest); }
+
+  /* TAXONOMY */
+  .taxonomy-box { background: var(--section-bg); border: 1px solid var(--border); border-left: 4px solid var(--forest); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 36px; }
+  .taxonomy-box h3 { font-family: var(--font-sans); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 14px; }
+  .taxonomy-box table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .taxonomy-box td { padding: 4px 8px 4px 0; }
+  .taxonomy-box td:first-child { font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; width: 110px; vertical-align: top; padding-top: 5px; }
+  .taxonomy-box td:last-child em { color: var(--forest-light); font-style: italic; }
+
+  /* CONTENT */
+  .content-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .content-section:last-of-type { border-bottom: none; }
+  .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 13px; display: flex; align-items: center; gap: 9px; }
+  .content-section p { font-size: 15.5px; line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+  .content-section p:last-child { margin-bottom: 0; }
+
+  /* INLINE IMAGE */
+  .inline-img { float: right; margin: 0 0 16px 22px; width: 260px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .inline-img img { width: 100%; display: block; }
+  .inline-img figcaption { font-size: 11px; color: var(--text-muted); font-style: italic; padding: 6px 10px; background: var(--cream); border: 1px solid var(--border); border-top: none; line-height: 1.4; }
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* HIGHLIGHT / WARNING */
+  .highlight-box { background: var(--tag-bg); border: 1px solid var(--tag-border); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; font-size: 14.5px; line-height: 1.7; color: var(--forest-dark); }
+  .highlight-box strong { color: var(--forest); }
+  .warning-box { background: #fff8e6; border: 1px solid #e8cc88; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 36px; font-size: 14px; line-height: 1.7; }
+  .warning-box strong { color: var(--accent); }
+
+  /* PROTECTION */
+  .protection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .protection-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 14px; }
+  .protection-card .pcard-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .protection-card .pcard-value { font-weight: 600; color: var(--forest-dark); }
+
+  /* ── ФЕНОСЕЗОНСКИ КАЛЕНДАР ── */
+  .pheno-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .pheno-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .pheno-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-bottom: 12px; }
+  .pheno-month { text-align: center; border-radius: 6px; padding: 8px 2px 6px; font-size: 11px; font-weight: 700; color: #fff; }
+  .pheno-month .m-name { display: block; font-size: 10px; opacity: 0.88; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .pheno-month .m-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  .ph-active  { background: var(--forest); }
+  .ph-mating  { background: #c4500a; }
+  .ph-young   { background: #e8a020; color: #3a2000; }
+  .ph-low     { background: #b0bfaa; color: #2a3a28; }
+  .pheno-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; margin-top: 10px; }
+  .pheno-legend span { display: flex; align-items: center; gap: 6px; }
+  .pheno-legend .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* ── ТРАГОВИ ── */
+  .tracks-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .tracks-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .track-card { background: var(--section-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .track-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; }
+  .track-card p { font-size: 14px; line-height: 1.65; color: var(--text); }
+  .paw-diagram { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; gap: 24px; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; }
+  .paw-svg-wrap { text-align: center; }
+  .paw-svg-wrap svg { display: block; margin: 0 auto 6px; }
+  .paw-svg-wrap .paw-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .paw-specs { flex: 1; min-width: 180px; }
+  .paw-specs table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+  .paw-specs td { padding: 5px 6px 5px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .paw-specs td:first-child { color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; width: 130px; }
+  .paw-specs tr:last-child td { border-bottom: none; }
+  .track-photo-wrap { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .track-photo-wrap img { width: 100%; display: block; max-height: 260px; object-fit: cover; }
+  .track-photo-wrap figcaption { font-size: 11.5px; color: var(--text-muted); font-style: italic; padding: 7px 12px; background: var(--cream); border: 1px solid var(--border); border-top: none; }
+
+  /* ── ФОТО-ЗАМКЕ ── */
+  .camtrap-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .camtrap-section .section-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
+  .camtrap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .camtrap-card { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--forest); border-radius: var(--radius); padding: 14px 15px; font-size: 14px; }
+  .camtrap-card .ct-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .camtrap-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 6px; }
+  .camtrap-card p { font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .ct-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .ct-link-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .ct-link-btn:hover { background: var(--forest); color: #fff; }
+
+  /* NAV */
+  .species-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--border); gap: 12px; flex-wrap: wrap; }
+  .species-nav a { display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 600; color: var(--forest); text-decoration: none; padding: 9px 16px; border: 1.5px solid var(--forest); border-radius: 6px; transition: all 0.2s; }
+  .species-nav a:hover { background: var(--forest); color: #fff; }
+  .species-nav .center-link { font-size: 13px; color: var(--text-muted); text-decoration: none; font-weight: 600; border: none !important; padding: 0 !important; }
+  .species-nav .center-link:hover { background: none !important; color: var(--forest) !important; }
+
+  /* FOOTER */
+  .site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 22px; font-size: 13px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .info-grid .cell:nth-child(odd) { border-right: none; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .protection-grid, .tracks-grid, .camtrap-grid { grid-template-columns: 1fr; }
+    .pheno-grid { grid-template-columns: repeat(6, 1fr); }
+    .species-hero .common-name { font-size: 1.9rem; }
+    .site-header nav { display: none; }
+    .inline-img { float: none; width: 100%; margin: 0 0 16px 0; }
+    .paw-diagram { flex-direction: column; }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <a href="https://piorajac.rs" class="logo">Предео изузетних одлика „Рајац"</a>
+  <nav>
+    <a href="https://piorajac.rs/">ПИО „Рајац"</a>
+    <a href="https://piorajac.rs/flora">Флора Рајца</a>
+    <a href="https://piorajac.rs/ptice">Птице Рајца</a>
+    <a href="https://piorajac.rs/sisari">Сисари Рајца</a>
+    <a href="https://piorajac.rs/karte">Карте</a>
+  </nav>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="inner">
+    <a href="https://piorajac.rs">ПИО „Рајац"</a>
+    <span class="sep">›</span>
+    <a href="https://piorajac.rs/sisari-rajca/">Сисари Рајца</a>
+    <span class="sep">›</span>
+    Зец — <em>Lepus europaeus</em>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="page-wrap">
+
+  <!-- HERO HEADER -->
+  <div class="species-hero">
+    <h1 class="common-name">Зец</h1>
+    <div class="latin-name"><em>Lepus europaeus</em> Pallas, 1778</div>
+    <span class="iucn-badge">IUCN LC — Најмање забрињавајућа</span>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="hero-image-wrap">
+    <img
+      src="SISARI_IMG_URL/Feldhase%2C_Lepus_europaeus_3a.JPG"
+      alt="Зец (Lepus europaeus) у природном станишту — одрасла јединка у карактеристичном пригушном положају на отвореном терену, Европа"
+      onerror="this.src='SISARI_IMG_URL/Wachsamer_Feldhase_in_Birkholz_bei_Bernau.jpg'">
+  </div>
+  <p class="hero-img-caption">Зец (<em>Lepus europaeus</em>) у типичном отвореном станишту — карактеристичан профил са дугим ушима и сивкастосмеђом камуфлажном длаком. © Böhringer Friedrich, CC BY-SA 2.5 / Wikimedia Commons</p>
+
+  <!-- GALLERY -->
+  <div class="gallery-section">
+    <div class="section-label">□ Галерија</div>
+    <div class="gallery-grid">
+
+      <figure>
+        <img
+          src="SISARI_IMG_URL/Feldhase%2C_Lepus_europaeus_1a.JPG"
+          alt="Зец (Lepus europaeus) — профилни поглед, карактеристична дуга уша са тамним врховима и наранџасто-смеђа длака бокова"
+          loading="lazy">
+        <figcaption>Профил зеца — дуге уши са тамним врховима · © Böhringer Friedrich, CC BY-SA 2.5</figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="SISARI_IMG_URL/Wachsamer_Feldhase_in_Birkholz_bei_Bernau.jpg"
+          alt="Опрезни зец (Lepus europaeus) у трави — карактеристични положај будности са исправљеним ушима, Бранденбург, Немачка"
+          loading="lazy">
+        <figcaption>Зец у положају будности · Бранденбург, Германија · CC BY-SA</figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="SISARI_IMG_URL/Speicherkoog_Lepus_europaeus.jpg"
+          alt="Зец (Lepus europaeus) у природном станишту отворене ливаде — тренутак мировања, камуфлажна длака стапа се са сувом травом"
+          loading="lazy">
+        <figcaption>Зец у ливадском станишту — камуфлажа · Speicherkoog · CC BY-SA</figcaption>
+      </figure>
+
+    </div>
+    <p class="img-credit">Слике: Wikimedia Commons — <a href="https://commons.wikimedia.org/wiki/Category:Lepus_europaeus" target="_blank">Category:Lepus europaeus</a> · лиценца CC BY-SA 2.5 / CC BY-SA 3.0</p>
+  </div>
+
+  <!-- TAXONOMY -->
+  <div class="taxonomy-box">
+    <h3>□ Таксономија</h3>
+    <table>
+      <tr><td>Ред:</td><td><em>Lagomorpha</em> — Зечолики</td></tr>
+      <tr><td>Породица:</td><td><em>Leporidae</em> — Зечеви и зечићи</td></tr>
+      <tr><td>Род:</td><td><em>Lepus</em> Linnaeus, 1758</td></tr>
+      <tr><td>Врста:</td><td><em>Lepus europaeus</em> Pallas, 1778</td></tr>
+      <tr><td>Подврста:</td><td><em>L. e. europaeus</em> (Централна и источна Европа)</td></tr>
+      <tr><td>Синоними:</td><td><em>Lepus timidus europaeus</em>, <em>L. capensis</em> (делимично)</td></tr>
+    </table>
+  </div>
+
+  <!-- SECTION: ОПИС -->
+  <div class="content-section clearfix">
+    <h2 class="section-title"><span class="emoji">🔍</span> Морфологија и карактеристике</h2>
+
+    <figure class="inline-img">
+      <img
+        src="SISARI_IMG_URL/Feldhase_Anfang_Mai.JPG"
+        alt="Зец (Lepus europaeus) — детаљ главе са карактеристичним великим очима постављеним бочно и дугим ушима са тамним врховима"
+        loading="lazy">
+      <figcaption>Детаљ главе — велике очи и дуге уши · Хајделберг · CC BY-SA 3.0</figcaption>
+    </figure>
+
+    <p>Зец (<em>Lepus europaeus</em>) је највећи европски представник реда зечоликих (<em>Lagomorpha</em>) и један од карактеристичних сисара отворених предела Европе. Тело је витко и аеродинамично, дужине 48–68 cm, са висином плећа 25–30 cm. Одрасле јединке теже 3–5 kg, изузетно до 7 kg у добро прехрањеним популацијама. Женке (<em>срне</em>, код зецова — <em>срнче</em>) незнатно су крупније од мужjака.</p>
+    <p>Длака је густа и мека, сивкасто-смеђе до рђасто-окер боје на леђима, са беличастим трбухом. Бокови имају карактеристичну наранџастожуту нијансу. Длака не мења боју зими (за разлику од сродног зеца планинца), али постаје нешто светлија и гушћа. Реп је кратак — на горњој страни тамносмеђ до crн, на доњој — бео.</p>
+    <p>Уши су карактеристично дуге (9–12 cm), са добро израженим тамносмеђим или црним врховима — поуздан теренски знак за разликовање зеца од кунића и других лагоморфа. Задње ноге су знатно дуже и јаче од предњих — кључна адаптација за брзо трчање. У галопу зец достиже брзине до 70 km/h и може правити нагле скретнице у лету.</p>
+    <div class="highlight-box">
+      <strong>Лагоморфи ≠ глодари:</strong> Зечеви нису глодари, иако им личе. Ред <em>Lagomorpha</em> разликује се по присуству два пара секутића у горњој вилици (иза главних предњих зуба налазе се мали додатни секутићи), потпуно биљном пробавном систему са двоструким варењем (цекотрофија) и другим морфолошким особинама.
+    </div>
+  </div>
+
+  <!-- SECTION: СТАНИШТЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🌿</span> Станиште на Рајцу</h2>
+    <p>Зец је типична врста отворених и полуотворених предела. На подручју ПИО „Рајац" насељава шумске ивице — прелазне зоне (<em>екотоне</em>) између листопадних шума и ливадских гребена, традиционалне пашњаке у вишим зонама заштићеног подручја, те обрадиве површине у периферним деловима ПИО-а. Избегава затворене шуме и густе жбунасте формације.</p>
+    <p>За разлику од кунића, зец не копа јазбине — одмара и скрива се у плитким удубљењима у тлу (<em>форми</em>), обично прикривеним густом травом или ниским жбуњем. Форма је прилагођена облику тела и тешко ју је приметити захваљујући камуфлажном обојењу длаке. Предео Рајца, са мозаичним распоредом ливада, пашњака, ораница и шумских рубних зона, представља одличан хабитат за зеца.</p>
+    <div class="highlight-box">
+      <strong>Теренски знак:</strong> Трагови зеца — парни отисци задњих ногу испред предњих (у прескоку), карактеристичне хиперболичне стазе у снегу и порастрескане биљке у висини 20–40 cm — кључни знаци присуства на Рајцу зими.
+    </div>
+  </div>
+
+  <!-- SECTION: РАСПРОСТРАЊЕЊЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🌍</span> Распрострањење</h2>
+    <p>Зец је природно распрострањен широм Европе — од Британских острва и Иберијског полуострва на западу до западне Сибирије и Блиског истока на истоку. На северу ареал достиже централну Скандинавију и Финску; на југу — Медитеран, Малу Азију и Иран. Уведен је у Аустралију, Нови Зеланд, делове Северне и Јужне Америке где је местимично постао инвазиван. На Балканском полуострву широко распрострањен у свим пољопривредним и полуотвореним пределима.</p>
+    <p>У Србији зец је присутан у свим регионима — од равнице до планинских пашњака на висинама до 2000 m н.в. Иако глобално класификован као LC (IUCN), европске популације бележе забрињавајући пад бројности — у неким земљама до 70% у поређењу са стањем из 1970-их — услед интензификације пољопривреде, употребе пестицида, предатора и болести.</p>
+  </div>
+
+  <!-- SECTION: БИОЛОГИЈА -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🔬</span> Биологија и понашање</h2>
+    <p>Зец је претежно сумрачна и ноћна животиња, иако пролећни бихевиор — нарочито борбе у марту и априлу — може бити уочљив и дању. Изразито је солитарна врста; не форм групе нити брани теториторију у класичном смислу. Домашај домаћег реона варира између 50 и 300 ha, у зависности од квалитета хабитата и доступности хране.</p>
+    <p>Чувено мартовско лудило (<em>mad as a March hare</em>, engleski izraz) — узбуђено јурењe, скакање и боксање предњим ногама — карактеристично је понашање у периоду парења. Боксање није искључиво међу мужjацима: женке ударају мужjаке предњим ногама да покажу незаинтересованост или тестирају истрајност кандидата за парење.</p>
+    <div class="highlight-box">
+      <strong>Цекотрофија:</strong> Зец производи две врсте измета — суви тврди пелети (отпад) и меке цекотрофе (богате протеинима и витаминима). Цекотрофе директно поједа са аналног отвора — процес обавезан за ефикасно варење и апсорпцију нутритивних материја из грубе биљне хране.
+    </div>
+  </div>
+
+  <!-- SECTION: ИСХРАНА -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🌾</span> Исхрана</h2>
+    <p>Зец је искључиви биљождер (<em>строги хербивор</em>). Дијета се значајно мења сезонски: пролећем и летом доминирају нежна зелена биљна материја — траве, детелина, зељасте биљке, цвеће и листови жбуња. Јесен доноси жировите плодове, семена и корење. Зими зец прибегава грубљим и оскуднијим изворима хране: грицкању коре и танких грана жбуња, суве траве, жита и уљарица.</p>
+    <p>На Рајцу традиционалне полуприродне ливаде богате флоранским диверзитетом — са маслачком, детелином, жалфијом, зечjaком и другим биљкама — представљају изванредан ресурс за зецове. Интензивно кошење или претварање ливада у монокултуре директно угрожава прехрамбену базу врсте.</p>
+  </div>
+
+  <!-- SECTION: РАЗМНОЖАВАЊЕ -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🌸</span> Размножавање</h2>
+    <p>Сезона размножавања траје од јануара до августа, са врхунцем активности у марту–мају. Женка може имати 2–4 легла годишње. Бројност легла варира: у прва два легла обично 2–3 зечeта, у каснима до 4–5. Гравидитет траје 42 дана — кратак период у поређењу са другим слично великим сисарима.</p>
+    <p>Зечети (<em>леверети</em>) рођена су прекоцијална — потпуно прекривена длаком, са отвореним очима, способна да одмах трче. Мајка их не одгаја у јазбини — распршује их по широј површини ради смањења ризика предације целог легла одједном. Долази само у сутон да их подоји — кратко, свега неколико минута дневно. Дојење траје 3–4 недеље. Зечети постижу полну зрелост са 7–8 месеци.</p>
+    <div class="highlight-box">
+      <strong>Superfetacija:</strong> Женка може да остане бременита другим леглом <em>током</em> трајања постојеће трудноће — феномен назван суперфетација, редак међу сисарима. Тако долази до наизглед парадоксалне ситуације: две различите бременитости, у различитим фазама развоја, одвијају се истовремено.
+    </div>
+  </div>
+
+  <!-- SECTION: ЕКОЛОГИЈА -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🔄</span> Екологија и улога у екосистему</h2>
+    <p>Зец је кључна врста плена у отвореним и рубним хабитатима Рајца. Његова бројност директно утиче на популације природних предатора: лисице (<em>Vulpes vulpes</em>), шакала (<em>Canis aureus</em>), дивље мачке (<em>Felis silvestris</em>), куна (<em>Martes</em> spp.), a у ваздуху — мишара, јастреба и вршца. Великe бројности зецова предаторима олакшавају исхрану; пад бројности зеца одмах се одражава на прехрамбени успех предаторских врста.</p>
+    <p>Као биљождер, зец регулише структуру травне вегетације — нарочито на паро-пашњачким системима Рајца где испаша и пашно одгризање утичу на диверзитет травне флоре. Угинула грла зеца брзо преузимају детритуфаги и стрвинари, чинећи зеца важном карикомом у кружењу биогена у отвореним екосистемима.</p>
+  </div>
+
+  <!-- SECTION: ЗАШТИТА -->
+  <div class="content-section">
+    <h2 class="section-title"><span class="emoji">🛡</span> Заштита и статус</h2>
+    <p>У Србији, зец је класификован као <strong>ситна дивљач</strong> — ловна врста са регулисаним режимом лова. Ловна сезона одређена је Законом о дивљачи и ловству (Сл. гласник РС, бр. 18/2010) и годишњим плановима. Ловачке организације дужне су да прате бројност и годишње извештавају надлежне органе.</p>
+    <p>Иако IUCN глобално процењује зеца као LC, Европска популација бележи забрињавајући пад бројности. У Немачкoj, Француској и Великој Британији популације су смањене за 50–70% у последња три деценија, примарно услед интензификације земљорадње, монокултура, механизованог кошења (смртност легла), употребе пестицида и дехелминтизације добитак предатора. На Рајцу, очување традиционалних ливада са касним кошењем директно доприноси opstanku врсте.</p>
+
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="pcard-label">Глобални статус (IUCN)</div>
+        <div class="pcard-value">LC — са опадајућим трендом</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Директива ЕУ о стаништима</div>
+        <div class="pcard-value">Анекс V — контролисано коришћење</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Статус у Србији</div>
+        <div class="pcard-value">Ситна дивљач — регулисан лов</div>
+      </div>
+      <div class="protection-card">
+        <div class="pcard-label">Главне претње</div>
+        <div class="pcard-value">Интензивна пољопривреда, предатори, EBHS болест</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:16px">
+      <strong>EBHS — Европски синдром смеђег зеца:</strong> Вирусна болест (<em>European Brown Hare Syndrome</em>) узрокована калицивирусом — хиперакутна инфекција са смртношћу и до 100% у погођеним јединкама. Карактеришу је акутна хепатоза, некроза јетре и хеморагија унутрашњих органа. Периодично погађа европске популације зеца без унапред предвидљивог обрасца.
+    </div>
+  </div>
+
+  <!-- WARNING -->
+  <div class="warning-box">
+    <strong>⚠️ Мере очувања на Рајцу:</strong> Очување зеца на Рајцу подразумева: одржавање традиционалних полуприродних ливада са касним кошењем (после 15. јула), избегавање употребе пестицида у периферним зонама ПИО-а, контролисан лов у складу са управљачким планом и мониторинг бројности. Ако нађете угинулу јединку са знацима крвавог исцетка, обавезно пријавите налаз управљачу.
+  </div>
+
+  <!-- ФЕНОСЕЗОНСКИ КАЛЕНДАР -->
+  <div class="pheno-section">
+    <h2 class="section-title"><span>🗓</span> Календар активности на Рајцу</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Када је зеца <strong>најлакше опазити</strong> и шта очекивати у сваком месецу на подручју ПИО „Рајац":</p>
+
+    <div class="pheno-grid">
+      <div class="pheno-month ph-mating"><span class="m-name">ЈАН</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">ФЕБ</span><span class="m-icon">💕</span></div>
+      <div class="pheno-month ph-mating"><span class="m-name">МАР</span><span class="m-icon">🥊</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">АПР</span><span class="m-icon">🐣</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">МАЈ</span><span class="m-icon">🐇</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУН</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ЈУЛ</span><span class="m-icon">🌿</span></div>
+      <div class="pheno-month ph-young"><span class="m-name">АВГ</span><span class="m-icon">🐇</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">СЕП</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-active"><span class="m-name">ОКТ</span><span class="m-icon">🍂</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">НОВ</span><span class="m-icon">❄️</span></div>
+      <div class="pheno-month ph-low"><span class="m-name">ДЕЦ</span><span class="m-icon">❄️</span></div>
+    </div>
+
+    <div class="pheno-legend">
+      <span><span class="dot" style="background:#c4500a"></span> Риј / парење — мартовско лудило</span>
+      <span><span class="dot" style="background:#e8a020"></span> Легла — младунци у трави</span>
+      <span><span class="dot" style="background:#2d5a27"></span> Пуна активност</span>
+      <span><span class="dot" style="background:#b0bfaa"></span> Смањена активност</span>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Најбоље доба за посматрање:</strong> Зора и сутон, нарочито дуж ивица ливада и шумских просека. Март–април: посматрати „боксање" у пољу — јединствено пролећно понашање. Јун–јул: зечад величине шаке у густој трави. Зима: трагови у снегу видљиви цео дан.
+    </div>
+  </div>
+
+  <!-- ТРАГОВИ И ЗНАЦИ -->
+  <div class="tracks-section">
+    <h2 class="section-title"><span>🐾</span> Трагови и знаци присуства</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Зец је сумрачна животиња — директно виђање је ретко. Али <strong>трагови у снегу и на влажном тлу</strong> откривају његово присуство током целе године:</p>
+
+    <!-- SVG дијаграм + мере -->
+    <div class="paw-diagram">
+      <div class="paw-svg-wrap">
+        <svg width="110" height="130" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- Задње шапе (горе, велике) — карактеристичне за зеца -->
+          <ellipse cx="30" cy="38" rx="13" ry="22" fill="#8b7355" opacity="0.82"/>
+          <ellipse cx="80" cy="38" rx="13" ry="22" fill="#8b7355" opacity="0.82"/>
+          <!-- Предње шапе (доле, мале) -->
+          <ellipse cx="38" cy="88" rx="10" ry="14" fill="#8b7355" opacity="0.82"/>
+          <ellipse cx="72" cy="88" rx="10" ry="14" fill="#8b7355" opacity="0.82"/>
+          <!-- Ноктиви задње лево -->
+          <line x1="22" y1="16" x2="20" y2="10" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="30" y1="14" x2="30" y2="8" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="38" y1="16" x2="40" y2="10" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <!-- Ноктиви задње десно -->
+          <line x1="72" y1="16" x2="70" y2="10" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="80" y1="14" x2="80" y2="8" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="88" y1="16" x2="90" y2="10" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <!-- Ноктиви предње -->
+          <line x1="32" y1="73" x2="30" y2="68" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="38" y1="72" x2="38" y2="67" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="66" y1="72" x2="66" y2="67" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <line x1="72" y1="73" x2="74" y2="68" stroke="#4a3a28" stroke-width="2" stroke-linecap="round"/>
+          <!-- Мерне линије -->
+          <line x1="4" y1="122" x2="106" y2="122" stroke="#bbb" stroke-width="1"/>
+          <text x="55" y="130" text-anchor="middle" font-size="9" fill="#888">~20–25 cm (размак)</text>
+        </svg>
+        <div class="paw-label">Образац трага у галопу</div>
+      </div>
+
+      <div class="paw-specs">
+        <table>
+          <tr><td>Предња шапа</td><td>3,5–4 cm дужина · 4 прста</td></tr>
+          <tr><td>Задња шапа</td><td>8–10 cm дужина · карактеристично дуга</td></tr>
+          <tr><td>Ноктиви</td><td>Увек видљиви у отиску</td></tr>
+          <tr><td>Образац кретања</td><td>Задње шапе испред предњих у галопу — карактеристичан „Y" или „V" образац</td></tr>
+          <tr><td>Дужина скока</td><td>40–80 cm (нормалан ход), до 3 m у бегу</td></tr>
+          <tr><td>Специфика</td><td>Задне шапе испред предњих — разликује од мачке и лисице</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Фото трага -->
+    <figure class="track-photo-wrap">
+      <img
+        src="SISARI_IMG_URL/Feldhase_Spur_Schnee.jpg"
+        alt="Трагови зеца (Lepus europaeus) у снегу — карактеристичан образац са задњим шапама испред предњих, типични V-образац у галопу"
+        loading="lazy"
+        onerror="this.src='SISARI_IMG_URL/Hare_tracks_in_snow.jpg'">
+      <figcaption>Трагови зеца у снегу — карактеристичан „V" образац: задње шапе (велике) испред предњих (мале). Најлакше уочљив знак присуства зими · Wikimedia Commons CC BY-SA</figcaption>
+    </figure>
+
+    <div class="tracks-grid">
+      <div class="track-card">
+        <h4>💩 Измет (скат)</h4>
+        <p>Мале сфeричне кугле пречника 1–1,5 cm, светложуте до тамносмеђе боје. Потпуно биљног садржаја — трава, кора, семена. Налазе се у групама на истом месту — зец се враћа на исту форму. Понекад се виде и меки цекотрофи (поједени одмах).</p>
+      </div>
+      <div class="track-card">
+        <h4>🌿 Форма — лежиште</h4>
+        <p>Плитко удубљење у тлу или трави, облика тела зеца — дужине 30–40 cm. Нема улаза нити ходника за разлику од кунића. Обично заклоњена густом травом или ниским жбуњем. Длака у форми — сигуран знак присуства.</p>
+      </div>
+      <div class="track-card">
+        <h4>🌳 Гризени биљни делови</h4>
+        <p>Коса, чиста косина уреза на гранчицама дебљине до 1 cm — карактеристичан „шкарски рез" сечутима. Висина 10–40 cm изнад тла. Зими: огуљена кора на младим воћкама и жбуњу. Разликује се од срне (нагрижено, не сечено).</p>
+      </div>
+      <div class="track-card">
+        <h4>❄️ Трагови у снегу</h4>
+        <p>Најлакше уочљив траг — карактеристичан „V" образац са великим задњим отисцима испред малих предњих. У снегу видљиве стазе између форме и пашњака. Ноћна активност — трагови свежи ујутру. Дупки у снегу указују на исхрану испод снега.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФОТО-ЗАМКЕ -->
+  <div class="camtrap-section">
+    <h2 class="section-title"><span>📷</span> Фото-замке — водич за посматрање</h2>
+    <p style="font-size:14.5px;line-height:1.75;color:var(--text);margin-bottom:16px;">Зец је <strong>сумрачан и опрезан</strong> — директно посматрање могуће је само у специфичним условима. Фото-замка или стрпљиво чекање на ивици ливаде у зору дају најбоље резултате.</p>
+
+    <div class="camtrap-grid">
+      <div class="camtrap-card">
+        <span class="ct-icon">📍</span>
+        <h4>Где поставити</h4>
+        <p>Дуж стаза на ивици ливаде и шуме. На познатим форма-местима (трагови длаке). Код младих воћарица и жбуња са траговима гризења. Уз потоке у зору.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">📐</span>
+        <h4>Висина и угао</h4>
+        <p>15–25 cm висине — висина зечјег трбуха. Угао паралелно са тлом или незнатно надоле. Усмерити дуж стазе (не попречно). ИР сензор под углом 30–45°.</p>
+      </div>
+      <div class="camtrap-card">
+        <span class="ct-icon">🌙</span>
+        <h4>Кад очекивати</h4>
+        <p>30 мин пре заласка и после изласка сунца. Март–мај: дневна активност — „боксање" мужjака. Зима: активност испред мрака уз ивице ливада. Јун–август: мајке са зечадима.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Савет за посматрање голим оком:</strong> Паркирај се или сeди мирно уз шумску ивицу 30 мин пре заласка сунца и чекај. Зец ће изаћи на ливаду са исте стране сваки пут — кад га видиш, означи тачку и следећи пут чекај тамо.
+    </div>
+
+    <div class="ct-links">
+      <a href="https://www.inaturalist.org/taxa/43151-Lepus-europaeus" class="ct-link-btn" target="_blank">📍 Lepus europaeus — iNaturalist</a>
+      <a href="https://www.youtube.com/results?search_query=lepus+europaeus+camera+trap" class="ct-link-btn" target="_blank">🎥 Camera trap примери — YouTube</a>
+      <a href="https://mammalnet.com" class="ct-link-btn" target="_blank">🐾 MammalNet — грађанска наука</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="species-nav">
+    <a href="https://piorajac.rs/sisari/sus-scrofa/">← Дивља свиња — <em>Sus scrofa</em></a>
+    <a href="https://piorajac.rs/sisari-rajca/" class="center-link">📋 Сисари Рајца</a>
+    <a href="https://piorajac.rs/sisari/vulpes-vulpes/">Лисица — <em>Vulpes vulpes</em> →</a>
+  </nav>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  Copyright © 2026 — Предео изузетних одлика „Рајац" · Туристичка организација општине Љиг · WordPress Theme by CreativeThemes
+</footer>
+
+</body>
+</html>
