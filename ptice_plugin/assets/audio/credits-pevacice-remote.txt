@@ -1,0 +1,28 @@
+Dodatni audio snimci za pevacice ucitavaju se sa Wikimedia Commons:
+aegithalos-caudatus	Aegithalos caudatus	File:Aegithalos caudatus - Long-tailed Tit XC512590.mp3	https://upload.wikimedia.org/wikipedia/commons/6/6e/Aegithalos_caudatus_-_Long-tailed_Tit_XC512590.mp3
+carduelis-carduelis	Carduelis carduelis	File:Carduelis carduelis - European Goldfinch XC101463.mp3	https://upload.wikimedia.org/wikipedia/commons/f/f4/Carduelis_carduelis_-_European_Goldfinch_XC101463.mp3
+chloris-chloris	Chloris chloris	File:Grünfink Chloris chloris 0066a.mp3	https://upload.wikimedia.org/wikipedia/commons/2/26/Gr%C3%BCnfink_Chloris_chloris_0066a.mp3
+coccothraustes-coccothraustes	Coccothraustes coccothraustes	File:Coccothraustes coccothraustes - Hawfinch XC541308.mp3	https://upload.wikimedia.org/wikipedia/commons/a/a1/Coccothraustes_coccothraustes_-_Hawfinch_XC541308.mp3
+coracias-garrulus	Coracias garrulus	File:De-Racke.ogg	https://upload.wikimedia.org/wikipedia/commons/1/1c/De-Racke.ogg
+coturnix-coturnix	Coturnix coturnix	File:Coturnix coturnix - Common Quail XC549215.mp3	https://upload.wikimedia.org/wikipedia/commons/4/4c/Coturnix_coturnix_-_Common_Quail_XC549215.mp3
+delichon-urbicum	Delichon urbicum	File:Delichon urbicum contact call.ogg	https://upload.wikimedia.org/wikipedia/commons/5/53/Delichon_urbicum_contact_call.ogg
+emberiza-calandra	Emberiza calandra	File:De-Grauammer.ogg	https://upload.wikimedia.org/wikipedia/commons/b/b2/De-Grauammer.ogg
+emberiza-hortulana	Emberiza hortulana	File:Emberiza hortulana - Ortolan Bunting XC481324.mp3	https://upload.wikimedia.org/wikipedia/commons/5/58/Emberiza_hortulana_-_Ortolan_Bunting_XC481324.mp3
+erithacus-rubecula	Erithacus rubecula	File:Erithacus rubecula - European Robin XC124862.ogg	https://upload.wikimedia.org/wikipedia/commons/f/f4/Erithacus_rubecula_-_European_Robin_XC124862.ogg
+ficedula-parva	Ficedula parva	File:Ficedula parva - Red-breasted Flycatcher XC249313.mp3	https://upload.wikimedia.org/wikipedia/commons/9/96/Ficedula_parva_-_Red-breasted_Flycatcher_XC249313.mp3
+fringilla-coelebs	Fringilla coelebs	File:Fringilla coelebs - Common Chaffinch XC582029.mp3	https://upload.wikimedia.org/wikipedia/commons/6/63/Fringilla_coelebs_-_Common_Chaffinch_XC582029.mp3
+hirundo-rustica	Hirundo rustica	File:Hirundo rustica - Barn Swallow XC83449.mp3	https://upload.wikimedia.org/wikipedia/commons/7/77/Hirundo_rustica_-_Barn_Swallow_XC83449.mp3
+merops-apiaster	Merops apiaster	File:Bijeneter - SoundCloud - Beeld en Geluid.ogg	https://upload.wikimedia.org/wikipedia/commons/3/37/Bijeneter_-_SoundCloud_-_Beeld_en_Geluid.ogg
+obicna-travarka	Saxicola rubetra	File:Saxicola rubetra - Whinchat XC479662.mp3	https://upload.wikimedia.org/wikipedia/commons/6/6e/Saxicola_rubetra_-_Whinchat_XC479662.mp3
+oenanthe-oenanthe	Oenanthe oenanthe	File:De-Steinschmätzer.ogg	https://upload.wikimedia.org/wikipedia/commons/4/4b/De-Steinschm%C3%A4tzer.ogg
+phasianus-colchicus	Phasianus colchicus	File:Phasianus colchicus - Common Pheasant XC83152.mp3	https://upload.wikimedia.org/wikipedia/commons/0/0e/Phasianus_colchicus_-_Common_Pheasant_XC83152.mp3
+phoenicurus-phoenicurus	Phoenicurus phoenicurus	File:Phoenicurus phoenicurus - Common Redstart XC468918.mp3	https://upload.wikimedia.org/wikipedia/commons/7/7c/Phoenicurus_phoenicurus_-_Common_Redstart_XC468918.mp3
+phylloscopus-trochilus	Phylloscopus trochilus	File:Phylloscopus trochilus - Willow Warbler XC468919.mp3	https://upload.wikimedia.org/wikipedia/commons/7/7a/Phylloscopus_trochilus_-_Willow_Warbler_XC468919.mp3
+serinus-serinus	Serinus serinus	File:Serinus serinus - European Serin XC471334.mp3	https://upload.wikimedia.org/wikipedia/commons/6/68/Serinus_serinus_-_European_Serin_XC471334.mp3
+streptopelia-decaocto	Streptopelia decaocto	File:Streptopelia decaocto - Eurasian Collared Dove XC82758.mp3	https://upload.wikimedia.org/wikipedia/commons/7/7f/Streptopelia_decaocto_-_Eurasian_Collared_Dove_XC82758.mp3
+streptopelia-turtur	Streptopelia turtur	File:Streptopelia turtur - European Turtle Dove XC481626.mp3	https://upload.wikimedia.org/wikipedia/commons/f/f9/Streptopelia_turtur_-_European_Turtle_Dove_XC481626.mp3
+sylvia-communis	Sylvia communis	File:Sylvia communis - Common Whitethroat XC503635.mp3	https://upload.wikimedia.org/wikipedia/commons/9/91/Sylvia_communis_-_Common_Whitethroat_XC503635.mp3
+turdus-merula	Turdus merula	File:Turdus merula - Common Blackbird XC123548.ogg	https://upload.wikimedia.org/wikipedia/commons/2/22/Turdus_merula_-_Common_Blackbird_XC123548.ogg
+turdus-viscivorus	Turdus viscivorus	File:Turdus viscivorus - Mistle Thrush XC108362.mp3	https://upload.wikimedia.org/wikipedia/commons/d/d4/Turdus_viscivorus_-_Mistle_Thrush_XC108362.mp3
+upupa-epops	Upupa epops	File:De-Hupatz.ogg	https://upload.wikimedia.org/wikipedia/commons/a/a1/De-Hupatz.ogg
+vrabac	Passer domesticus	File:Passer domesticus - House Sparrow - XC86749.ogg	https://upload.wikimedia.org/wikipedia/commons/d/dc/Passer_domesticus_-_House_Sparrow_-_XC86749.ogg
